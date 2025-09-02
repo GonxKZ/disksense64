@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scan.cpp" "core/scan/CMakeFiles/core_scan.dir/scan.cpp.o" "gcc" "core/scan/CMakeFiles/core_scan.dir/scan.cpp.o.d"
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scanner.cpp" "core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o" "gcc" "core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scan.cpp" "core/scan/CMakeFiles/core_scan.dir/scan.cpp.o" "gcc" "core/scan/CMakeFiles/core_scan.dir/scan.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scanner.cpp" "core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o" "gcc" "core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

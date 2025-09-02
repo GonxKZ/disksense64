@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash//CMakeFiles/progress.marks"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash//CMakeFiles/progress.marks"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/clean
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/preinstall
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/preinstall
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 libs/phash/CMakeFiles/lib_phash.dir/rule:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/CMakeFiles/lib_phash.dir/rule
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/CMakeFiles/lib_phash.dir/rule
 .PHONY : libs/phash/CMakeFiles/lib_phash.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ lib_phash: libs/phash/CMakeFiles/lib_phash.dir/rule
 
 # fast build rule for target.
 lib_phash/fast:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/build
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/build
 .PHONY : lib_phash/fast
 
 phash.o: phash.c.o
@@ -145,7 +145,7 @@ phash.o: phash.c.o
 
 # target to build an object file
 phash.c.o:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/phash.c.o
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/phash.c.o
 .PHONY : phash.c.o
 
 phash.i: phash.c.i
@@ -153,7 +153,7 @@ phash.i: phash.c.i
 
 # target to preprocess a source file
 phash.c.i:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/phash.c.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/phash.c.i
 .PHONY : phash.c.i
 
 phash.s: phash.c.s
@@ -161,7 +161,7 @@ phash.s: phash.c.s
 
 # target to generate assembly for a file
 phash.c.s:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/phash.c.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/phash.c.s
 .PHONY : phash.c.s
 
 # Help Target
@@ -188,6 +188,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

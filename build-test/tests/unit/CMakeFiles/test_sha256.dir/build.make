@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include tests/unit/CMakeFiles/test_sha256.dir/depend.make
@@ -70,18 +70,18 @@ include tests/unit/CMakeFiles/test_sha256.dir/progress.make
 include tests/unit/CMakeFiles/test_sha256.dir/flags.make
 
 tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o: tests/unit/CMakeFiles/test_sha256.dir/flags.make
-tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_sha256.cpp
+tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/tests/unit/test_sha256.cpp
 tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o: tests/unit/CMakeFiles/test_sha256.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o -MF CMakeFiles/test_sha256.dir/test_sha256.cpp.o.d -o CMakeFiles/test_sha256.dir/test_sha256.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_sha256.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o -MF CMakeFiles/test_sha256.dir/test_sha256.cpp.o.d -o CMakeFiles/test_sha256.dir/test_sha256.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit/test_sha256.cpp"
 
 tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_sha256.dir/test_sha256.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_sha256.cpp" > CMakeFiles/test_sha256.dir/test_sha256.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit/test_sha256.cpp" > CMakeFiles/test_sha256.dir/test_sha256.cpp.i
 
 tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_sha256.dir/test_sha256.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_sha256.cpp" -o CMakeFiles/test_sha256.dir/test_sha256.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit/test_sha256.cpp" -o CMakeFiles/test_sha256.dir/test_sha256.cpp.s
 
 # Object files for target test_sha256
 test_sha256_OBJECTS = \
@@ -94,18 +94,18 @@ bin/test_sha256: tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o
 bin/test_sha256: tests/unit/CMakeFiles/test_sha256.dir/build.make
 bin/test_sha256: lib/liblib_chash.a
 bin/test_sha256: tests/unit/CMakeFiles/test_sha256.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/test_sha256"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_sha256.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/test_sha256"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_sha256.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/unit/CMakeFiles/test_sha256.dir/build: bin/test_sha256
 .PHONY : tests/unit/CMakeFiles/test_sha256.dir/build
 
 tests/unit/CMakeFiles/test_sha256.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && $(CMAKE_COMMAND) -P CMakeFiles/test_sha256.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && $(CMAKE_COMMAND) -P CMakeFiles/test_sha256.dir/cmake_clean.cmake
 .PHONY : tests/unit/CMakeFiles/test_sha256.dir/clean
 
 tests/unit/CMakeFiles/test_sha256.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit/CMakeFiles/test_sha256.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit/CMakeFiles/test_sha256.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : tests/unit/CMakeFiles/test_sha256.dir/depend
 

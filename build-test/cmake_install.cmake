@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64
+# Install script for directory: /mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -44,67 +44,67 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/index/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/index/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/model/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/model/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/ops/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/ops/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/utils/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/utils/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/util/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/util/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/cmake_install.cmake")
+  include("/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -115,5 +115,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

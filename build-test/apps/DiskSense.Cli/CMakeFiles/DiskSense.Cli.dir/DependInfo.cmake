@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/apps/DiskSense.Cli/main.cpp" "apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o" "gcc" "apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/apps/DiskSense.Cli/main.cpp" "apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o" "gcc" "apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

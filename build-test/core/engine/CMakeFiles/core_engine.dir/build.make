@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include core/engine/CMakeFiles/core_engine.dir/depend.make
@@ -70,32 +70,32 @@ include core/engine/CMakeFiles/core_engine.dir/progress.make
 include core/engine/CMakeFiles/core_engine.dir/flags.make
 
 core/engine/CMakeFiles/core_engine.dir/engine.cpp.o: core/engine/CMakeFiles/core_engine.dir/flags.make
-core/engine/CMakeFiles/core_engine.dir/engine.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/core/engine/engine.cpp
+core/engine/CMakeFiles/core_engine.dir/engine.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/core/engine/engine.cpp
 core/engine/CMakeFiles/core_engine.dir/engine.cpp.o: core/engine/CMakeFiles/core_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object core/engine/CMakeFiles/core_engine.dir/engine.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/engine/CMakeFiles/core_engine.dir/engine.cpp.o -MF CMakeFiles/core_engine.dir/engine.cpp.o.d -o CMakeFiles/core_engine.dir/engine.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine/engine.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object core/engine/CMakeFiles/core_engine.dir/engine.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/engine/CMakeFiles/core_engine.dir/engine.cpp.o -MF CMakeFiles/core_engine.dir/engine.cpp.o.d -o CMakeFiles/core_engine.dir/engine.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine/engine.cpp"
 
 core/engine/CMakeFiles/core_engine.dir/engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/core_engine.dir/engine.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine/engine.cpp" > CMakeFiles/core_engine.dir/engine.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine/engine.cpp" > CMakeFiles/core_engine.dir/engine.cpp.i
 
 core/engine/CMakeFiles/core_engine.dir/engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/core_engine.dir/engine.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine/engine.cpp" -o CMakeFiles/core_engine.dir/engine.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine/engine.cpp" -o CMakeFiles/core_engine.dir/engine.cpp.s
 
 core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o: core/engine/CMakeFiles/core_engine.dir/flags.make
-core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/core/engine/iocp.cpp
+core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/core/engine/iocp.cpp
 core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o: core/engine/CMakeFiles/core_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o -MF CMakeFiles/core_engine.dir/iocp.cpp.o.d -o CMakeFiles/core_engine.dir/iocp.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine/iocp.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o -MF CMakeFiles/core_engine.dir/iocp.cpp.o.d -o CMakeFiles/core_engine.dir/iocp.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine/iocp.cpp"
 
 core/engine/CMakeFiles/core_engine.dir/iocp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/core_engine.dir/iocp.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine/iocp.cpp" > CMakeFiles/core_engine.dir/iocp.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine/iocp.cpp" > CMakeFiles/core_engine.dir/iocp.cpp.i
 
 core/engine/CMakeFiles/core_engine.dir/iocp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/core_engine.dir/iocp.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine/iocp.cpp" -o CMakeFiles/core_engine.dir/iocp.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine/iocp.cpp" -o CMakeFiles/core_engine.dir/iocp.cpp.s
 
 # Object files for target core_engine
 core_engine_OBJECTS = \
@@ -109,19 +109,19 @@ lib/libcore_engine.a: core/engine/CMakeFiles/core_engine.dir/engine.cpp.o
 lib/libcore_engine.a: core/engine/CMakeFiles/core_engine.dir/iocp.cpp.o
 lib/libcore_engine.a: core/engine/CMakeFiles/core_engine.dir/build.make
 lib/libcore_engine.a: core/engine/CMakeFiles/core_engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../../lib/libcore_engine.a"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && $(CMAKE_COMMAND) -P CMakeFiles/core_engine.dir/cmake_clean_target.cmake
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_engine.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../../lib/libcore_engine.a"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && $(CMAKE_COMMAND) -P CMakeFiles/core_engine.dir/cmake_clean_target.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 core/engine/CMakeFiles/core_engine.dir/build: lib/libcore_engine.a
 .PHONY : core/engine/CMakeFiles/core_engine.dir/build
 
 core/engine/CMakeFiles/core_engine.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" && $(CMAKE_COMMAND) -P CMakeFiles/core_engine.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" && $(CMAKE_COMMAND) -P CMakeFiles/core_engine.dir/cmake_clean.cmake
 .PHONY : core/engine/CMakeFiles/core_engine.dir/clean
 
 core/engine/CMakeFiles/core_engine.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/engine" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/engine/CMakeFiles/core_engine.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/engine" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/engine/CMakeFiles/core_engine.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : core/engine/CMakeFiles/core_engine.dir/depend
 

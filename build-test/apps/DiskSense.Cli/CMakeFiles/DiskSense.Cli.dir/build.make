@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/depend.make
@@ -70,18 +70,18 @@ include apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/progress.make
 include apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/flags.make
 
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o: apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/flags.make
-apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/apps/DiskSense.Cli/main.cpp
+apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/apps/DiskSense.Cli/main.cpp
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o: apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o -MF CMakeFiles/DiskSense.Cli.dir/main.cpp.o.d -o CMakeFiles/DiskSense.Cli.dir/main.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/apps/DiskSense.Cli/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.o -MF CMakeFiles/DiskSense.Cli.dir/main.cpp.o.d -o CMakeFiles/DiskSense.Cli.dir/main.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/apps/DiskSense.Cli/main.cpp"
 
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DiskSense.Cli.dir/main.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/apps/DiskSense.Cli/main.cpp" > CMakeFiles/DiskSense.Cli.dir/main.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/apps/DiskSense.Cli/main.cpp" > CMakeFiles/DiskSense.Cli.dir/main.cpp.i
 
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DiskSense.Cli.dir/main.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/apps/DiskSense.Cli/main.cpp" -o CMakeFiles/DiskSense.Cli.dir/main.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/apps/DiskSense.Cli/main.cpp" -o CMakeFiles/DiskSense.Cli.dir/main.cpp.s
 
 # Object files for target DiskSense.Cli
 DiskSense_Cli_OBJECTS = \
@@ -103,18 +103,18 @@ bin/DiskSense.Cli: lib/libplatform_fswin.a
 bin/DiskSense.Cli: lib/libcore_index.a
 bin/DiskSense.Cli: lib/libcore_model.a
 bin/DiskSense.Cli: apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/DiskSense.Cli"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DiskSense.Cli.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/DiskSense.Cli"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DiskSense.Cli.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/build: bin/DiskSense.Cli
 .PHONY : apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/build
 
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli" && $(CMAKE_COMMAND) -P CMakeFiles/DiskSense.Cli.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli" && $(CMAKE_COMMAND) -P CMakeFiles/DiskSense.Cli.dir/cmake_clean.cmake
 .PHONY : apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/clean
 
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/apps/DiskSense.Cli" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/apps/DiskSense.Cli" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/depend
 

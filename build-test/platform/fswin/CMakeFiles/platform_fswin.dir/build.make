@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include platform/fswin/CMakeFiles/platform_fswin.dir/depend.make
@@ -70,18 +70,18 @@ include platform/fswin/CMakeFiles/platform_fswin.dir/progress.make
 include platform/fswin/CMakeFiles/platform_fswin.dir/flags.make
 
 platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o: platform/fswin/CMakeFiles/platform_fswin.dir/flags.make
-platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/platform/fswin/fswin.cpp
+platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/platform/fswin/fswin.cpp
 platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o: platform/fswin/CMakeFiles/platform_fswin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o -MF CMakeFiles/platform_fswin.dir/fswin.cpp.o.d -o CMakeFiles/platform_fswin.dir/fswin.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/platform/fswin/fswin.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o -MF CMakeFiles/platform_fswin.dir/fswin.cpp.o.d -o CMakeFiles/platform_fswin.dir/fswin.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/platform/fswin/fswin.cpp"
 
 platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/platform_fswin.dir/fswin.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/platform/fswin/fswin.cpp" > CMakeFiles/platform_fswin.dir/fswin.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/platform/fswin/fswin.cpp" > CMakeFiles/platform_fswin.dir/fswin.cpp.i
 
 platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/platform_fswin.dir/fswin.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/platform/fswin/fswin.cpp" -o CMakeFiles/platform_fswin.dir/fswin.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/platform/fswin/fswin.cpp" -o CMakeFiles/platform_fswin.dir/fswin.cpp.s
 
 # Object files for target platform_fswin
 platform_fswin_OBJECTS = \
@@ -93,19 +93,19 @@ platform_fswin_EXTERNAL_OBJECTS =
 lib/libplatform_fswin.a: platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o
 lib/libplatform_fswin.a: platform/fswin/CMakeFiles/platform_fswin.dir/build.make
 lib/libplatform_fswin.a: platform/fswin/CMakeFiles/platform_fswin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../lib/libplatform_fswin.a"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" && $(CMAKE_COMMAND) -P CMakeFiles/platform_fswin.dir/cmake_clean_target.cmake
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/platform_fswin.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../lib/libplatform_fswin.a"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" && $(CMAKE_COMMAND) -P CMakeFiles/platform_fswin.dir/cmake_clean_target.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/platform_fswin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 platform/fswin/CMakeFiles/platform_fswin.dir/build: lib/libplatform_fswin.a
 .PHONY : platform/fswin/CMakeFiles/platform_fswin.dir/build
 
 platform/fswin/CMakeFiles/platform_fswin.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" && $(CMAKE_COMMAND) -P CMakeFiles/platform_fswin.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" && $(CMAKE_COMMAND) -P CMakeFiles/platform_fswin.dir/cmake_clean.cmake
 .PHONY : platform/fswin/CMakeFiles/platform_fswin.dir/clean
 
 platform/fswin/CMakeFiles/platform_fswin.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/platform/fswin" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/platform/fswin/CMakeFiles/platform_fswin.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/platform/fswin" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/platform/fswin/CMakeFiles/platform_fswin.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : platform/fswin/CMakeFiles/platform_fswin.dir/depend
 

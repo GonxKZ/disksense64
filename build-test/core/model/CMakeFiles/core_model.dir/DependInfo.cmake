@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/model/model.cpp" "core/model/CMakeFiles/core_model.dir/model.cpp.o" "gcc" "core/model/CMakeFiles/core_model.dir/model.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/model/model.cpp" "core/model/CMakeFiles/core_model.dir/model.cpp.o" "gcc" "core/model/CMakeFiles/core_model.dir/model.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

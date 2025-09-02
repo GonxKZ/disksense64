@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include core/usn/CMakeFiles/core_usn.dir/depend.make
@@ -70,18 +70,18 @@ include core/usn/CMakeFiles/core_usn.dir/progress.make
 include core/usn/CMakeFiles/core_usn.dir/flags.make
 
 core/usn/CMakeFiles/core_usn.dir/usn.cpp.o: core/usn/CMakeFiles/core_usn.dir/flags.make
-core/usn/CMakeFiles/core_usn.dir/usn.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/core/usn/usn.cpp
+core/usn/CMakeFiles/core_usn.dir/usn.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/core/usn/usn.cpp
 core/usn/CMakeFiles/core_usn.dir/usn.cpp.o: core/usn/CMakeFiles/core_usn.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object core/usn/CMakeFiles/core_usn.dir/usn.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/usn/CMakeFiles/core_usn.dir/usn.cpp.o -MF CMakeFiles/core_usn.dir/usn.cpp.o.d -o CMakeFiles/core_usn.dir/usn.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/usn/usn.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object core/usn/CMakeFiles/core_usn.dir/usn.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/usn/CMakeFiles/core_usn.dir/usn.cpp.o -MF CMakeFiles/core_usn.dir/usn.cpp.o.d -o CMakeFiles/core_usn.dir/usn.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/usn/usn.cpp"
 
 core/usn/CMakeFiles/core_usn.dir/usn.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/core_usn.dir/usn.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/usn/usn.cpp" > CMakeFiles/core_usn.dir/usn.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/usn/usn.cpp" > CMakeFiles/core_usn.dir/usn.cpp.i
 
 core/usn/CMakeFiles/core_usn.dir/usn.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/core_usn.dir/usn.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/usn/usn.cpp" -o CMakeFiles/core_usn.dir/usn.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/usn/usn.cpp" -o CMakeFiles/core_usn.dir/usn.cpp.s
 
 # Object files for target core_usn
 core_usn_OBJECTS = \
@@ -93,19 +93,19 @@ core_usn_EXTERNAL_OBJECTS =
 lib/libcore_usn.a: core/usn/CMakeFiles/core_usn.dir/usn.cpp.o
 lib/libcore_usn.a: core/usn/CMakeFiles/core_usn.dir/build.make
 lib/libcore_usn.a: core/usn/CMakeFiles/core_usn.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../lib/libcore_usn.a"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" && $(CMAKE_COMMAND) -P CMakeFiles/core_usn.dir/cmake_clean_target.cmake
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_usn.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../lib/libcore_usn.a"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" && $(CMAKE_COMMAND) -P CMakeFiles/core_usn.dir/cmake_clean_target.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_usn.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 core/usn/CMakeFiles/core_usn.dir/build: lib/libcore_usn.a
 .PHONY : core/usn/CMakeFiles/core_usn.dir/build
 
 core/usn/CMakeFiles/core_usn.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" && $(CMAKE_COMMAND) -P CMakeFiles/core_usn.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" && $(CMAKE_COMMAND) -P CMakeFiles/core_usn.dir/cmake_clean.cmake
 .PHONY : core/usn/CMakeFiles/core_usn.dir/clean
 
 core/usn/CMakeFiles/core_usn.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/usn" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/usn/CMakeFiles/core_usn.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/usn" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/usn/CMakeFiles/core_usn.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : core/usn/CMakeFiles/core_usn.dir/depend
 

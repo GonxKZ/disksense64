@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include tests/unit/CMakeFiles/test_utils.dir/depend.make
@@ -70,18 +70,18 @@ include tests/unit/CMakeFiles/test_utils.dir/progress.make
 include tests/unit/CMakeFiles/test_utils.dir/flags.make
 
 tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o: tests/unit/CMakeFiles/test_utils.dir/flags.make
-tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_utils.cpp
+tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/tests/unit/test_utils.cpp
 tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o: tests/unit/CMakeFiles/test_utils.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o -MF CMakeFiles/test_utils.dir/test_utils.cpp.o.d -o CMakeFiles/test_utils.dir/test_utils.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_utils.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o -MF CMakeFiles/test_utils.dir/test_utils.cpp.o.d -o CMakeFiles/test_utils.dir/test_utils.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit/test_utils.cpp"
 
 tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_utils.dir/test_utils.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_utils.cpp" > CMakeFiles/test_utils.dir/test_utils.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit/test_utils.cpp" > CMakeFiles/test_utils.dir/test_utils.cpp.i
 
 tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_utils.dir/test_utils.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit/test_utils.cpp" -o CMakeFiles/test_utils.dir/test_utils.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit/test_utils.cpp" -o CMakeFiles/test_utils.dir/test_utils.cpp.s
 
 # Object files for target test_utils
 test_utils_OBJECTS = \
@@ -94,18 +94,18 @@ bin/test_utils: tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o
 bin/test_utils: tests/unit/CMakeFiles/test_utils.dir/build.make
 bin/test_utils: lib/liblib_utils.a
 bin/test_utils: tests/unit/CMakeFiles/test_utils.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/test_utils"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_utils.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/test_utils"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_utils.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/unit/CMakeFiles/test_utils.dir/build: bin/test_utils
 .PHONY : tests/unit/CMakeFiles/test_utils.dir/build
 
 tests/unit/CMakeFiles/test_utils.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" && $(CMAKE_COMMAND) -P CMakeFiles/test_utils.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" && $(CMAKE_COMMAND) -P CMakeFiles/test_utils.dir/cmake_clean.cmake
 .PHONY : tests/unit/CMakeFiles/test_utils.dir/clean
 
 tests/unit/CMakeFiles/test_utils.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit/CMakeFiles/test_utils.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit/CMakeFiles/test_utils.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : tests/unit/CMakeFiles/test_utils.dir/depend
 

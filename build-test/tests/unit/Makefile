@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/tests/unit//CMakeFiles/progress.marks"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/tests/unit//CMakeFiles/progress.marks"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/clean
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/preinstall
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/preinstall
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tests/unit/CMakeFiles/test_sha256.dir/rule:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/test_sha256.dir/rule
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/test_sha256.dir/rule
 .PHONY : tests/unit/CMakeFiles/test_sha256.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ test_sha256: tests/unit/CMakeFiles/test_sha256.dir/rule
 
 # fast build rule for target.
 test_sha256/fast:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/build
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/build
 .PHONY : test_sha256/fast
 
 # Convenience name for target.
 tests/unit/CMakeFiles/test_utils.dir/rule:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/test_utils.dir/rule
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/test_utils.dir/rule
 .PHONY : tests/unit/CMakeFiles/test_utils.dir/rule
 
 # Convenience name for target.
@@ -151,7 +151,7 @@ test_utils: tests/unit/CMakeFiles/test_utils.dir/rule
 
 # fast build rule for target.
 test_utils/fast:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/build
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/build
 .PHONY : test_utils/fast
 
 test_sha256.o: test_sha256.cpp.o
@@ -159,7 +159,7 @@ test_sha256.o: test_sha256.cpp.o
 
 # target to build an object file
 test_sha256.cpp.o:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.o
 .PHONY : test_sha256.cpp.o
 
 test_sha256.i: test_sha256.cpp.i
@@ -167,7 +167,7 @@ test_sha256.i: test_sha256.cpp.i
 
 # target to preprocess a source file
 test_sha256.cpp.i:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.i
 .PHONY : test_sha256.cpp.i
 
 test_sha256.s: test_sha256.cpp.s
@@ -175,7 +175,7 @@ test_sha256.s: test_sha256.cpp.s
 
 # target to generate assembly for a file
 test_sha256.cpp.s:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/test_sha256.cpp.s
 .PHONY : test_sha256.cpp.s
 
 test_utils.o: test_utils.cpp.o
@@ -183,7 +183,7 @@ test_utils.o: test_utils.cpp.o
 
 # target to build an object file
 test_utils.cpp.o:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.o
 .PHONY : test_utils.cpp.o
 
 test_utils.i: test_utils.cpp.i
@@ -191,7 +191,7 @@ test_utils.i: test_utils.cpp.i
 
 # target to preprocess a source file
 test_utils.cpp.i:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.i
 .PHONY : test_utils.cpp.i
 
 test_utils.s: test_utils.cpp.s
@@ -199,7 +199,7 @@ test_utils.s: test_utils.cpp.s
 
 # target to generate assembly for a file
 test_utils.cpp.s:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/test_utils.cpp.s
 .PHONY : test_utils.cpp.s
 
 # Help Target
@@ -230,6 +230,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

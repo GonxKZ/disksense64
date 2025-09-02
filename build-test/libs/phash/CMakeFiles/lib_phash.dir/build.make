@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include libs/phash/CMakeFiles/lib_phash.dir/depend.make
@@ -70,18 +70,18 @@ include libs/phash/CMakeFiles/lib_phash.dir/progress.make
 include libs/phash/CMakeFiles/lib_phash.dir/flags.make
 
 libs/phash/CMakeFiles/lib_phash.dir/phash.c.o: libs/phash/CMakeFiles/lib_phash.dir/flags.make
-libs/phash/CMakeFiles/lib_phash.dir/phash.c.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/libs/phash/phash.c
+libs/phash/CMakeFiles/lib_phash.dir/phash.c.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/libs/phash/phash.c
 libs/phash/CMakeFiles/lib_phash.dir/phash.c.o: libs/phash/CMakeFiles/lib_phash.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object libs/phash/CMakeFiles/lib_phash.dir/phash.c.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT libs/phash/CMakeFiles/lib_phash.dir/phash.c.o -MF CMakeFiles/lib_phash.dir/phash.c.o.d -o CMakeFiles/lib_phash.dir/phash.c.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/phash/phash.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object libs/phash/CMakeFiles/lib_phash.dir/phash.c.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT libs/phash/CMakeFiles/lib_phash.dir/phash.c.o -MF CMakeFiles/lib_phash.dir/phash.c.o.d -o CMakeFiles/lib_phash.dir/phash.c.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/phash/phash.c"
 
 libs/phash/CMakeFiles/lib_phash.dir/phash.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lib_phash.dir/phash.c.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/phash/phash.c" > CMakeFiles/lib_phash.dir/phash.c.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/phash/phash.c" > CMakeFiles/lib_phash.dir/phash.c.i
 
 libs/phash/CMakeFiles/lib_phash.dir/phash.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lib_phash.dir/phash.c.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/phash/phash.c" -o CMakeFiles/lib_phash.dir/phash.c.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/phash/phash.c" -o CMakeFiles/lib_phash.dir/phash.c.s
 
 # Object files for target lib_phash
 lib_phash_OBJECTS = \
@@ -93,19 +93,19 @@ lib_phash_EXTERNAL_OBJECTS =
 lib/liblib_phash.a: libs/phash/CMakeFiles/lib_phash.dir/phash.c.o
 lib/liblib_phash.a: libs/phash/CMakeFiles/lib_phash.dir/build.make
 lib/liblib_phash.a: libs/phash/CMakeFiles/lib_phash.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library ../../lib/liblib_phash.a"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_phash.dir/cmake_clean_target.cmake
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lib_phash.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library ../../lib/liblib_phash.a"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_phash.dir/cmake_clean_target.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lib_phash.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 libs/phash/CMakeFiles/lib_phash.dir/build: lib/liblib_phash.a
 .PHONY : libs/phash/CMakeFiles/lib_phash.dir/build
 
 libs/phash/CMakeFiles/lib_phash.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_phash.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_phash.dir/cmake_clean.cmake
 .PHONY : libs/phash/CMakeFiles/lib_phash.dir/clean
 
 libs/phash/CMakeFiles/lib_phash.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/phash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/phash/CMakeFiles/lib_phash.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/phash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/phash/CMakeFiles/lib_phash.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : libs/phash/CMakeFiles/lib_phash.dir/depend
 

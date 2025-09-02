@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include core/scan/CMakeFiles/core_scan.dir/depend.make
@@ -70,32 +70,32 @@ include core/scan/CMakeFiles/core_scan.dir/progress.make
 include core/scan/CMakeFiles/core_scan.dir/flags.make
 
 core/scan/CMakeFiles/core_scan.dir/scan.cpp.o: core/scan/CMakeFiles/core_scan.dir/flags.make
-core/scan/CMakeFiles/core_scan.dir/scan.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/core/scan/scan.cpp
+core/scan/CMakeFiles/core_scan.dir/scan.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/core/scan/scan.cpp
 core/scan/CMakeFiles/core_scan.dir/scan.cpp.o: core/scan/CMakeFiles/core_scan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object core/scan/CMakeFiles/core_scan.dir/scan.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/scan/CMakeFiles/core_scan.dir/scan.cpp.o -MF CMakeFiles/core_scan.dir/scan.cpp.o.d -o CMakeFiles/core_scan.dir/scan.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scan.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object core/scan/CMakeFiles/core_scan.dir/scan.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/scan/CMakeFiles/core_scan.dir/scan.cpp.o -MF CMakeFiles/core_scan.dir/scan.cpp.o.d -o CMakeFiles/core_scan.dir/scan.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scan.cpp"
 
 core/scan/CMakeFiles/core_scan.dir/scan.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/core_scan.dir/scan.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scan.cpp" > CMakeFiles/core_scan.dir/scan.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scan.cpp" > CMakeFiles/core_scan.dir/scan.cpp.i
 
 core/scan/CMakeFiles/core_scan.dir/scan.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/core_scan.dir/scan.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scan.cpp" -o CMakeFiles/core_scan.dir/scan.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scan.cpp" -o CMakeFiles/core_scan.dir/scan.cpp.s
 
 core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o: core/scan/CMakeFiles/core_scan.dir/flags.make
-core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/core/scan/scanner.cpp
+core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/core/scan/scanner.cpp
 core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o: core/scan/CMakeFiles/core_scan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o -MF CMakeFiles/core_scan.dir/scanner.cpp.o.d -o CMakeFiles/core_scan.dir/scanner.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scanner.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o -MF CMakeFiles/core_scan.dir/scanner.cpp.o.d -o CMakeFiles/core_scan.dir/scanner.cpp.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scanner.cpp"
 
 core/scan/CMakeFiles/core_scan.dir/scanner.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/core_scan.dir/scanner.cpp.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scanner.cpp" > CMakeFiles/core_scan.dir/scanner.cpp.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scanner.cpp" > CMakeFiles/core_scan.dir/scanner.cpp.i
 
 core/scan/CMakeFiles/core_scan.dir/scanner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/core_scan.dir/scanner.cpp.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan/scanner.cpp" -o CMakeFiles/core_scan.dir/scanner.cpp.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan/scanner.cpp" -o CMakeFiles/core_scan.dir/scanner.cpp.s
 
 # Object files for target core_scan
 core_scan_OBJECTS = \
@@ -109,19 +109,19 @@ lib/libcore_scan.a: core/scan/CMakeFiles/core_scan.dir/scan.cpp.o
 lib/libcore_scan.a: core/scan/CMakeFiles/core_scan.dir/scanner.cpp.o
 lib/libcore_scan.a: core/scan/CMakeFiles/core_scan.dir/build.make
 lib/libcore_scan.a: core/scan/CMakeFiles/core_scan.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../../lib/libcore_scan.a"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && $(CMAKE_COMMAND) -P CMakeFiles/core_scan.dir/cmake_clean_target.cmake
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_scan.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../../lib/libcore_scan.a"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && $(CMAKE_COMMAND) -P CMakeFiles/core_scan.dir/cmake_clean_target.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_scan.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 core/scan/CMakeFiles/core_scan.dir/build: lib/libcore_scan.a
 .PHONY : core/scan/CMakeFiles/core_scan.dir/build
 
 core/scan/CMakeFiles/core_scan.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" && $(CMAKE_COMMAND) -P CMakeFiles/core_scan.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" && $(CMAKE_COMMAND) -P CMakeFiles/core_scan.dir/cmake_clean.cmake
 .PHONY : core/scan/CMakeFiles/core_scan.dir/clean
 
 core/scan/CMakeFiles/core_scan.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/scan" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/core/scan/CMakeFiles/core_scan.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/scan" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/core/scan/CMakeFiles/core_scan.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : core/scan/CMakeFiles/core_scan.dir/depend
 

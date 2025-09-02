@@ -10,28 +10,60 @@ A comprehensive, cross-platform disk analysis suite that provides four core capa
 3. **Residue Detection and Cleanup** of orphaned files
 4. **Perceptual Duplicate Detection** for images and audio
 
-## Features
+## 🌟 Features
 
-- 🖥️ **Cross-Platform**: Runs on Windows (32/64-bit) and Linux
-- ⚡ **High Performance**: Optimized I/O with IOCP (Windows) and epoll (Linux)
-- 🔒 **Safe Operations**: Simulation mode, snapshots, and revertible actions
-- 📊 **Visual Analytics**: Interactive treemap visualization
-- 🧠 **Smart Deduplication**: Multi-stage filtering for efficiency
-- 🎯 **Perceptual Similarity**: Find similar images/audio with pHash/min-hash
-- 🧹 **Residue Cleanup**: Detect and remove orphaned files and directories
-- 🛠️ **No External Dependencies**: Pure C/C++ implementation
+### 🔍 **Exact File Deduplication**
+- **Multi-stage filtering** for maximum efficiency:
+  - Size-based filtering (O(1) elimination)
+  - Head/Tail signatures (fast candidate filtering)
+  - Full hash verification (BLAKE3/SHA-256)
+  - Content-defined chunking (shifted/inserted duplicates)
+- **Actions**:
+  - **Simulate** - Show potential savings
+  - **Hardlink** - Create filesystem hardlinks
+  - **Move to Recycle Bin** - Safe removal
+  - **Delete** - Permanent removal
 
-## Supported Platforms
+### 📊 **Disk Space Visualization**
+- **Interactive treemap** with squarified layout
+- **Hierarchical directory structure** visualization
+- **Zoom and pan** navigation
+- **Color coding** by file type, size, or owner
+- **Tooltips** with detailed file information
 
-| Platform | Architecture | Status |
-|----------|--------------|--------|
-| Windows  | x86 (32-bit) | ✅ Supported |
-| Windows  | x64 (64-bit) | ✅ Supported |
-| Linux    | x86 (32-bit) | ✅ Supported |
-| Linux    | x64 (64-bit) | ✅ Supported |
-| macOS    | x64 (64-bit) | 🚧 Planned |
+### 🧹 **Residue Detection and Cleanup**
+- **Orphaned files** detection in program directories
+- **Temporary files** cleanup (cache, logs, etc.)
+- **Empty directories** removal
+- **Registry residue** detection (Windows only)
+- **Safe cleanup** with simulation mode
 
-## Architecture
+### 🎯 **Perceptual Duplicate Detection**
+- **Image pHash** - 32×32 DCT-based perceptual hashing
+- **Audio fingerprinting** - Chromatic energy with min-hash
+- **LSH indexing** - Fast approximate nearest neighbor search
+- **Adjustable thresholds** - Control similarity sensitivity
+
+## 🖥️ **Cross-Platform Support**
+
+### Windows
+| Architecture | Status |
+|--------------|--------|
+| x86 (32-bit) | ✅ Supported |
+| x64 (64-bit) | ✅ Supported |
+
+### Linux
+| Architecture | Status |
+|--------------|--------|
+| x86 (32-bit) | ✅ Supported |
+| x64 (64-bit) | ✅ Supported |
+
+### macOS
+| Architecture | Status |
+|--------------|--------|
+| x64 (64-bit) | 🚧 Planned |
+
+## 🏗️ **Architecture**
 
 ```
 DiskSense64/
@@ -45,19 +77,30 @@ DiskSense64/
 │   ├── model/              # Data structures
 │   ├── ops/                # File operations
 │   ├── gfx/                # Visualization (GUI only)
-│   ├── rules/             # Cleanup heuristics
-│   └── platform/          # Platform abstractions
+│   ├── regcom/             # Registry/COM (Windows only)
+│   ├── vss/                # Volume Shadow Copy (Windows only)
+│   ├── rules/              # Cleanup heuristics
+│   └── usn/                # USN journal (Windows only)
 ├── libs/
 │   ├── chash/             # Cryptographic hashing
 │   ├── phash/             # Perceptual hashing
 │   ├── audfp/             # Audio fingerprinting
+│   ├── peparse/           # PE parser
+│   ├── lsh/               # Locality-sensitive hashing
 │   └── utils/             # Utility functions
-└── tests/
-    ├── unit/              # Unit tests
-    └── perf/              # Performance benchmarks
+├── platform/
+│   ├── fswin/             # Windows file system abstractions
+│   └── util/              # Cross-platform utilities
+├── tests/
+│   ├── unit/              # Unit tests
+│   └── perf/              # Performance benchmarks
+├── docs/                  # Documentation
+├── cmake/                 # CMake configurations
+├── scripts/               # Build and utility scripts
+└── res/                   # Resources
 ```
 
-## Installation
+## 🚀 **Installation**
 
 ### Windows (Pre-built binaries)
 
@@ -71,9 +114,9 @@ DiskSense64/
 2. Extract the archive
 3. Run `./DiskSense.Cli` or `./DiskSense.Gui`
 
-### Building from Source
+## 🔧 **Building from Source**
 
-#### Prerequisites
+### Prerequisites
 
 **Windows:**
 - Visual Studio 2022 or MinGW-w64
@@ -85,7 +128,7 @@ DiskSense64/
 - CMake 3.20+
 - Ninja (optional)
 
-#### Building
+### Building
 
 **Windows (Visual Studio):**
 ```cmd
@@ -119,7 +162,7 @@ cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw64.cmake -DCMAKE_BUILD_TYPE=Releas
 make -j$(nproc)
 ```
 
-## Usage
+## 📖 **Usage**
 
 ### Command Line Interface
 
@@ -151,90 +194,25 @@ Launch `DiskSense.Gui` for the full graphical experience with:
 - One-click deduplication
 - Visual similarity detection
 
-## Core Features
-
-### 1. Exact File Deduplication
-
-Multi-stage filtering for maximum efficiency:
-1. **Size-based filtering** - O(1) elimination of unique-sized files
-2. **Head/Tail signatures** - 32KB fingerprint for fast candidate filtering
-3. **Full hash verification** - BLAKE3/SHA-256 for final verification
-4. **Content-defined chunking** - Detects shifted/inserted duplicates
-
-**Actions:**
-- **Simulate** - Show potential savings without making changes
-- **Hardlink** - Create filesystem hardlinks (space savings)
-- **Move to Recycle Bin** - Move duplicates to system trash
-- **Delete** - Permanently remove duplicates
-
-### 2. Disk Space Visualization
-
-Interactive treemap with:
-- **Squarified algorithm** - Minimizes rectangle aspect ratios
-- **Hierarchical layout** - Directory structure visualization
-- **Zoom and pan** - Navigate large directory trees
-- **Color coding** - By file type, size, or owner
-- **Tooltips** - Detailed file information on hover
-
-### 3. Residue Detection
-
-Smart cleanup of:
-- **Orphaned files** - Files in program directories with no references
-- **Temporary files** - Old cache and temp files
-- **Log files** - Large log files that can be truncated
-- **Duplicate directories** - Empty or redundant directories
-
-### 4. Perceptual Similarity
-
-Find visually or audibly similar files:
-- **Image pHash** - 32×32 DCT-based perceptual hashing
-- **Audio fingerprinting** - Chromatic energy with min-hash
-- **LSH indexing** - Fast approximate nearest neighbor search
-- **Adjustable thresholds** - Control similarity sensitivity
-
-## Performance
+## ⚡ **Performance**
 
 | Operation | Target Performance |
 |-----------|-------------------|
-| File scanning | ≥ 200-400k files/minute (NVMe SSD) |
+| File scanning | ≥ 200-400k files/minute (SSD NVMe) |
 | Hashing (BLAKE3) | ≥ 1.5 GB/s |
 | Hashing (SHA-256) | ≥ 0.6-1.0 GB/s |
-| pHash computation | ≥ 20k images/minute |
-| Treemap rendering | ≤ 16ms (60 FPS) |
+| pHash | ≥ 20k images/minute |
+| Treemap | ≤ 16.6 ms per frame (60 FPS) |
 
-## Configuration
+## 🔐 **Security & Privacy**
 
-Create a `DiskSense64.config` file in the application directory:
+- **Local Processing** - All analysis happens on your machine
+- **No Data Transmission** - No files leave your computer
+- **Transparency** - Simulation mode shows all actions before execution
+- **Revertible** - All operations can be undone
+- **Audit Trail** - Detailed logs of all operations
 
-```ini
-[General]
-BufferSize=1048576
-MaxConcurrentOps=8
-ExcludePaths=/tmp;/var/log
-
-[Deduplication]
-MinFileSize=1024
-ComputeFullHash=false
-DefaultAction=simulate
-
-[Treemap]
-ColorMode=size
-ShowFileNames=true
-
-[Similarity]
-ImageThreshold=5
-AudioThreshold=10
-```
-
-## Security & Privacy
-
-- 🔐 **Local Processing** - All analysis happens on your machine
-- 🛡️ **No Data Transmission** - No files leave your computer
-- 🧾 **Transparency** - Simulation mode shows all actions before execution
-- 🔁 **Revertible** - All operations can be undone
-- 📜 **Audit Trail** - Detailed logs of all operations
-
-## Contributing
+## 🤝 **Contributing**
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
@@ -253,7 +231,7 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 make -j$(nproc)
 ```
 
-## Testing
+## 🧪 **Testing**
 
 Run unit tests:
 ```bash
@@ -268,18 +246,18 @@ Run performance benchmarks:
 ./bin/bench_phash
 ```
 
-## License
+## 📄 **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🙏 **Acknowledgments**
 
 - [BLAKE3](https://github.com/BLAKE3-team/BLAKE3) - Cryptographic hash function
 - [Direct2D](https://docs.microsoft.com/en-us/windows/win32/direct2d/direct2d-portal) - Hardware-accelerated 2D graphics API
 - [epoll](https://en.wikipedia.org/wiki/Epoll) - Linux I/O event notification facility
 - [I/O Completion Ports](https://docs.microsoft.com/en-us/windows/win32/fileio/i-o-completion-ports) - Windows scalable I/O model
 
-## Support
+## 🆘 **Support**
 
 For issues, feature requests, or questions:
 1. Check the [GitHub Issues](https://github.com/yourusername/disksense64/issues)

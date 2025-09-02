@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -354,14 +354,14 @@ apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/all: libs/utils/CMakeFiles/lib_u
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/all: platform/fswin/CMakeFiles/platform_fswin.dir/all
 	$(MAKE) $(MAKESILENT) -f apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/build.make apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/depend
 	$(MAKE) $(MAKESILENT) -f apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/build.make apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=1,2 "Built target DiskSense.Cli"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=1,2 "Built target DiskSense.Cli"
 .PHONY : apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/all
 
 # Build rule for subdir invocation for target.
 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 22
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/rule
 
 # Convenience name for target.
@@ -380,14 +380,14 @@ apps/DiskSense.Cli/CMakeFiles/DiskSense.Cli.dir/clean:
 core/engine/CMakeFiles/core_engine.dir/all:
 	$(MAKE) $(MAKESILENT) -f core/engine/CMakeFiles/core_engine.dir/build.make core/engine/CMakeFiles/core_engine.dir/depend
 	$(MAKE) $(MAKESILENT) -f core/engine/CMakeFiles/core_engine.dir/build.make core/engine/CMakeFiles/core_engine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=3,4,5 "Built target core_engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=3,4,5 "Built target core_engine"
 .PHONY : core/engine/CMakeFiles/core_engine.dir/all
 
 # Build rule for subdir invocation for target.
 core/engine/CMakeFiles/core_engine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core/engine/CMakeFiles/core_engine.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : core/engine/CMakeFiles/core_engine.dir/rule
 
 # Convenience name for target.
@@ -406,14 +406,14 @@ core/engine/CMakeFiles/core_engine.dir/clean:
 core/scan/CMakeFiles/core_scan.dir/all: libs/chash/CMakeFiles/lib_chash.dir/all
 	$(MAKE) $(MAKESILENT) -f core/scan/CMakeFiles/core_scan.dir/build.make core/scan/CMakeFiles/core_scan.dir/depend
 	$(MAKE) $(MAKESILENT) -f core/scan/CMakeFiles/core_scan.dir/build.make core/scan/CMakeFiles/core_scan.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=14,15,16 "Built target core_scan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=14,15,16 "Built target core_scan"
 .PHONY : core/scan/CMakeFiles/core_scan.dir/all
 
 # Build rule for subdir invocation for target.
 core/scan/CMakeFiles/core_scan.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 6
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core/scan/CMakeFiles/core_scan.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : core/scan/CMakeFiles/core_scan.dir/rule
 
 # Convenience name for target.
@@ -432,14 +432,14 @@ core/scan/CMakeFiles/core_scan.dir/clean:
 core/usn/CMakeFiles/core_usn.dir/all:
 	$(MAKE) $(MAKESILENT) -f core/usn/CMakeFiles/core_usn.dir/build.make core/usn/CMakeFiles/core_usn.dir/depend
 	$(MAKE) $(MAKESILENT) -f core/usn/CMakeFiles/core_usn.dir/build.make core/usn/CMakeFiles/core_usn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=17,18 "Built target core_usn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=17,18 "Built target core_usn"
 .PHONY : core/usn/CMakeFiles/core_usn.dir/all
 
 # Build rule for subdir invocation for target.
 core/usn/CMakeFiles/core_usn.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core/usn/CMakeFiles/core_usn.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : core/usn/CMakeFiles/core_usn.dir/rule
 
 # Convenience name for target.
@@ -458,14 +458,14 @@ core/usn/CMakeFiles/core_usn.dir/clean:
 core/index/CMakeFiles/core_index.dir/all: core/model/CMakeFiles/core_model.dir/all
 	$(MAKE) $(MAKESILENT) -f core/index/CMakeFiles/core_index.dir/build.make core/index/CMakeFiles/core_index.dir/depend
 	$(MAKE) $(MAKESILENT) -f core/index/CMakeFiles/core_index.dir/build.make core/index/CMakeFiles/core_index.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=6,7,8 "Built target core_index"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=6,7,8 "Built target core_index"
 .PHONY : core/index/CMakeFiles/core_index.dir/all
 
 # Build rule for subdir invocation for target.
 core/index/CMakeFiles/core_index.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 5
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core/index/CMakeFiles/core_index.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : core/index/CMakeFiles/core_index.dir/rule
 
 # Convenience name for target.
@@ -484,14 +484,14 @@ core/index/CMakeFiles/core_index.dir/clean:
 core/model/CMakeFiles/core_model.dir/all:
 	$(MAKE) $(MAKESILENT) -f core/model/CMakeFiles/core_model.dir/build.make core/model/CMakeFiles/core_model.dir/depend
 	$(MAKE) $(MAKESILENT) -f core/model/CMakeFiles/core_model.dir/build.make core/model/CMakeFiles/core_model.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=9,10 "Built target core_model"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=9,10 "Built target core_model"
 .PHONY : core/model/CMakeFiles/core_model.dir/all
 
 # Build rule for subdir invocation for target.
 core/model/CMakeFiles/core_model.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core/model/CMakeFiles/core_model.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : core/model/CMakeFiles/core_model.dir/rule
 
 # Convenience name for target.
@@ -512,14 +512,14 @@ core/ops/CMakeFiles/core_ops.dir/all: core/model/CMakeFiles/core_model.dir/all
 core/ops/CMakeFiles/core_ops.dir/all: libs/chash/CMakeFiles/lib_chash.dir/all
 	$(MAKE) $(MAKESILENT) -f core/ops/CMakeFiles/core_ops.dir/build.make core/ops/CMakeFiles/core_ops.dir/depend
 	$(MAKE) $(MAKESILENT) -f core/ops/CMakeFiles/core_ops.dir/build.make core/ops/CMakeFiles/core_ops.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=11,12,13 "Built target core_ops"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=11,12,13 "Built target core_ops"
 .PHONY : core/ops/CMakeFiles/core_ops.dir/all
 
 # Build rule for subdir invocation for target.
 core/ops/CMakeFiles/core_ops.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 11
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core/ops/CMakeFiles/core_ops.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : core/ops/CMakeFiles/core_ops.dir/rule
 
 # Convenience name for target.
@@ -538,14 +538,14 @@ core/ops/CMakeFiles/core_ops.dir/clean:
 libs/chash/CMakeFiles/lib_chash.dir/all:
 	$(MAKE) $(MAKESILENT) -f libs/chash/CMakeFiles/lib_chash.dir/build.make libs/chash/CMakeFiles/lib_chash.dir/depend
 	$(MAKE) $(MAKESILENT) -f libs/chash/CMakeFiles/lib_chash.dir/build.make libs/chash/CMakeFiles/lib_chash.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=19,20,21 "Built target lib_chash"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=19,20,21 "Built target lib_chash"
 .PHONY : libs/chash/CMakeFiles/lib_chash.dir/all
 
 # Build rule for subdir invocation for target.
 libs/chash/CMakeFiles/lib_chash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/chash/CMakeFiles/lib_chash.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : libs/chash/CMakeFiles/lib_chash.dir/rule
 
 # Convenience name for target.
@@ -564,14 +564,14 @@ libs/chash/CMakeFiles/lib_chash.dir/clean:
 libs/phash/CMakeFiles/lib_phash.dir/all:
 	$(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/depend
 	$(MAKE) $(MAKESILENT) -f libs/phash/CMakeFiles/lib_phash.dir/build.make libs/phash/CMakeFiles/lib_phash.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=22,23 "Built target lib_phash"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=22,23 "Built target lib_phash"
 .PHONY : libs/phash/CMakeFiles/lib_phash.dir/all
 
 # Build rule for subdir invocation for target.
 libs/phash/CMakeFiles/lib_phash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/phash/CMakeFiles/lib_phash.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : libs/phash/CMakeFiles/lib_phash.dir/rule
 
 # Convenience name for target.
@@ -590,14 +590,14 @@ libs/phash/CMakeFiles/lib_phash.dir/clean:
 libs/utils/CMakeFiles/lib_utils.dir/all:
 	$(MAKE) $(MAKESILENT) -f libs/utils/CMakeFiles/lib_utils.dir/build.make libs/utils/CMakeFiles/lib_utils.dir/depend
 	$(MAKE) $(MAKESILENT) -f libs/utils/CMakeFiles/lib_utils.dir/build.make libs/utils/CMakeFiles/lib_utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=24,25 "Built target lib_utils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=24,25 "Built target lib_utils"
 .PHONY : libs/utils/CMakeFiles/lib_utils.dir/all
 
 # Build rule for subdir invocation for target.
 libs/utils/CMakeFiles/lib_utils.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/utils/CMakeFiles/lib_utils.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : libs/utils/CMakeFiles/lib_utils.dir/rule
 
 # Convenience name for target.
@@ -616,14 +616,14 @@ libs/utils/CMakeFiles/lib_utils.dir/clean:
 platform/fswin/CMakeFiles/platform_fswin.dir/all:
 	$(MAKE) $(MAKESILENT) -f platform/fswin/CMakeFiles/platform_fswin.dir/build.make platform/fswin/CMakeFiles/platform_fswin.dir/depend
 	$(MAKE) $(MAKESILENT) -f platform/fswin/CMakeFiles/platform_fswin.dir/build.make platform/fswin/CMakeFiles/platform_fswin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=26,27 "Built target platform_fswin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=26,27 "Built target platform_fswin"
 .PHONY : platform/fswin/CMakeFiles/platform_fswin.dir/all
 
 # Build rule for subdir invocation for target.
 platform/fswin/CMakeFiles/platform_fswin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 platform/fswin/CMakeFiles/platform_fswin.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : platform/fswin/CMakeFiles/platform_fswin.dir/rule
 
 # Convenience name for target.
@@ -642,14 +642,14 @@ platform/fswin/CMakeFiles/platform_fswin.dir/clean:
 platform/util/CMakeFiles/platform_util.dir/all:
 	$(MAKE) $(MAKESILENT) -f platform/util/CMakeFiles/platform_util.dir/build.make platform/util/CMakeFiles/platform_util.dir/depend
 	$(MAKE) $(MAKESILENT) -f platform/util/CMakeFiles/platform_util.dir/build.make platform/util/CMakeFiles/platform_util.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=28,29 "Built target platform_util"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=28,29 "Built target platform_util"
 .PHONY : platform/util/CMakeFiles/platform_util.dir/all
 
 # Build rule for subdir invocation for target.
 platform/util/CMakeFiles/platform_util.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 platform/util/CMakeFiles/platform_util.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : platform/util/CMakeFiles/platform_util.dir/rule
 
 # Convenience name for target.
@@ -668,14 +668,14 @@ platform/util/CMakeFiles/platform_util.dir/clean:
 tests/unit/CMakeFiles/test_sha256.dir/all: libs/chash/CMakeFiles/lib_chash.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_sha256.dir/build.make tests/unit/CMakeFiles/test_sha256.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=30,31 "Built target test_sha256"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=30,31 "Built target test_sha256"
 .PHONY : tests/unit/CMakeFiles/test_sha256.dir/all
 
 # Build rule for subdir invocation for target.
 tests/unit/CMakeFiles/test_sha256.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 5
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/test_sha256.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : tests/unit/CMakeFiles/test_sha256.dir/rule
 
 # Convenience name for target.
@@ -694,14 +694,14 @@ tests/unit/CMakeFiles/test_sha256.dir/clean:
 tests/unit/CMakeFiles/test_utils.dir/all: libs/utils/CMakeFiles/lib_utils.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/test_utils.dir/build.make tests/unit/CMakeFiles/test_utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=32,33 "Built target test_utils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=32,33 "Built target test_utils"
 .PHONY : tests/unit/CMakeFiles/test_utils.dir/all
 
 # Build rule for subdir invocation for target.
 tests/unit/CMakeFiles/test_utils.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 4
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/test_utils.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" 0
 .PHONY : tests/unit/CMakeFiles/test_utils.dir/rule
 
 # Convenience name for target.

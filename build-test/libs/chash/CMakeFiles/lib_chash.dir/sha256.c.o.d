@@ -1,7 +1,7 @@
 libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o: \
- /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.c \
+ /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/libs/chash/sha256.c \
  /usr/include/stdc-predef.h \
- /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.h \
+ /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/libs/chash/sha256.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -21,6 +21,4 @@ libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o: \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h \
- /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
- /usr/include/x86_64-linux-gnu/bits/string_fortified.h
+ /usr/include/strings.h

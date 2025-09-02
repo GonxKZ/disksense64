@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test"
 
 # Include any dependencies generated for this target.
 include libs/chash/CMakeFiles/lib_chash.dir/depend.make
@@ -70,32 +70,32 @@ include libs/chash/CMakeFiles/lib_chash.dir/progress.make
 include libs/chash/CMakeFiles/lib_chash.dir/flags.make
 
 libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o: libs/chash/CMakeFiles/lib_chash.dir/flags.make
-libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.c
+libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/libs/chash/sha256.c
 libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o: libs/chash/CMakeFiles/lib_chash.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o -MF CMakeFiles/lib_chash.dir/sha256.c.o.d -o CMakeFiles/lib_chash.dir/sha256.c.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o -MF CMakeFiles/lib_chash.dir/sha256.c.o.d -o CMakeFiles/lib_chash.dir/sha256.c.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/sha256.c"
 
 libs/chash/CMakeFiles/lib_chash.dir/sha256.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lib_chash.dir/sha256.c.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.c" > CMakeFiles/lib_chash.dir/sha256.c.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/sha256.c" > CMakeFiles/lib_chash.dir/sha256.c.i
 
 libs/chash/CMakeFiles/lib_chash.dir/sha256.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lib_chash.dir/sha256.c.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.c" -o CMakeFiles/lib_chash.dir/sha256.c.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/sha256.c" -o CMakeFiles/lib_chash.dir/sha256.c.s
 
 libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o: libs/chash/CMakeFiles/lib_chash.dir/flags.make
-libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/libs/chash/blake3.c
+libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o: /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/libs/chash/blake3.c
 libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o: libs/chash/CMakeFiles/lib_chash.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o -MF CMakeFiles/lib_chash.dir/blake3.c.o.d -o CMakeFiles/lib_chash.dir/blake3.c.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/blake3.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o -MF CMakeFiles/lib_chash.dir/blake3.c.o.d -o CMakeFiles/lib_chash.dir/blake3.c.o -c "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/blake3.c"
 
 libs/chash/CMakeFiles/lib_chash.dir/blake3.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lib_chash.dir/blake3.c.i"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/blake3.c" > CMakeFiles/lib_chash.dir/blake3.c.i
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/blake3.c" > CMakeFiles/lib_chash.dir/blake3.c.i
 
 libs/chash/CMakeFiles/lib_chash.dir/blake3.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lib_chash.dir/blake3.c.s"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/blake3.c" -o CMakeFiles/lib_chash.dir/blake3.c.s
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/blake3.c" -o CMakeFiles/lib_chash.dir/blake3.c.s
 
 # Object files for target lib_chash
 lib_chash_OBJECTS = \
@@ -109,19 +109,19 @@ lib/liblib_chash.a: libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o
 lib/liblib_chash.a: libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o
 lib/liblib_chash.a: libs/chash/CMakeFiles/lib_chash.dir/build.make
 lib/liblib_chash.a: libs/chash/CMakeFiles/lib_chash.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library ../../lib/liblib_chash.a"
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_chash.dir/cmake_clean_target.cmake
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lib_chash.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library ../../lib/liblib_chash.a"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_chash.dir/cmake_clean_target.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lib_chash.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 libs/chash/CMakeFiles/lib_chash.dir/build: lib/liblib_chash.a
 .PHONY : libs/chash/CMakeFiles/lib_chash.dir/build
 
 libs/chash/CMakeFiles/lib_chash.dir/clean:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_chash.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" && $(CMAKE_COMMAND) -P CMakeFiles/lib_chash.dir/cmake_clean.cmake
 .PHONY : libs/chash/CMakeFiles/lib_chash.dir/clean
 
 libs/chash/CMakeFiles/lib_chash.dir/depend:
-	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/build-test/libs/chash/CMakeFiles/lib_chash.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash" "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/build-test/libs/chash/CMakeFiles/lib_chash.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : libs/chash/CMakeFiles/lib_chash.dir/depend
 

@@ -1,10 +1,11 @@
-#ifndef DISKSENSE64_MODEL_H
-#define DISKSENSE64_MODEL_H
+#ifndef CORE_MODEL_MODEL_H
+#define CORE_MODEL_MODEL_H
 
 #include <cstdint>
 #include <string>
 #include <vector>
 #include <optional>
+#include <memory>
 
 // Type definitions for our core data model
 using VolumeId = uint64_t;
@@ -36,9 +37,9 @@ struct FileAttributes {
 // Timestamps structure
 struct FileTimestamps {
     uint64_t creationTime;     // FILETIME as 100-nanosecond intervals since January 1, 1601 UTC
-    uint64_t lastWriteTime;
-    uint64_t lastAccessTime;
-    uint64_t changeTime;
+    uint64_t lastWriteTime;    // FILETIME as 100-nanosecond intervals
+    uint64_t lastAccessTime;   // FILETIME as 100-nanosecond intervals
+    uint64_t changeTime;       // FILETIME as 100-nanosecond intervals
     
     FileTimestamps() : creationTime(0), lastWriteTime(0), lastAccessTime(0), changeTime(0) {}
 };
@@ -74,4 +75,4 @@ struct FileChunk {
     FileChunk(uint64_t off, uint64_t len) : offset(off), length(len) {}
 };
 
-#endif // DISKSENSE64_MODEL_H
+#endif // CORE_MODEL_MODEL_H

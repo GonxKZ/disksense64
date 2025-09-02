@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/index/index.cpp" "core/index/CMakeFiles/core_index.dir/index.cpp.o" "gcc" "core/index/CMakeFiles/core_index.dir/index.cpp.o.d"
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/index/lsm_index.cpp" "core/index/CMakeFiles/core_index.dir/lsm_index.cpp.o" "gcc" "core/index/CMakeFiles/core_index.dir/lsm_index.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/index/index.cpp" "core/index/CMakeFiles/core_index.dir/index.cpp.o" "gcc" "core/index/CMakeFiles/core_index.dir/index.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/index/lsm_index.cpp" "core/index/CMakeFiles/core_index.dir/lsm_index.cpp.o" "gcc" "core/index/CMakeFiles/core_index.dir/lsm_index.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

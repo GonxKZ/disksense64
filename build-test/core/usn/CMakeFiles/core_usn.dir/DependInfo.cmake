@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/usn/usn.cpp" "core/usn/CMakeFiles/core_usn.dir/usn.cpp.o" "gcc" "core/usn/CMakeFiles/core_usn.dir/usn.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/usn/usn.cpp" "core/usn/CMakeFiles/core_usn.dir/usn.cpp.o" "gcc" "core/usn/CMakeFiles/core_usn.dir/usn.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

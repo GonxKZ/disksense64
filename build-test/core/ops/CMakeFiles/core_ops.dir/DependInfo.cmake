@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/ops/dedupe.cpp" "core/ops/CMakeFiles/core_ops.dir/dedupe.cpp.o" "gcc" "core/ops/CMakeFiles/core_ops.dir/dedupe.cpp.o.d"
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/core/ops/ops.cpp" "core/ops/CMakeFiles/core_ops.dir/ops.cpp.o" "gcc" "core/ops/CMakeFiles/core_ops.dir/ops.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/ops/dedupe.cpp" "core/ops/CMakeFiles/core_ops.dir/dedupe.cpp.o" "gcc" "core/ops/CMakeFiles/core_ops.dir/dedupe.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/core/ops/ops.cpp" "core/ops/CMakeFiles/core_ops.dir/ops.cpp.o" "gcc" "core/ops/CMakeFiles/core_ops.dir/ops.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

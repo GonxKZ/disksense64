@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/blake3.c" "libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o" "gcc" "libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o.d"
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/libs/chash/sha256.c" "libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o" "gcc" "libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/blake3.c" "libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o" "gcc" "libs/chash/CMakeFiles/lib_chash.dir/blake3.c.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/libs/chash/sha256.c" "libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o" "gcc" "libs/chash/CMakeFiles/lib_chash.dir/sha256.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

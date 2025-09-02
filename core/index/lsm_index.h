@@ -9,19 +9,29 @@
 #include <thread>
 #include <atomic>
 #include <functional>
-#include <optional>
 #include "core/model/model.h"
-#include "libs/utils/utils.h"
+
+// Platform-specific includes
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#endif
 
 // Forward declarations
 class SSTable;
 struct MemTable;
 
-// Cross-platform file handle type
+// Platform-independent file handle type
 #ifdef _WIN32
 typedef HANDLE file_handle_t;
+const file_handle_t INVALID_FILE_HANDLE = INVALID_HANDLE_VALUE;
 #else
 typedef int file_handle_t;
+const file_handle_t INVALID_FILE_HANDLE = -1;
 #endif
 
 // LSM Index implementation
@@ -204,5 +214,7 @@ public:
     FileId getMinFileId() const { return m_header.minFileId; }
     FileId getMaxFileId() const { return m_header.maxFileId; }
 };
+
+#endif // CORE_INDEX_LSM_INDEX_H
 
 #endif // CORE_INDEX_LSM_INDEX_H

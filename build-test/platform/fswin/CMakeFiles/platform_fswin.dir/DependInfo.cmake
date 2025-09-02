@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/DiskSense64/platform/fswin/fswin.cpp" "platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o" "gcc" "platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o.d"
+  "/mnt/c/Users/Gonzalo/Documents/4to curso/herramientas/analizador-disco/platform/fswin/fswin.cpp" "platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o" "gcc" "platform/fswin/CMakeFiles/platform_fswin.dir/fswin.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
