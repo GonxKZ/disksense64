@@ -1,0 +1,1 @@
+ ../../lib/libcore_scan.a ../../lib/libcore_index.a ../../lib/libcore_ops.a ../../lib/liblib_chash.a ../../lib/liblib_phash.a ../../lib/libplatform_fswin.a ../../lib/libcore_index.a ../../lib/libcore_model.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

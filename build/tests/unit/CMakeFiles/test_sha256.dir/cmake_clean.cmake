@@ -1,0 +1,12 @@
+file(REMOVE_RECURSE
+  "../../bin/test_sha256.exe"
+  "../../bin/test_sha256.pdb"
+  "../../lib/libtest_sha256.dll.a"
+  "CMakeFiles/test_sha256.dir/test_sha256.cpp.obj"
+  "CMakeFiles/test_sha256.dir/test_sha256.cpp.obj.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/test_sha256.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

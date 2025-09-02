@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libcore_model.a CMakeFiles/core_model.dir/model.cpp.o
+/usr/bin/ranlib ../../lib/libcore_model.a

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/test_utils.dir/test_utils.cpp.o -o ../../bin/test_utils  ../../lib/liblib_utils.a 

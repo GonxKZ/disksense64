@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc ../../lib/libcore_engine.a CMakeFiles/core_engine.dir/engine.cpp.obj CMakeFiles/core_engine.dir/iocp.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib ../../lib/libcore_engine.a

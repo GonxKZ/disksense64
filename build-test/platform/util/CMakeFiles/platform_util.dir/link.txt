@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libplatform_util.a CMakeFiles/platform_util.dir/util.cpp.o
+/usr/bin/ranlib ../../lib/libplatform_util.a

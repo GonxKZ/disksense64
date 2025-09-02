@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc ../../lib/liblib_chash.a CMakeFiles/lib_chash.dir/sha256.c.obj CMakeFiles/lib_chash.dir/blake3.c.obj
+/usr/bin/x86_64-w64-mingw32-ranlib ../../lib/liblib_chash.a

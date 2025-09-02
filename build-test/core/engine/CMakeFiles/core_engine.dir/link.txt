@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libcore_engine.a CMakeFiles/core_engine.dir/engine.cpp.o CMakeFiles/core_engine.dir/iocp.cpp.o
+/usr/bin/ranlib ../../lib/libcore_engine.a

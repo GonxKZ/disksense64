@@ -1,0 +1,2 @@
+core/model/CMakeFiles/core_model.dir/model.cpp.obj: \
+ /mnt/c/Users/Gonzalo/Documents/4to\ curso/herramientas/analizador-disco/DiskSense64/core/model/model.cpp

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libcore_index.a CMakeFiles/core_index.dir/index.cpp.o CMakeFiles/core_index.dir/lsm_index.cpp.o
+/usr/bin/ranlib ../../lib/libcore_index.a
