@@ -1,0 +1,43 @@
+#ifndef VERSION_H
+#define VERSION_H
+
+// DiskSense64 Version Information
+#define DISKSENSE64_VERSION_MAJOR 1
+#define DISKSENSE64_VERSION_MINOR 0
+#define DISKSENSE64_VERSION_PATCH 0
+#define DISKSENSE64_VERSION_BUILD 1
+
+// Version string
+#define DISKSENSE64_VERSION_STRING "1.0.0.1"
+
+// Version information for Windows resources
+#define DISKSENSE64_VERSION_COMMA DISKSENSE64_VERSION_MAJOR,DISKSENSE64_VERSION_MINOR,DISKSENSE64_VERSION_PATCH,DISKSENSE64_VERSION_BUILD
+#define DISKSENSE64_VERSION_DOT DISKSENSE64_VERSION_MAJOR.DISKSENSE64_VERSION_MINOR.DISKSENSE64_VERSION_PATCH.DISKSENSE64_VERSION_BUILD
+
+// Product information
+#define DISKSENSE64_PRODUCT_NAME "DiskSense64"
+#define DISKSENSE64_COMPANY_NAME "DiskSense64 Project"
+#define DISKSENSE64_COPYRIGHT "Copyright (C) 2023 DiskSense64 Project"
+#define DISKSENSE64_TRADEMARKS ""
+#define DISKSENSE64_DESCRIPTION "Cross-Platform Disk Analysis Suite"
+
+// Build information
+#ifdef _WIN64
+    #define DISKSENSE64_PLATFORM "Windows x64"
+#elif _WIN32
+    #define DISKSENSE64_PLATFORM "Windows x86"
+#elif __x86_64__
+    #define DISKSENSE64_PLATFORM "Linux x64"
+#elif __i386__
+    #define DISKSENSE64_PLATFORM "Linux x86"
+#else
+    #define DISKSENSE64_PLATFORM "Unknown"
+#endif
+
+#ifdef _DEBUG
+    #define DISKSENSE64_BUILD_TYPE "Debug"
+#else
+    #define DISKSENSE64_BUILD_TYPE "Release"
+#endif
+
+#endif // VERSION_H

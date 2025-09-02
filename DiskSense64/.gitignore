@@ -1,0 +1,370 @@
+# DiskSense64 .gitignore
+
+# Build directories
+build/
+build-*/
+build_*/
+bin/
+lib/
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.sln.cache
+*.sln.docstates
+
+# Compiled object files
+*.o
+*.obj
+*.exe
+*.out
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.manifest
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+compile_commands.json
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*~
+
+# Debug files
+*.dSYM/
+*.stackdump
+
+# Coverage reports
+gcov/
+lcov/
+*.gcda
+*.gcno
+*.gcov
+
+# Distribution packages
+*.zip
+*.tar.gz
+*.7z
+*.rar
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Visual Studio
+/[Bb]in/
+/[Oo]bj/
+/[Dd]ebug*/
+/[Rr]elease*/
+/_ReSharper*/
+*.ReSharper
+*.suo
+*.tmp
+*.user
+*.sln.docstates
+
+# CLion
+.clion/
+.cmake/
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.perspectivev3
+**/*~
+*.xccheckout
+*.xcuserstate
+
+# Qt Creator
+*.pro.user
+
+# Kate
+*.kate-swp
+
+# KDevelop
+*.kdev4
+.kdev4/
+
+# Ninja
+.ninja_log
+.ninja_deps
+
+# MinGW
+*.exe.stackdump
+
+# Valgrind
+*.vgcore.*
+
+# ETW traces
+*.etl
+
+# Test output
+test-results/
+*.test-out
+
+# Backup files
+*.bak
+*.old
+*.orig
+
+# Swap files
+*.sw[op]
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+
+# Emacs
+\#*
+\#*\#
+*~
+\#*\#.ORG
+\#*\#.OLD
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.buildpath
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.cache/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+
+# JIRA
+atlassian-ide-plugin.xml
+
+# Crashlytics
+com.crashlytics/
+
+# Mercurial
+.hg/
+.hgignore
+
+# Bazaar
+.bzr/
+.bzrignore
+
+# CVS
+CVS/
+CVSROOT/
+.cvsignore
+
+# SVN
+.svn/
+
+# Core dumps
+core.*
+core
+
+# Temporary directories
+tmp/
+temp/
+
+# Log files
+*.log
+
+# Configuration files (uncomment if you want to ignore local configs)
+# DiskSense64.config
+# config.local
+
+# Package manager lock files
+package-lock.json
+yarn.lock
+composer.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Editor config backups
+.editorconfig~
+
+# Code coverage
+coverage/
+*.lcov
+*.clover
+
+# Documentation artifacts
+docs/_build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Docker
+docker-compose.override.yml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Vagrant
+.vagrant/
+
+# IntelliJ IDEA
+*.iml
+*.iws
+out/
+.idea/
+
+# Mac OS X
+*.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Django stuff
+*.log
+local_settings.py
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyproject/
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# OS generated files
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# DiskSense64 specific
+*.index
+*.ldb
+*.sst
+*.log.*
+*.cache
+*.tmp.*
+*.temp.*
+disksense.db
+disksense.log
