@@ -13,14 +13,6 @@ Only the latest stable version receives security updates. We strongly recommend 
 
 ## Reporting a Vulnerability
 
-### Contact
-
-The DiskSense64 team takes security seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
-
-To report a security vulnerability, please email us at:
-
-**security@disksense64.org**
-
 Please DO NOT create a GitHub issue for security vulnerabilities, as this would make the vulnerability public and could potentially harm users.
 
 ### What to Include in Your Report
