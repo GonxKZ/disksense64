@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/liblib_phash.a CMakeFiles/lib_phash.dir/phash.c.o
-/usr/bin/ranlib ../../lib/liblib_phash.a

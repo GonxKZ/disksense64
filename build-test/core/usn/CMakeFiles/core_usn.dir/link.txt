@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libcore_usn.a CMakeFiles/core_usn.dir/usn.cpp.o
-/usr/bin/ranlib ../../lib/libcore_usn.a

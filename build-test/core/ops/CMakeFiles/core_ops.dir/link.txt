@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libcore_ops.a CMakeFiles/core_ops.dir/ops.cpp.o CMakeFiles/core_ops.dir/dedupe.cpp.o
-/usr/bin/ranlib ../../lib/libcore_ops.a

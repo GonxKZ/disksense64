@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/DiskSense.Cli.dir/main.cpp.o -o ../../bin/DiskSense.Cli  ../../lib/libcore_scan.a ../../lib/libcore_index.a ../../lib/libcore_ops.a ../../lib/liblib_chash.a ../../lib/liblib_phash.a ../../lib/liblib_utils.a ../../lib/libcore_model.a ../../lib/libplatform_fswin.a -lpthread ../../lib/libcore_index.a ../../lib/libcore_model.a 

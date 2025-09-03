@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libplatform_fswin.a CMakeFiles/platform_fswin.dir/fswin.cpp.o
-/usr/bin/ranlib ../../lib/libplatform_fswin.a

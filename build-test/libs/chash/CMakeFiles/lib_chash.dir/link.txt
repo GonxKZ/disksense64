@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/liblib_chash.a CMakeFiles/lib_chash.dir/sha256.c.o CMakeFiles/lib_chash.dir/blake3.c.o
-/usr/bin/ranlib ../../lib/liblib_chash.a
