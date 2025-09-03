@@ -1,4 +1,5 @@
 #include "index.h"
+#include "lsm_index_impl.h"
 #include <iostream>
 #include <algorithm>
 #include <fstream>
@@ -23,90 +24,66 @@ Index::~Index() {
 }
 
 // LSMIndex implementation
-LSMIndex::LSMIndex(const std::wstring& indexPath, size_t memtableSize)
-    : m_indexPath(indexPath), m_memtableSize(memtableSize) {
-    // Initialize LSM index implementation
-    m_impl = std::make_unique<LSMIndexImpl>(indexPath, memtableSize);
+LSMIndex::LSMIndex(const std::string& indexPath, size_t memtableSize)
+    : m_impl(std::make_unique<LSMIndexImpl>(indexPath, memtableSize)) {
 }
 
 LSMIndex::~LSMIndex() {
-    flush();
 }
 
 void LSMIndex::put(const FileEntry& entry) {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
+    m_impl->put(entry);
 }
 
 void LSMIndex::remove(VolumeId volumeId, FileId fileId) {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
+    m_impl->remove(volumeId, fileId);
 }
 
 std::optional<FileEntry> LSMIndex::get(VolumeId volumeId, FileId fileId) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
-    return std::nullopt;
+    return m_impl->get(volumeId, fileId);
 }
 
 std::vector<FileEntry> LSMIndex::getByVolume(VolumeId volumeId) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
-    return std::vector<FileEntry>();
+    return m_impl->getByVolume(volumeId);
 }
 
 std::vector<FileEntry> LSMIndex::getBySize(uint64_t size) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
     return std::vector<FileEntry>();
 }
 
-std::vector<FileEntry> LSMIndex::getByPath(const std::wstring& path) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
+std::vector<FileEntry> LSMIndex::getByPath(const std::string& path) const {
     return std::vector<FileEntry>();
 }
 
-std::vector<FileEntry> LSMIndex::getByExtension(const std::wstring& extension) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
+std::vector<FileEntry> LSMIndex::getByExtension(const std::string& extension) const {
     return std::vector<FileEntry>();
 }
 
 std::vector<FileEntry> LSMIndex::getByDateRange(uint64_t startDate, uint64_t endDate) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
     return std::vector<FileEntry>();
 }
 
 void LSMIndex::flush() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
+    m_impl->flush();
 }
 
 void LSMIndex::compact() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
+    m_impl->compact();
 }
 
-Index::IndexStats LSMIndex::getStats() const {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    IndexStats stats;
-    // Implementation would go here
-    return stats;
+IndexStats LSMIndex::getStats() const {
+    return IndexStats();
 }
 
 void LSMIndex::clear() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    // Implementation would go here
 }
 
 void LSMIndex::startCompaction() {
-    // Implementation would go here
+    m_impl->startCompaction();
 }
 
 void LSMIndex::stopCompaction() {
-    // Implementation would go here
+    m_impl->stopCompaction();
 }
 
 // InMemoryIndex implementation
@@ -115,7 +92,6 @@ InMemoryIndex::InMemoryIndex()
 }
 
 InMemoryIndex::~InMemoryIndex() {
-    flush();
 }
 
 void InMemoryIndex::put(const FileEntry& entry) {
@@ -136,7 +112,7 @@ void InMemoryIndex::remove(VolumeId volumeId, FileId fileId) {
 std::optional<FileEntry> InMemoryIndex::get(VolumeId volumeId, FileId fileId) const {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     auto key = std::make_pair(volumeId, fileId);
     auto it = m_entries.find(key);
     if (it != m_entries.end() && !it->second.deleted) {
@@ -146,7 +122,7 @@ std::optional<FileEntry> InMemoryIndex::get(VolumeId volumeId, FileId fileId) co
         m_totalQueryTime.fetch_add(duration.count());
         return it->second.fileEntry;
     }
-    
+
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     m_queryCount.fetch_add(1);
@@ -157,91 +133,90 @@ std::optional<FileEntry> InMemoryIndex::get(VolumeId volumeId, FileId fileId) co
 std::vector<FileEntry> InMemoryIndex::getByVolume(VolumeId volumeId) const {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     std::vector<FileEntry> results;
     for (const auto& [key, entry] : m_entries) {
         if (key.first == volumeId && !entry.deleted) {
             results.push_back(entry.fileEntry);
         }
     }
-    
+
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     m_queryCount.fetch_add(1);
     m_totalQueryTime.fetch_add(duration.count());
-    
+
     return results;
 }
 
 std::vector<FileEntry> InMemoryIndex::getBySize(uint64_t size) const {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     std::vector<FileEntry> results;
     for (const auto& [key, entry] : m_entries) {
         if (entry.fileEntry.sizeLogical == size && !entry.deleted) {
             results.push_back(entry.fileEntry);
         }
     }
-    
+
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     m_queryCount.fetch_add(1);
     m_totalQueryTime.fetch_add(duration.count());
-    
+
     return results;
 }
 
-std::vector<FileEntry> InMemoryIndex::getByPath(const std::wstring& path) const {
+std::vector<FileEntry> InMemoryIndex::getByPath(const std::string& path) const {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     std::vector<FileEntry> results;
     for (const auto& [key, entry] : m_entries) {
-        if (entry.fileEntry.pathId == std::hash<std::wstring>{}(path) && !entry.deleted) {
+        if (entry.fileEntry.pathId == std::hash<std::string>{}(path) && !entry.deleted) {
             results.push_back(entry.fileEntry);
         }
     }
-    
+
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     m_queryCount.fetch_add(1);
     m_totalQueryTime.fetch_add(duration.count());
-    
+
     return results;
 }
 
-std::vector<FileEntry> InMemoryIndex::getByExtension(const std::wstring& extension) const {
+std::vector<FileEntry> InMemoryIndex::getByExtension(const std::string& extension) const {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     std::vector<FileEntry> results;
     for (const auto& [key, entry] : m_entries) {
         if (!entry.deleted) {
-            // Get file extension from path
-            std::wstring path = entry.fileEntry.pathId; // Simplified
-            size_t dot_pos = path.find_last_of(L'.');
-            if (dot_pos != std::wstring::npos) {
-                std::wstring file_ext = path.substr(dot_pos);
+            std::string path = std::to_string(entry.fileEntry.pathId); // Simplified
+            size_t dot_pos = path.find_last_of('.');
+            if (dot_pos != std::string::npos) {
+                std::string file_ext = path.substr(dot_pos);
                 if (file_ext == extension) {
                     results.push_back(entry.fileEntry);
                 }
             }
         }
     }
-    
+
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     m_queryCount.fetch_add(1);
     m_totalQueryTime.fetch_add(duration.count());
-    
+
     return results;
 }
 
 std::vector<FileEntry> InMemoryIndex::getByDateRange(uint64_t startDate, uint64_t endDate) const {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     std::vector<FileEntry> results;
     for (const auto& [key, entry] : m_entries) {
         if (!entry.deleted) {
@@ -251,23 +226,21 @@ std::vector<FileEntry> InMemoryIndex::getByDateRange(uint64_t startDate, uint64_
             }
         }
     }
-    
+
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     m_queryCount.fetch_add(1);
     m_totalQueryTime.fetch_add(duration.count());
-    
+
     return results;
 }
 
 void InMemoryIndex::flush() {
     std::lock_guard<std::mutex> lock(m_mutex);
-    // In-memory index doesn't need flushing to disk
 }
 
 void InMemoryIndex::compact() {
     std::lock_guard<std::mutex> lock(m_mutex);
-    // Remove deleted entries
     for (auto it = m_entries.begin(); it != m_entries.end();) {
         if (it->second.deleted) {
             it = m_entries.erase(it);
@@ -277,26 +250,26 @@ void InMemoryIndex::compact() {
     }
 }
 
-Index::IndexStats InMemoryIndex::getStats() const {
+IndexStats InMemoryIndex::getStats() const {
     std::lock_guard<std::mutex> lock(m_mutex);
     IndexStats stats;
-    
+
     stats.totalEntries = m_entries.size();
     stats.totalSize = 0;
     stats.memtableSize = 0;
     stats.sstableCount = 0;
-    
+
     uint64_t queryCount = m_queryCount.load();
     uint64_t totalTime = m_totalQueryTime.load();
-    
+
     if (queryCount > 0) {
         stats.averageQueryTimeMs = static_cast<double>(totalTime) / static_cast<double>(queryCount) / 1000.0;
     } else {
         stats.averageQueryTimeMs = 0.0;
     }
-    
+
     stats.bloomFilterHitRate = 0.0;
-    
+
     return stats;
 }
 
@@ -306,18 +279,3 @@ void InMemoryIndex::clear() {
     m_queryCount.store(0);
     m_totalQueryTime.store(0);
 }
-
-// LSMIndexImpl (internal implementation)
-struct LSMIndexImpl {
-    std::wstring indexPath;
-    size_t memtableSize;
-    std::atomic<bool> compactionRunning;
-    
-    LSMIndexImpl(const std::wstring& path, size_t size)
-        : indexPath(path), memtableSize(size), compactionRunning(false) {
-    }
-    
-    ~LSMIndexImpl() {
-        compactionRunning = false;
-    }
-};

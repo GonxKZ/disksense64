@@ -5,7 +5,7 @@
 #include "libs/chash/blake3.h"
 #include "libs/utils/utils.h"
 
-Deduplicator::Deduplicator(LsmIndex& index) : m_index(index) {
+Deduplicator::Deduplicator(LSMIndex& index) : m_index(index) {
 }
 
 Deduplicator::~Deduplicator() {

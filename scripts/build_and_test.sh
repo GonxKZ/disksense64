@@ -35,7 +35,7 @@ build_windows() {
     cd build-win
     
     # Configure with CMake for MinGW-w64 cross-compilation
-    cmake .. -DCMAKE_TOOLCHAIN_FILE="$PROJECT_DIR/cmake/mingw64.cmake" -DCMAKE_BUILD_TYPE=Release -DBUILD_CLI_ONLY=ON
+    cmake .. -DCMAKE_TOOLCHAIN_FILE="$PROJECT_DIR/cmake/mingw64.cmake" -DCMAKE_BUILD_TYPE=Release -DBUILD_CLI_ONLY=OFF
     
     if [ $? -ne 0 ]; then
         print_error "CMake configuration failed for Windows"
@@ -45,6 +45,7 @@ build_windows() {
     
     # Build the project
     make -j$(nproc) DiskSense.Cli
+    make -j$(nproc) DiskSense.Gui
     
     if [ $? -ne 0 ]; then
         print_error "Build failed for Windows"
@@ -69,7 +70,7 @@ build_linux() {
     cd build-linux
     
     # Configure with CMake
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_CLI_ONLY=ON
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_CLI_ONLY=OFF
     
     if [ $? -ne 0 ]; then
         print_error "CMake configuration failed for Linux"
@@ -79,6 +80,7 @@ build_linux() {
     
     # Build the project
     make -j$(nproc) DiskSense.Cli
+    make -j$(nproc) DiskSense.Gui
     
     if [ $? -ne 0 ]; then
         print_error "Build failed for Linux"
@@ -109,7 +111,7 @@ build_windows_native() {
     cd build-win-native
     
     # Configure with CMake
-    cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_CLI_ONLY=ON
+    cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_CLI_ONLY=OFF
     
     if [ $? -ne 0 ]; then
         print_error "CMake configuration failed for native Windows"
@@ -119,6 +121,7 @@ build_windows_native() {
     
     # Build the project
     mingw32-make -j$(nproc) DiskSense.Cli
+    mingw32-make -j$(nproc) DiskSense.Gui
     
     if [ $? -ne 0 ]; then
         print_error "Build failed for native Windows"

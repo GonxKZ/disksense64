@@ -6,6 +6,7 @@
 #include <vector>
 #include <optional>
 #include <memory>
+#include <utility>
 
 // Type definitions for our core data model
 using VolumeId = uint64_t;
@@ -27,7 +28,7 @@ struct FileAttributes {
     bool offline : 1;
     bool notContentIndexed : 1;
     bool virtualFile : 1;
-    
+
     FileAttributes() : readOnly(false), hidden(false), system(false), directory(false),
                        archive(false), temporary(false), sparse(false), reparsePoint(false),
                        compressed(false), encrypted(false), offline(false),
@@ -40,7 +41,7 @@ struct FileTimestamps {
     uint64_t lastWriteTime;    // FILETIME as 100-nanosecond intervals
     uint64_t lastAccessTime;   // FILETIME as 100-nanosecond intervals
     uint64_t changeTime;       // FILETIME as 100-nanosecond intervals
-    
+
     FileTimestamps() : creationTime(0), lastWriteTime(0), lastAccessTime(0), changeTime(0) {}
 };
 
@@ -49,21 +50,49 @@ struct FileEntry {
     VolumeId volumeId;
     FileId fileId;
     PathId pathId;
+    std::string fullPath;
     uint64_t sizeLogical;      // Actual file size in bytes
     uint64_t sizeOnDisk;       // Size on disk (cluster-aligned)
     FileAttributes attributes;
     FileTimestamps timestamps;
-    
+
     // Signatures
     std::optional<std::vector<uint8_t>> headTail16;  // 16KB head + 16KB tail hash
     std::optional<std::vector<uint8_t>> sha256;      // Full file SHA-256 hash
     std::optional<std::vector<uint8_t>> perceptualHash; // Image/audio perceptual hash
-    
+
     // Media information
     std::optional<std::pair<uint32_t, uint32_t>> imageDimensions; // width x height
     std::optional<uint64_t> audioDuration; // Duration in milliseconds
-    
+
     FileEntry() : volumeId(0), fileId(0), pathId(0), sizeLogical(0), sizeOnDisk(0) {}
+
+    FileEntry(VolumeId volId, FileId fId, PathId pId, uint64_t size)
+        : volumeId(volId), fileId(fId), pathId(pId),
+          sizeLogical(size), sizeOnDisk((size + 4095) & ~4095) { // 4KB cluster alignment
+    }
+
+    bool operator==(const FileEntry& other) const {
+        return volumeId == other.volumeId &&
+               fileId == other.fileId &&
+               pathId == other.pathId &&
+               sizeLogical == other.sizeLogical &&
+               sizeOnDisk == other.sizeOnDisk;
+    }
+
+    bool operator!=(const FileEntry& other) const {
+        return !(*this == other);
+    }
+
+    bool operator<(const FileEntry& other) const {
+        if (volumeId != other.volumeId) {
+            return volumeId < other.volumeId;
+        }
+        if (fileId != other.fileId) {
+            return fileId < other.fileId;
+        }
+        return pathId < other.pathId;
+    }
 };
 
 // Chunk information for content-defined chunking
@@ -71,7 +100,7 @@ struct FileChunk {
     uint64_t offset;
     uint64_t length;
     std::vector<uint8_t> hash; // BLAKE3/SHA-256 hash of the chunk
-    
+
     FileChunk(uint64_t off, uint64_t len) : offset(off), length(len) {}
 };
 

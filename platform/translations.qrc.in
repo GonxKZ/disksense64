@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/translations">
+        <file>disksense_en.qm</file>
+        <file>disksense_es.qm</file>
+        <file>disksense_fr.qm</file>
+        <file>disksense_de.qm</file>
+    </qresource>
+</RCC>

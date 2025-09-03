@@ -15,6 +15,7 @@
 #include <sys/time.h>
 #include <pwd.h>
 #include <unistd.h>
+#include <sys/mman.h>
 #endif
 
 // FileUtils implementation
@@ -224,6 +225,81 @@ std::string FileUtils::to_platform_path(const std::string& path) {
     std::string result = path;
     std::replace(result.begin(), result.end(), '\\', '/');
     return result;
+#endif
+}
+
+bool FileUtils::create_directory(const std::string& path) {
+#ifdef _WIN32
+    std::wstring wpath = StringUtils::to_wide_string(path);
+    return CreateDirectoryW(wpath.c_str(), nullptr);
+#else
+    return mkdir(path.c_str(), 0755) == 0;
+#endif
+}
+
+file_handle_t FileUtils::create_mapped_file(const std::string& path, size_t size) {
+#ifdef _WIN32
+    std::wstring wpath = StringUtils::to_wide_string(path);
+    HANDLE hFile = CreateFileW(
+        wpath.c_str(),
+        GENERIC_READ | GENERIC_WRITE,
+        0,
+        nullptr,
+        CREATE_ALWAYS,
+        FILE_ATTRIBUTE_NORMAL,
+        nullptr
+    );
+    if (hFile == INVALID_HANDLE_VALUE) {
+        return INVALID_FILE_HANDLE;
+    }
+
+    LARGE_INTEGER liSize;
+    liSize.QuadPart = size;
+    if (!SetFilePointerEx(hFile, liSize, nullptr, FILE_BEGIN) || !SetEndOfFile(hFile)) {
+        CloseHandle(hFile);
+        return INVALID_FILE_HANDLE;
+    }
+
+    return hFile;
+#else
+    int fd = open(path.c_str(), O_RDWR | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1) {
+        return -1;
+    }
+
+    if (ftruncate(fd, size) == -1) {
+        close(fd);
+        return -1;
+    }
+
+    return fd;
+#endif
+}
+
+void* FileUtils::map_view_of_file(file_handle_t handle, size_t size) {
+#ifdef _WIN32
+    HANDLE hMapping = CreateFileMapping(handle, nullptr, PAGE_READWRITE, 0, 0, nullptr);
+    if (!hMapping) {
+        return nullptr;
+    }
+
+    void* view = MapViewOfFile(hMapping, FILE_MAP_READ | FILE_MAP_WRITE, 0, 0, size);
+    CloseHandle(hMapping);
+    return view;
+#else
+    void* view = mmap(nullptr, size, PROT_READ | PROT_WRITE, MAP_SHARED, handle, 0);
+    if (view == MAP_FAILED) {
+        return nullptr;
+    }
+    return view;
+#endif
+}
+
+void FileUtils::unmap_view_of_file(void* view, size_t size) {
+#ifdef _WIN32
+    UnmapViewOfFile(view);
+#else
+    munmap(view, size);
 #endif
 }
 

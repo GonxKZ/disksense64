@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "ui/dashboardtab.h"
+#include "ui/settingsdialog.h"
 #include <QApplication>
 #include <QMenuBar>
 #include <QMenu>
@@ -34,11 +36,13 @@
 MainWindow::MainWindow(QWidget *parent) 
     : QMainWindow(parent)
     , m_tabWidget(nullptr)
+    , m_dashboardTab(nullptr)
     , m_dedupTab(nullptr)
     , m_vizTab(nullptr)
     , m_treemapWidget(nullptr)
     , m_residueTab(nullptr)
     , m_similarityTab(nullptr)
+    , m_settingsDialog(nullptr)
     , m_scanner(std::make_unique<Scanner>())
     , m_index(std::make_unique<LSMIndex>("disksense_index"))
     , m_isScanning(false)
@@ -55,76 +59,50 @@ MainWindow::~MainWindow() {
     }
 }
 
-void MainWindow::setupUI() {
-    setWindowTitle("DiskSense64 - Disk Analysis Suite");
-    resize(1200, 800);
+void MainWindow::setupUI() {\n    setWindowTitle(\"DiskSense64 - Disk Analysis Suite\");\n    resize(1200, 800);\n    \n    // Create central widget and layout\n    QWidget* centralWidget = new QWidget(this);\n    setCentralWidget(centralWidget);\n    \n    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);\n    \n    // Create tab widget\n    m_tabWidget = new QTabWidget(this);\n    \n    // Setup all tabs\n    setupDashboardTab();\n    setupDeduplicationTab();\n    setupVisualizationTab();\n    setupResidueTab();\n    setupSimilarityTab();\n    \n    // Add tabs to tab widget\n    m_tabWidget->addTab(m_dashboardTab, \"Dashboard\");\n    m_tabWidget->addTab(m_dedupTab, \"Deduplication\");\n    m_tabWidget->addTab(m_vizTab, \"Visualization\");\n    m_tabWidget->addTab(m_residueTab, \"Residue Detection\");\n    m_tabWidget->addTab(m_similarityTab, \"Similarity Detection\");\n    \n    mainLayout->addWidget(m_tabWidget);\n    \n    // Create menu bar\n    QMenuBar* menuBar = new QMenuBar(this);\n    setMenuBar(menuBar);\n    \n    QMenu* fileMenu = menuBar->addMenu(\"&File\");\n    QAction* scanAction = fileMenu->addAction(\"&Scan Directory...\");\n    scanAction->setShortcut(QKeySequence(\"Ctrl+S\"));\n    connect(scanAction, &QAction::triggered, this, &MainWindow::onScanDirectory);\n    \n    QAction* settingsAction = fileMenu->addAction(\"&Settings...\");\n    settingsAction->setShortcut(QKeySequence(\"Ctrl+,\"));\n    connect(settingsAction, &QAction::triggered, this, &MainWindow::onSettingsRequested);\n    \n    QAction* exitAction = fileMenu->addAction(\"E&xit\");\n    exitAction->setShortcut(QKeySequence(\"Ctrl+Q\"));\n    connect(exitAction, &QAction::triggered, this, &QApplication::quit);\n    \n    QMenu* helpMenu = menuBar->addMenu(\"&Help\");\n    QAction* aboutAction = helpMenu->addAction(\"&About\");\n    connect(aboutAction, &QAction::triggered, [this]() {\n        QMessageBox::about(this, \"About DiskSense64\", \n                          \"DiskSense64 - Cross-Platform Disk Analysis Suite\\n\\n\"\n                          \"A comprehensive disk analysis tool with:\\n\"\n                          \"- Exact File Deduplication\\n\"\n                          \"- Disk Space Visualization\\n\"\n                          \"- Residue Detection and Cleanup\\n\"\n                          \"- Perceptual Duplicate Detection\");\n    });\n    \n    // Create toolbar\n    QToolBar* toolBar = addToolBar(\"Main\");\n    toolBar->addAction(scanAction);\n    \n    QPushButton* scanButton = new QPushButton(\"Scan Directory\");\n    connect(scanButton, &QPushButton::clicked, this, &MainWindow::onScanDirectory);\n    toolBar->addWidget(scanButton);\n    \n    QPushButton* cancelButton = new QPushButton(\"Cancel\");\n    connect(cancelButton, &QPushButton::clicked, this, &MainWindow::onCancelScan);\n    toolBar->addWidget(cancelButton);\n    \n    // Create status bar widgets\n    QProgressBar* progressBar = new QProgressBar();\n    progressBar->setRange(0, 100);\n    progressBar->setValue(0);\n    progressBar->setFixedWidth(200);\n    statusBar()->addPermanentWidget(progressBar);\n}
+
+void MainWindow::setupDashboardTab() {
+    m_dashboardTab = new DashboardTab();
     
-    // Create central widget and layout
-    QWidget* centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
+    // Connect signals
+    connect(m_dashboardTab, &DashboardTab::scanRequested, 
+            this, &MainWindow::onDashboardScanRequested);
+    connect(m_dashboardTab, &DashboardTab::settingsRequested, 
+            this, &MainWindow::onDashboardSettingsRequested);
+    connect(m_dashboardTab, &DashboardTab::exportRequested, 
+            this, &MainWindow::onDashboardExportRequested);
+}
+
+void MainWindow::onDashboardScanRequested(const QString& path) {
+    // Switch to the deduplication tab and start scanning
+    m_tabWidget->setCurrentWidget(m_dedupTab);
+    // In a real implementation, we would set the path in the deduplication tab
+    // and trigger the scan
+    QMessageBox::information(this, "Scan Requested", 
+                            QString("Scan requested for: %1\n\n"
+                                   "In a full implementation, this would switch to the Deduplication tab "
+                                   "and start scanning the selected directory.").arg(path));
+}
+
+void MainWindow::onDashboardSettingsRequested() {
+    // In a real implementation, this would open the settings dialog
+    QMessageBox::information(this, "Settings", 
+                            "Settings dialog would open here in a full implementation.");
+}
+
+void MainWindow::onDashboardExportRequested() {
+    // In a real implementation, this would open the export dialog
+    QMessageBox::information(this, "Export", 
+                            "Export dialog would open here in a full implementation.");
+}
+
+void MainWindow::onSettingsRequested() {
+    if (!m_settingsDialog) {
+        m_settingsDialog = new SettingsDialog(this);
+    }
     
-    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
-    
-    // Create tab widget
-    m_tabWidget = new QTabWidget(this);
-    
-    // Setup all tabs
-    setupDeduplicationTab();
-    setupVisualizationTab();
-    setupResidueTab();
-    setupSimilarityTab();
-    
-    // Add tabs to tab widget
-    m_tabWidget->addTab(m_dedupTab, "Deduplication");
-    m_tabWidget->addTab(m_vizTab, "Visualization");
-    m_tabWidget->addTab(m_residueTab, "Residue Detection");
-    m_tabWidget->addTab(m_similarityTab, "Similarity Detection");
-    
-    mainLayout->addWidget(m_tabWidget);
-    
-    // Create menu bar
-    QMenuBar* menuBar = new QMenuBar(this);
-    setMenuBar(menuBar);
-    
-    QMenu* fileMenu = menuBar->addMenu("&File");
-    QAction* scanAction = fileMenu->addAction("&Scan Directory...");
-    scanAction->setShortcut(QKeySequence("Ctrl+S"));
-    connect(scanAction, &QAction::triggered, this, &MainWindow::onScanDirectory);
-    
-    QAction* exitAction = fileMenu->addAction("E&xit");
-    exitAction->setShortcut(QKeySequence("Ctrl+Q"));
-    connect(exitAction, &QAction::triggered, this, &QApplication::quit);
-    
-    QMenu* helpMenu = menuBar->addMenu("&Help");
-    QAction* aboutAction = helpMenu->addAction("&About");
-    connect(aboutAction, &QAction::triggered, [this]() {
-        QMessageBox::about(this, "About DiskSense64", 
-                          "DiskSense64 - Cross-Platform Disk Analysis Suite\n\n"
-                          "A comprehensive disk analysis tool with:\n"
-                          "- Exact File Deduplication\n"
-                          "- Disk Space Visualization\n"
-                          "- Residue Detection and Cleanup\n"
-                          "- Perceptual Duplicate Detection");
-    });
-    
-    // Create toolbar
-    QToolBar* toolBar = addToolBar("Main");
-    toolBar->addAction(scanAction);
-    
-    QPushButton* scanButton = new QPushButton("Scan Directory");
-    connect(scanButton, &QPushButton::clicked, this, &MainWindow::onScanDirectory);
-    toolBar->addWidget(scanButton);
-    
-    QPushButton* cancelButton = new QPushButton("Cancel");
-    connect(cancelButton, &QPushButton::clicked, this, &MainWindow::onCancelScan);
-    toolBar->addWidget(cancelButton);
-    
-    // Create status bar widgets
-    QProgressBar* progressBar = new QProgressBar();
-    progressBar->setRange(0, 100);
-    progressBar->setValue(0);
-    progressBar->setFixedWidth(200);
-    statusBar()->addPermanentWidget(progressBar);
+    m_settingsDialog->loadSettings();
+    m_settingsDialog->exec();
 }
 
 void MainWindow::setupDeduplicationTab() {

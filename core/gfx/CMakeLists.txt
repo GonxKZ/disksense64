@@ -1,7 +1,6 @@
 add_library(core_gfx)
 
 target_sources(core_gfx PRIVATE
-    gfx.cpp
     treemap.cpp
 )
 
@@ -11,6 +10,4 @@ target_include_directories(core_gfx PUBLIC
 
 target_link_libraries(core_gfx PRIVATE
     core_model
-    d2d1
-    dwrite
 )

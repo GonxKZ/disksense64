@@ -43,7 +43,7 @@ struct DedupeOptions {
 // Deduplication module
 class Deduplicator {
 public:
-    Deduplicator(LsmIndex& index);
+    Deduplicator(LSMIndex& index);
     ~Deduplicator();
     
     // Find duplicate files
@@ -56,7 +56,7 @@ public:
     const DedupeStats& getStats() const { return m_stats; }
     
 private:
-    LsmIndex& m_index;
+    LSMIndex& m_index;
     DedupeStats m_stats;
     
     // Group files by size

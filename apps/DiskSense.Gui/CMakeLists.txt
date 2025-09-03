@@ -2,6 +2,18 @@
 add_library(gui_ui
     ui/mainwindow.h
     ui/mainwindow.cpp
+    ui/dashboardtab.h
+    ui/dashboardtab.cpp
+    ui/settingsdialog.h
+    ui/settingsdialog.cpp
+    ui/fileexplorer.h
+    ui/fileexplorer.cpp
+    ui/advancedfilterwidget.h
+    ui/advancedfilterwidget.cpp
+    ui/exportdialog.h
+    ui/exportdialog.cpp
+    ui/comparisondialog.h
+    ui/comparisondialog.cpp
 )
 
 target_include_directories(gui_ui PUBLIC 
@@ -11,10 +23,14 @@ target_include_directories(gui_ui PUBLIC
 
 target_link_libraries(gui_ui PRIVATE
     Qt6::Widgets
+    Qt6::Sql
     core_model
     core_scan
     core_index
     core_gfx
+    core_cache
+    core_database
+    core_analysis
     lib_utils
 )
 
@@ -24,6 +40,8 @@ add_library(gui_components
     components/treemapwidget.cpp
     components/resultsdisplay.h
     components/resultsdisplay.cpp
+    components/visualizationwidget.h
+    components/visualizationwidget.cpp
 )
 
 target_include_directories(gui_components PUBLIC 
@@ -33,8 +51,10 @@ target_include_directories(gui_components PUBLIC
 
 target_link_libraries(gui_components PRIVATE
     Qt6::Widgets
+    Qt6::OpenGL
     core_model
     core_gfx
+    core_analysis
     lib_utils
 )
 
@@ -46,11 +66,16 @@ add_executable(DiskSense.Gui
 
 target_link_libraries(DiskSense.Gui PRIVATE
     Qt6::Widgets
+    Qt6::Sql
+    Qt6::OpenGL
     gui_ui
     gui_components
     core_model
     core_scan
     core_index
     core_gfx
+    core_cache
+    core_database
+    core_analysis
     lib_utils
 )

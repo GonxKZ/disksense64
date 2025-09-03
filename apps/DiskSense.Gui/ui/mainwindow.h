@@ -11,6 +11,8 @@ class Scanner;
 class LSMIndex;
 class TreemapWidget;
 class ResultsDisplay;
+class DashboardTab;
+class SettingsDialog;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -24,15 +26,23 @@ private slots:
     void onCancelScan();
     void onUpdateStatus(const QString& message);
     void onUpdateProgress(int value);
+    void onDashboardScanRequested(const QString& path);
+    void onDashboardSettingsRequested();
+    void onDashboardExportRequested();
+    void onSettingsRequested();
 
 private:
     void setupUI();
+    void setupDashboardTab();
     void setupDeduplicationTab();
     void setupVisualizationTab();
     void setupResidueTab();
     void setupSimilarityTab();
     
     QTabWidget* m_tabWidget;
+    
+    // Dashboard tab widgets
+    DashboardTab* m_dashboardTab;
     
     // Deduplication tab widgets
     QWidget* m_dedupTab;
@@ -50,6 +60,9 @@ private:
     // Similarity detection tab widgets
     QWidget* m_similarityTab;
     ResultsDisplay* m_similarityResults;
+    
+    // Settings dialog
+    SettingsDialog* m_settingsDialog;
     
     // Core components
     std::unique_ptr<Scanner> m_scanner;

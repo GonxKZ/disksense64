@@ -79,7 +79,7 @@ int main(int argc, char* argv[]) {
 
     if (command == "scan") {
         // Create index
-        LsmIndex index(StringUtils::to_wide_string(index_path));
+        LSMIndex index(index_path);
         
         // Scan directory
         Scanner scanner;
@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
         options.computeFullHash = false;
         
         uint64_t file_count = 0;
-        scanner.scanVolume(StringUtils::to_wide_string(platform_path), options, 
+        scanner.scanVolume(platform_path, options, 
                           [&index, &file_count](const ScanEvent& event) {
             if (event.type == ScanEventType::FileAdded) {
                 index.put(event.fileEntry);
@@ -109,10 +109,10 @@ int main(int argc, char* argv[]) {
         std::cout << "Scan completed! Processed " << file_count << " files in " 
                   << duration.count() << " ms." << std::endl;
         std::cout << "Index saved to: " << index_path << std::endl;
-    }
+    } 
     else if (command == "dedupe") {
         // Load index
-        LsmIndex index(StringUtils::to_wide_string(index_path));
+        LSMIndex index(index_path);
         
         // Parse options
         DedupeOptions options;

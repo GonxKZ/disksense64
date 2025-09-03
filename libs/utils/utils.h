@@ -75,6 +75,18 @@ public:
     
     // Convert to platform-specific path
     static std::string to_platform_path(const std::string& path);
+
+    // Create a directory
+    static bool create_directory(const std::string& path);
+
+    // Create a memory-mapped file
+    static file_handle_t create_mapped_file(const std::string& path, size_t size);
+
+    // Map a view of a file
+    static void* map_view_of_file(file_handle_t handle, size_t size);
+
+    // Unmap a view of a file
+    static void unmap_view_of_file(void* view, size_t size);
 };
 
 // Cross-platform string utilities
