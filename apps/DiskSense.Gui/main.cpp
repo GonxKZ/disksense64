@@ -1,7 +1,19 @@
-#include <windows.h>
+#include <QApplication>
+#include "ui/mainwindow.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int main(int argc, char *argv[])
 {
-    MessageBoxW(NULL, L"Hello, World!", L"DiskSense.Gui", MB_OK);
-    return 0;
+    QApplication app(argc, argv);
+    
+    // Set application properties
+    app.setApplicationName("DiskSense64");
+    app.setApplicationVersion("1.0");
+    app.setOrganizationName("DiskSense");
+    
+    MainWindow window;
+    window.show();
+    
+    return app.exec();
 }
+
+#include "ui/mainwindow.moc"

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 # Project options
 option(BUILD_CLI_ONLY "Build only the CLI application" OFF)
 option(ENABLE_GUI "Enable GUI components" ON)
+option(USE_QT_GUI "Use Qt for the GUI" ON)
 option(ENABLE_TESTING "Enable testing" ON)
 option(CROSS_PLATFORM_BUILD "Enable cross-platform build support" ON)
 
@@ -40,6 +41,14 @@ endif()
 # Project definition
 project(DiskSense64 LANGUAGES C CXX)
 
+# Qt configuration
+if(ENABLE_GUI AND USE_QT_GUI)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
+    set(CMAKE_AUTOUIC ON)
+    find_package(Qt6 COMPONENTS Widgets REQUIRED)
+endif()
+
 # Include warnings and security flags
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/warnings.cmake)
 
@@ -48,7 +57,7 @@ if(PLATFORM_WINDOWS)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack,8388608")
     
     # Windows-specific libraries
-    if(NOT BUILD_CLI_ONLY)
+    if(NOT BUILD_CLI_ONLY AND NOT USE_QT_GUI)
         set(WIN32_LIBS
             kernel32
             user32
@@ -77,7 +86,7 @@ if(PLATFORM_WINDOWS)
     endif()
 else()
     # Linux-specific libraries
-    if(NOT BUILD_CLI_ONLY)
+    if(NOT BUILD_CLI_ONLY AND NOT USE_QT_GUI)
         set(LINUX_LIBS
             pthread
             dl
@@ -116,6 +125,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Include directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/apps/DiskSense.Gui
+    ${CMAKE_CURRENT_SOURCE_DIR}/apps/DiskSense.Gui/ui
     ${CMAKE_CURRENT_SOURCE_DIR}/core/engine
     ${CMAKE_CURRENT_SOURCE_DIR}/core/scan
     ${CMAKE_CURRENT_SOURCE_DIR}/core/usn
@@ -196,6 +207,7 @@ message(STATUS "  Platform: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR})")
 message(STATUS "  Build Type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "  CLI Only: ${BUILD_CLI_ONLY}")
 message(STATUS "  GUI Enabled: ${ENABLE_GUI}")
+message(STATUS "  Use Qt GUI: ${USE_QT_GUI}")
 message(STATUS "  Testing Enabled: ${ENABLE_TESTING}")
 message(STATUS "  Cross-Platform Build: ${CROSS_PLATFORM_BUILD}")
 

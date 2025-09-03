@@ -70,6 +70,9 @@ DiskSense64/
 ├── apps/
 │   ├── DiskSense.Cli/      # Command-line interface
 │   └── DiskSense.Gui/      # Graphical interface
+│       ├── components/     # Reusable UI components
+│       ├── ui/             # Main UI windows and dialogs
+│       └── main.cpp        # Application entry point
 ├── core/
 │   ├── engine/             # I/O scheduler (IOCP/epoll)
 │   ├── scan/               # File system scanner
@@ -129,6 +132,11 @@ DiskSense64/
 - Ninja (optional)
 
 ### Building
+
+**Using the build script (recommended):**
+```bash
+./build_project.sh
+```
 
 **Windows (Visual Studio):**
 ```cmd
