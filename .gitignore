@@ -6,11 +6,6 @@ build-*/
 build_*/
 bin/
 lib/
-*.a
-*.lib
-*.dll
-*.so
-*.dylib
 
 # IDE files
 .vs/

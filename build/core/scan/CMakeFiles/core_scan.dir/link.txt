@@ -1,2 +1,0 @@
-/usr/bin/x86_64-w64-mingw32-ar qc ../../lib/libcore_scan.a CMakeFiles/core_scan.dir/scan.cpp.obj CMakeFiles/core_scan.dir/scanner.cpp.obj
-/usr/bin/x86_64-w64-mingw32-ranlib ../../lib/libcore_scan.a
