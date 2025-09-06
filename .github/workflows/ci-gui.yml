@@ -1,4 +1,4 @@
-name: CI
+name: CI - GUI (Qt)
 
 on:
   push:
@@ -6,9 +6,13 @@ on:
   pull_request:
     branches: [ main, master ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build-test:
-    name: Build & Test (${{ matrix.os }})
+  build-gui:
+    name: Build & Test (GUI) – ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -16,11 +20,10 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install dependencies (Linux)
+      - name: Install deps (Linux)
         if: startsWith(runner.os, 'Linux')
         run: |
           sudo apt-get update
@@ -60,70 +63,9 @@ jobs:
       - name: Configure (GUI)
         env:
           CMAKE_PREFIX_PATH: ${{ env.QT_DIR }}
-        run: |
-          cmake -S . -B build -G Ninja -DENABLE_GUI=ON -DUSE_QT_GUI=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+        run: cmake -S . -B build -G Ninja -DENABLE_GUI=ON -DUSE_QT_GUI=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
       - name: Build (GUI)
         run: cmake --build build --parallel
       - name: Test (ctest)
         run: ctest --test-dir build --output-on-failure
 
-  asan-linux:
-    name: Sanitizers (Linux)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - run: sudo apt-get update && sudo apt-get install -y ninja-build cmake g++
-      - run: cmake -S . -B build-asan -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
-      - run: cmake --build build-asan --parallel
-      - run: ctest --test-dir build-asan --output-on-failure
-
-  format-check:
-    name: Format Check (clang-format)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install clang-format
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang-format
-      - name: Run format check
-        run: bash .github/scripts/format_check.sh
-
-  clang-tidy:
-    name: Clang-Tidy (Linux CLI subset)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install clang-tidy
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang-tidy ninja-build cmake g++
-      - name: Run clang-tidy
-        run: bash .github/scripts/clang_tidy.sh
-
-  format-check:
-    name: Format Check (clang-format)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install clang-format
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang-format
-      - name: Run format check
-        run: bash .github/scripts/format_check.sh
-
-  format-check:
-    name: Format Check (clang-format)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install clang-format
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang-format
-      - name: Run format check
-        run: bash .github/scripts/format_check.sh

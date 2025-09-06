@@ -1,0 +1,55 @@
+name: Nightly
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  linux-full-cli:
+    name: Linux Full CLI + Sanitizers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build cmake g++ gcovr
+      - run: cmake -S . -B build-nightly -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
+      - run: cmake --build build-nightly --parallel
+      - run: ctest --test-dir build-nightly --output-on-failure
+      - name: Coverage (gcovr summary)
+        run: |
+          gcovr -r . --exclude-directories build-nightly --filter core --filter libs || true
+
+  windows-gui-build:
+    name: Windows GUI Build Smoke
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Qt
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip aqtinstall
+          python -m aqt install-qt -O $env:USERPROFILE\Qt windows desktop 6.6.2 win64_msvc2019_64 -m qtbase qtsvg qttools qtdeclarative qtshadertools qtimageformats
+          echo "QT_DIR=$env:USERPROFILE\Qt\6.6.2\msvc2019_64" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Generate translations
+        shell: pwsh
+        run: |
+          $env:Path = "$env:QT_DIR\bin;$env:Path"
+          & lupdate -no-obsolete -locations none -ts translations/disksense_en.ts apps/DiskSense.Gui/*.cpp apps/DiskSense.Gui/ui/*.cpp apps/DiskSense.Gui/components/*.cpp core/*/*.cpp platform/*.cpp
+          & lupdate -no-obsolete -locations none -ts translations/disksense_es.ts apps/DiskSense.Gui/*.cpp apps/DiskSense.Gui/ui/*.cpp apps/DiskSense.Gui/components/*.cpp core/*/*.cpp platform/*.cpp
+          & lrelease translations/disksense_en.ts -qm translations/disksense_en.qm
+          & lrelease translations/disksense_es.ts -qm translations/disksense_es.qm
+      - name: Configure GUI
+        shell: pwsh
+        env:
+          CMAKE_PREFIX_PATH: ${{ env.QT_DIR }}
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DENABLE_GUI=ON -DUSE_QT_GUI=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+      - name: Build GUI
+        shell: pwsh
+        run: cmake --build build --config Release --parallel
