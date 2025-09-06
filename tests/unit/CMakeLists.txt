@@ -30,6 +30,15 @@ if(MINIMAL_UNIT_TESTS)
         ../../libs/utils
     )
     add_test(NAME test_dedupe_safety COMMAND test_dedupe_safety)
+    add_executable(test_dedupe_hash ops/test_dedupe_hash.cpp)
+    target_link_libraries(test_dedupe_hash PRIVATE core_ops core_index lib_utils lib_chash)
+    target_include_directories(test_dedupe_hash PRIVATE 
+        ../../core/ops
+        ../../core/index
+        ../../core/model
+        ../../libs/utils
+        ../../libs/chash)
+    add_test(NAME test_dedupe_hash COMMAND test_dedupe_hash)
 
     # Trash move/list/restore (cross-platform)
     add_executable(test_trash platform/test_trash.cpp)

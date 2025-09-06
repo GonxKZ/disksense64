@@ -149,25 +149,49 @@ std::vector<FileEntry> Deduplicator::filterByHeadTail(const std::vector<FileEntr
 }
 
 std::vector<FileEntry> Deduplicator::computeFullHashes(const std::vector<FileEntry>& candidates) const {
-    std::unordered_map<std::string, std::vector<FileEntry>> hashGroups;
-    
-    // Compute full hash for each candidate
-    for (const auto& file : candidates) {
-        // In a real implementation, we would compute the actual hash
-        // For now, we'll use a placeholder
-        std::string hash = "placeholder_hash"; // This should be replaced with actual hash computation
-        hashGroups[hash].push_back(file);
-    }
-    
-    // Collect files that have duplicates
-    std::vector<FileEntry> result;
-    for (const auto& [hash, files] : hashGroups) {
-        if (files.size() > 1) {
-            result.insert(result.end(), files.begin(), files.end());
+    // Streaming BLAKE3 hashing per file using FileUtils, with small read buffer to cap RAM and I/O backpressure
+    constexpr size_t kBufSize = 256 * 1024; // 256 KiB
+    std::vector<uint8_t> buffer(kBufSize);
+
+    std::vector<FileEntry> withHashes; withHashes.reserve(candidates.size());
+
+    for (auto fe : candidates) { // copy; we will set sha256 on the copy
+        if (fe.sha256.has_value() && !fe.sha256->empty()) {
+            withHashes.push_back(std::move(fe));
+            continue;
         }
+
+        // Open file read-only
+        file_handle_t fh = FileUtils::open_file(fe.fullPath, /*read_only*/ true);
+        if (!FileUtils::is_valid_handle(fh)) {
+            // Skip unreadable files
+            continue;
+        }
+
+        BLAKE3_HASH_STATE st; blake3_hash_init(&st);
+        uint64_t offset = 0;
+        bool ok = true;
+        while (offset < fe.sizeLogical) {
+            size_t toRead = static_cast<size_t>(std::min<uint64_t>(kBufSize, fe.sizeLogical - offset));
+            if (!FileUtils::read_file_data(fh, buffer.data(), toRead, offset)) {
+                ok = false; break;
+            }
+            blake3_hash_update(&st, buffer.data(), toRead);
+            offset += toRead;
+        }
+        FileUtils::close_file(fh);
+        if (!ok) {
+            // Skip if read failed mid-way
+            continue;
+        }
+        std::vector<uint8_t> digest(BLAKE3_OUT_LEN);
+        blake3_hash_finalize(&st, digest.data(), BLAKE3_OUT_LEN);
+        fe.sha256 = std::move(digest); // reuse sha256 field to store full-file BLAKE3 digest
+        withHashes.push_back(std::move(fe));
     }
-    
-    return result;
+
+    // Devolver solo aquellos con hash calculado
+    return withHashes;
 }
 
 std::map<std::string, std::vector<FileEntry>> Deduplicator::groupByHash(const std::vector<FileEntry>& files) const {

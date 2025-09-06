@@ -55,6 +55,9 @@ public:
     // Get current statistics
     const DedupeStats& getStats() const { return m_stats; }
     
+    // Testing helper: compute full hashes for provided entries (returns entries with hashes set)
+    std::vector<FileEntry> computeHashesForTesting(const std::vector<FileEntry>& candidates) const { return computeFullHashes(candidates); }
+
 private:
     LSMIndex& m_index;
     DedupeStats m_stats;

@@ -134,9 +134,25 @@ int compression_analyze_file(const char* file_path, const compression_options_t*
         current_entry.timestamp = archive_entry_mtime(entry);
         current_entry.is_directory = S_ISDIR(archive_entry_mode(entry));
         
-        // Permissions
+        // Permissions: use POSIX rwx string; fallback if strmode is unavailable
         char perms[11];
-        strmode(archive_entry_mode(entry), perms);
+#if defined(__linux__) || defined(__APPLE__) || defined(__unix__)
+        mode_t m = archive_entry_mode(entry);
+        perms[0] = S_ISDIR(m) ? 'd' : '-';
+        perms[1] = (m & S_IRUSR) ? 'r' : '-';
+        perms[2] = (m & S_IWUSR) ? 'w' : '-';
+        perms[3] = (m & S_IXUSR) ? 'x' : '-';
+        perms[4] = (m & S_IRGRP) ? 'r' : '-';
+        perms[5] = (m & S_IWGRP) ? 'w' : '-';
+        perms[6] = (m & S_IXGRP) ? 'x' : '-';
+        perms[7] = (m & S_IROTH) ? 'r' : '-';
+        perms[8] = (m & S_IWOTH) ? 'w' : '-';
+        perms[9] = (m & S_IXOTH) ? 'x' : '-';
+        perms[10] = '\0';
+#else
+        // Minimal fallback
+        snprintf(perms, sizeof(perms), "-rw-r--r--");
+#endif
         current_entry.permissions = strdup_safe(perms);
 
         archive->total_uncompressed_size += current_entry.uncompressed_size;
