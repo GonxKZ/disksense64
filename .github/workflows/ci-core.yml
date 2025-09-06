@@ -18,20 +18,53 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      # ---- Linux deps (incluye libarchive-dev) ------------------------------
       - name: Install deps (Linux)
         if: startsWith(runner.os, 'Linux')
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build cmake g++
-      - name: Configure
+          sudo apt-get install -y ninja-build cmake g++ libarchive-dev
+
+      # ---- Windows: instalar libarchive vía vcpkg --------------------------
+      - name: Setup vcpkg (Windows)
+        if: startsWith(runner.os, 'Windows')
+        uses: lukka/run-vcpkg@v11
+        with:
+          # usa el vcpkg precompilado con cache automática
+          setupOnly: true
+
+      - name: Install libarchive (Windows via vcpkg)
+        if: startsWith(runner.os, 'Windows')
+        shell: bash
+        run: |
+          "$VCPKG_ROOT"/vcpkg install libarchive:x64-windows
+
+      # ---- Configure --------------------------------------------------------
+      - name: Configure (Linux)
+        if: startsWith(runner.os, 'Linux')
         run: cmake -S . -B build-cli -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+
+      - name: Configure (Windows + vcpkg toolchain)
+        if: startsWith(runner.os, 'Windows')
+        shell: bash
+        run: |
+          cmake -S . -B build-cli -G Ninja \
+            -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" \
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+
+      # ---- Build ------------------------------------------------------------
       - name: Build
         run: cmake --build build-cli --parallel
+
+      # ---- Test -------------------------------------------------------------
       - name: Test
         run: ctest --test-dir build-cli --output-on-failure
 
@@ -40,8 +73,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y ninja-build cmake g++
-      - run: cmake -S . -B build-asan -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
-      - run: cmake --build build-asan --parallel
-      - run: ctest --test-dir build-asan --output-on-failure
-
+      - name: Install deps (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build cmake g++ libarchive-dev
+      - name: Configure (ASAN)
+        run: cmake -S . -B build-asan -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
+      - name: Build (ASAN)
+        run: cmake --build build-asan --parallel
+      - name: Test (ASAN)
+        run: ctest --test-dir build-asan --output-on-failure
