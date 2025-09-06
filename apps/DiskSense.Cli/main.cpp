@@ -8,6 +8,9 @@
 #include "core/ops/dedupe.h"
 #include "core/model/model.h"
 #include "libs/utils/utils.h"
+#include "core/ops/secure_delete.h"
+#include "core/ops/cleanup.h"
+#include <fstream>
 
 void printUsage(const char* programName) {
     std::cout << "DiskSense64 - Cross-Platform Disk Analysis Suite" << std::endl;
@@ -194,8 +197,125 @@ int main(int argc, char* argv[]) {
         std::cout << "This feature will be available in a future release." << std::endl;
     }
     else if (command == "cleanup") {
-        std::cout << "Residue cleanup feature not yet implemented in this version." << std::endl;
-        std::cout << "This feature will be available in a future release." << std::endl;
+        // Residue cleanup
+        // options: --simulate=1 --older-than=30 --extensions=.tmp,.log --remove-empty-dirs=1 --quarantine[=dir]
+        CleanupOptions copt;
+        copt.simulateOnly = true;
+        copt.olderThanDays = 0;
+        copt.removeEmptyDirs = true;
+        bool doUndo = false;
+        std::string undoDir;
+        for (int i = 3; i < argc; i++) {
+            std::string arg(argv[i]);
+            if (arg.rfind("--simulate=", 0) == 0) {
+                copt.simulateOnly = (arg.substr(11) != "0");
+            } else if (arg.rfind("--older-than=", 0) == 0) {
+                try { copt.olderThanDays = std::stoi(arg.substr(13)); } catch (...) {}
+            } else if (arg.rfind("--extensions=", 0) == 0) {
+                copt.extensions.clear();
+                std::string list = arg.substr(13);
+                size_t start = 0;
+                while (start < list.size()) {
+                    size_t comma = list.find(',', start);
+                    std::string ext = list.substr(start, comma == std::string::npos ? std::string::npos : (comma - start));
+                    if (!ext.empty()) copt.extensions.push_back(ext);
+                    if (comma == std::string::npos) break;
+                    start = comma + 1;
+                }
+            } else if (arg.rfind("--remove-empty-dirs=", 0) == 0) {
+                copt.removeEmptyDirs = (arg.substr(20) != "0");
+            } else if (arg.rfind("--quarantine", 0) == 0) {
+                copt.useQuarantine = true;
+                if (arg.size() > 12 && arg[12] == '=') {
+                    copt.quarantineDir = arg.substr(13);
+                }
+            } else if (arg.rfind("--undo-quarantine=", 0) == 0) {
+                doUndo = true;
+                undoDir = arg.substr(18);
+            }
+        }
+        if (doUndo) {
+            if (undoDir.empty()) {
+                std::cerr << "Provide --undo-quarantine=<dir>" << std::endl;
+                return 1;
+            }
+            size_t restored = cleanup_undo_quarantine(undoDir);
+            std::cout << "Restored " << restored << " items from quarantine: " << undoDir << std::endl;
+            return 0;
+        }
+
+        auto report = cleanup_analyze(platform_path, copt);
+        std::cout << "Residue candidates: " << report.candidates.size() << std::endl;
+        std::cout << "Total potential cleanup: " << report.totalSize << " bytes" << std::endl;
+        for (const auto& c : report.candidates) {
+            std::cout << (c.isDirectory ? "[DIR]  " : "[FILE] ") << c.path << " (" << c.sizeBytes << ")" << std::endl;
+        }
+        size_t removed = cleanup_apply(report, copt);
+        if (copt.simulateOnly) {
+            std::cout << "Simulation only. No changes were made." << std::endl;
+        } else if (copt.useQuarantine) {
+            std::cout << "Quarantined " << removed << " items to: "
+                      << (copt.quarantineDir.empty() ? ".disksense_quarantine" : copt.quarantineDir) << std::endl;
+        } else {
+            std::cout << "Removed " << removed << " items." << std::endl;
+        }
+    }
+    else if (command == "scan" || command == "dedupe") {
+        // existing branches above
+    }
+    else if (command == "export") {
+        // Export index to JSON or CSV
+        if (argc < 4) {
+            std::cerr << "Usage: " << argv[0] << " export <json|csv> <output_path>" << std::endl;
+            return 1;
+        }
+        std::string format = argv[2];
+        std::string outPath = argv[3];
+        LSMIndex index(index_path);
+        auto files = index.getByVolume(1);
+        if (format == "json") {
+            std::ofstream out(outPath);
+            out << "[\n";
+            for (size_t i = 0; i < files.size(); ++i) {
+                const auto& f = files[i];
+                out << "  {\"path\":\"" << f.fullPath << "\",\"size\":" << f.sizeLogical << "}";
+                if (i + 1 < files.size()) out << ",";
+                out << "\n";
+            }
+            out << "]\n";
+        } else if (format == "csv") {
+            std::ofstream out(outPath);
+            out << "path,size\n";
+            for (const auto& f : files) {
+                out << '"' << f.fullPath << "\"," << f.sizeLogical << "\n";
+            }
+        } else {
+            std::cerr << "Unsupported format: " << format << std::endl;
+            return 1;
+        }
+        std::cout << "Exported " << files.size() << " entries to " << outPath << std::endl;
+    }
+    else if (command == "secure-delete") {
+        if (argc < 3) {
+            std::cerr << "Usage: " << argv[0] << " secure-delete <file> [--passes=N] [--verify=0|1] [--pattern=zero|random]\n";
+            return 1;
+        }
+        SecureDeleteOptions sopt;
+        sopt.passes = 1; sopt.verify = false; sopt.useRandom = true;
+        std::string file = argv[2];
+        for (int i = 3; i < argc; ++i) {
+            std::string arg(argv[i]);
+            if (arg.rfind("--passes=", 0) == 0) { sopt.passes = std::max(1, std::stoi(arg.substr(9))); }
+            else if (arg.rfind("--verify=", 0) == 0) { sopt.verify = (arg.substr(9) != "0"); }
+            else if (arg.rfind("--pattern=", 0) == 0) { sopt.useRandom = (arg.substr(10) != "zero"); }
+        }
+        std::cout << "SECURE DELETE will overwrite and remove: " << file << "\nType DELETE to confirm: ";
+        std::string conf; std::cin >> conf; if (conf != "DELETE") { std::cout << "Cancelled." << std::endl; return 1; }
+        std::string err;
+        if (!secure_delete_file(file, sopt, &err)) {
+            std::cerr << "Secure delete failed: " << err << std::endl; return 1;
+        }
+        std::cout << "Securely deleted: " << file << std::endl;
     }
     else if (command == "treemap") {
         std::cout << "Treemap visualization not available in CLI." << std::endl;

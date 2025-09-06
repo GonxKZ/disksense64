@@ -97,10 +97,9 @@ class BenchmarkRunner
 {
 public:
     static int run(int argc, char *argv[]);
-    
-private:
     static void setupBenchmarkEnvironment();
     static void teardownBenchmarkEnvironment();
+private:
     static void printBenchmarkResults(const QString& testName, qint64 duration, const QString& metrics);
 };
 

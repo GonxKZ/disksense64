@@ -8,6 +8,7 @@ target_link_libraries(DiskSense.Cli PRIVATE
     core_scan
     core_index
     core_ops
+    # cleanup is part of core_ops
     lib_chash
     lib_phash
     lib_utils

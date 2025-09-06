@@ -24,9 +24,6 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
     add_compile_options(
         -Wall
         -Wextra
-        -Wpedantic
-        -fstack-protector-strong
-        -D_FORTIFY_SOURCE=2
     )
     
     # Optimization flags

@@ -26,6 +26,7 @@
 #include <QThread>
 #include <memory>
 #include <QVariant>
+#include <QTextEdit>
 
 class ComparisonDialog : public QDialog {
     Q_OBJECT

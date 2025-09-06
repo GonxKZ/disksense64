@@ -1,6 +1,6 @@
 #include "dashboardtab.h"
 #include <QApplication>
-#include <QDesktopWidget>
+
 #include <QSysInfo>
 #include <QStorageInfo>
 #include <QFileInfoList>

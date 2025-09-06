@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <chrono>
+#include "core/safety/safety.h"
 #ifdef _WIN32
 #include <windows.h>
 #include <shlobj.h>
@@ -108,6 +109,11 @@ bool TempFileManager::clean_temp_files(const std::vector<TempFileEntry>& temp_fi
     if (simulate_only) {
         std::wcout << L"Simulation mode: Would clean " << temp_files.size() << L" temporary files" << std::endl;
         return true;
+    }
+    // Enforce Safety Mode: never delete if not allowed
+    if (!safety::deletion_allowed()) {
+        std::wcout << L"Safety Mode: deletion disabled; skipping cleanup" << std::endl;
+        return false;
     }
     
     size_t cleaned_count = 0;

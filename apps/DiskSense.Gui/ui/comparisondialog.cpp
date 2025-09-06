@@ -277,8 +277,7 @@ void ComparisonDialog::compareScans() {
         } catch (const std::exception& e) {
             m_progressDialog->close();
             QMessageBox::warning(this, "Comparison Failed", 
-                               QString("An error occurred during comparison:
-%1").arg(e.what()));
+                               QString("An error occurred during comparison:\n%1").arg(e.what()));
         }
         
         m_progressDialog->close();
@@ -515,54 +514,35 @@ void ComparisonDialog::populateComparisonResults() {
     m_trendAnalysisText->clear();
     QTextCursor cursor(m_trendAnalysisText->textCursor());
     
-    cursor.insertText("TREND ANALYSIS REPORT
-");
-    cursor.insertText("====================
-
-");
+    cursor.insertText("TREND ANALYSIS REPORT\n");
+    cursor.insertText("====================\n\n");
     
-    cursor.insertText(QString("Period: %1 to %2
-")
+    cursor.insertText(QString("Period: %1 to %2\n")
                      .arg(baseline.timestamp.toString("yyyy-MM-dd"))
                      .arg(comparison.timestamp.toString("yyyy-MM-dd")));
-    cursor.insertText(QString("Duration: %1 days
-
-")
+    cursor.insertText(QString("Duration: %1 days\n\n")
                      .arg(baseline.timestamp.daysTo(comparison.timestamp)));
     
-    cursor.insertText("KEY METRICS:
-");
-    cursor.insertText("-------------
-");
-    cursor.insertText(QString("• File growth rate: %1 files/day
-")
+    cursor.insertText("KEY METRICS:\n");
+    cursor.insertText("-------------\n");
+    cursor.insertText(QString("• File growth rate: %1 files/day\n")
                      .arg(fileDiff > 0 ? QString::number(static_cast<double>(fileDiff) / 
                                                         baseline.timestamp.daysTo(comparison.timestamp), 'f', 2) : "0"));
-    cursor.insertText(QString("• Storage growth rate: %1 MB/day
-")
+    cursor.insertText(QString("• Storage growth rate: %1 MB/day\n")
                      .arg(sizeDiff > 0 ? QString::number(static_cast<double>(sizeDiff) / (1024 * 1024) / 
                                                         baseline.timestamp.daysTo(comparison.timestamp), 'f', 2) : "0"));
-    cursor.insertText(QString("• Duplicate file increase: %1 files
-").arg(dupFileDiff > 0 ? QString::number(dupFileDiff) : "0"));
-    cursor.insertText(QString("• Residue file increase: %1 files
-
-").arg(resFileDiff > 0 ? QString::number(resFileDiff) : "0"));
+    cursor.insertText(QString("• Duplicate file increase: %1 files\n").arg(dupFileDiff > 0 ? QString::number(dupFileDiff) : "0"));
+    cursor.insertText(QString("• Residue file increase: %1 files\n\n").arg(resFileDiff > 0 ? QString::number(resFileDiff) : "0"));
     
-    cursor.insertText("INSIGHTS:
-");
-    cursor.insertText("---------
-");
-    cursor.insertText("• Storage usage has increased by " + formatPercentage(sizeDiffPercent) + "%
-");
-    cursor.insertText("• File count has increased by " + formatPercentage(fileDiffPercent) + "%
-");
+    cursor.insertText("INSIGHTS:\n");
+    cursor.insertText("---------\n");
+    cursor.insertText("• Storage usage has increased by " + formatPercentage(sizeDiffPercent) + "%\n");
+    cursor.insertText("• File count has increased by " + formatPercentage(fileDiffPercent) + "%\n");
     cursor.insertText("• Duplicate files represent " + 
                      QString::number(comparison.duplicateFiles > 0 ? 
                                    (static_cast<double>(comparison.duplicateSize) / comparison.totalSize) * 100 : 0, 'f', 2) + 
-                     "% of total storage
-");
-    cursor.insertText("• Consider running deduplication to recover " + formatFileSize(comparison.duplicateSize) + " of storage
-");
+                     "% of total storage\n");
+    cursor.insertText("• Consider running deduplication to recover " + formatFileSize(comparison.duplicateSize) + " of storage\n");
 }
 
 QString ComparisonDialog::formatFileSize(quint64 size) const {

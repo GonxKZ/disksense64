@@ -52,7 +52,8 @@ void Benchmark::benchmarkFileScanningSmall_data()
     QTest::addColumn<QString>("testDir");
     QTest::addColumn<int>("fileCount");
     
-    QTest::newRow("100_files") << createTestData(100, 1) << 100;
+    int n = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 30 : 100;
+    QTest::newRow("small_files") << createTestData(n, 1) << n;
 }
 
 void Benchmark::benchmarkFileScanningSmall()
@@ -82,7 +83,8 @@ void Benchmark::benchmarkFileScanningMedium_data()
     QTest::addColumn<QString>("testDir");
     QTest::addColumn<int>("fileCount");
     
-    QTest::newRow("1000_files") << createTestData(1000, 10) << 1000;
+    int n2 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 100 : 1000;
+    QTest::newRow("medium_files") << createTestData(n2, 10) << n2;
 }
 
 void Benchmark::benchmarkFileScanningMedium()
@@ -112,7 +114,8 @@ void Benchmark::benchmarkFileScanningLarge_data()
     QTest::addColumn<QString>("testDir");
     QTest::addColumn<int>("fileCount");
     
-    QTest::newRow("10000_files") << createTestData(10000, 1) << 10000;
+    int n3 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 200 : 10000;
+    QTest::newRow("large_files") << createTestData(n3, 1) << n3;
 }
 
 void Benchmark::benchmarkFileScanningLarge()
@@ -187,9 +190,12 @@ void Benchmark::benchmarkLSMIndexInsertion_data()
 {
     QTest::addColumn<int>("recordCount");
     
-    QTest::newRow("1000_records") << 1000;
-    QTest::newRow("10000_records") << 10000;
-    QTest::newRow("100000_records") << 100000;
+    int r1 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 300 : 1000;
+    int r2 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 1000 : 10000;
+    int r3 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 3000 : 100000;
+    QTest::newRow("records_1") << r1;
+    QTest::newRow("records_2") << r2;
+    QTest::newRow("records_3") << r3;
 }
 
 void Benchmark::benchmarkLSMIndexInsertion()
@@ -205,10 +211,12 @@ void Benchmark::benchmarkLSMIndexInsertion()
 void Benchmark::benchmarkLSMIndexLookup_data()
 {
     QTest::addColumn<int>("recordCount");
-    
-    QTest::newRow("1000_records") << 1000;
-    QTest::newRow("10000_records") << 10000;
-    QTest::newRow("100000_records") << 100000;
+    int r1 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 300 : 1000;
+    int r2 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 1000 : 10000;
+    int r3 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 3000 : 100000;
+    QTest::newRow("records_1") << r1;
+    QTest::newRow("records_2") << r2;
+    QTest::newRow("records_3") << r3;
 }
 
 void Benchmark::benchmarkLSMIndexLookup()
@@ -224,10 +232,12 @@ void Benchmark::benchmarkLSMIndexLookup()
 void Benchmark::benchmarkLSMIndexRangeQuery_data()
 {
     QTest::addColumn<int>("recordCount");
-    
-    QTest::newRow("1000_records") << 1000;
-    QTest::newRow("10000_records") << 10000;
-    QTest::newRow("100000_records") << 100000;
+    int r1 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 300 : 1000;
+    int r2 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 1000 : 10000;
+    int r3 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 3000 : 100000;
+    QTest::newRow("records_1") << r1;
+    QTest::newRow("records_2") << r2;
+    QTest::newRow("records_3") << r3;
 }
 
 void Benchmark::benchmarkLSMIndexRangeQuery()
@@ -244,9 +254,12 @@ void Benchmark::benchmarkFileCacheHit_data()
 {
     QTest::addColumn<int>("cacheSize");
     
-    QTest::newRow("100_items") << 100;
-    QTest::newRow("1000_items") << 1000;
-    QTest::newRow("10000_items") << 10000;
+    int c1 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 100 : 100;
+    int c2 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 300 : 1000;
+    int c3 = qEnvironmentVariableIsSet("DISKSENSE_FAST_BENCH") ? 1000 : 10000;
+    QTest::newRow("cache_1") << c1;
+    QTest::newRow("cache_2") << c2;
+    QTest::newRow("cache_3") << c3;
 }
 
 void Benchmark::benchmarkFileCacheHit()

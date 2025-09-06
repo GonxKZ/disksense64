@@ -46,6 +46,12 @@ private slots:
     
     void testTaskScheduler();
     void testTaskScheduler_data();
+
+    // Compression tests
+    void testCompressionAnalysis();
+    void testCompressionAnalysis_data();
+    void testCompressionExtraction();
+    void testCompressionExtraction_data();
     
     // UI component tests
     void testTreemapWidget();
@@ -113,6 +119,12 @@ private slots:
     void testErrorHandlingDiskFull();
     void testErrorHandlingCorruptedFiles();
     void testErrorHandlingNetworkFailures();
+
+    // New unit tests
+    void testChartData();
+    void testPluginValidatorSettings();
+    void testResidueAnalyze();
+    void testResidueApply();
     
 private:
     QString createTestDirectory() const;
@@ -127,10 +139,9 @@ class TestRunner
 {
 public:
     static int run(int argc, char *argv[]);
-    
-private:
-    static void setupTestEnvironment();
-    static void teardownTestEnvironment();
 };
+
+void setupTestEnvironment();
+void teardownTestEnvironment();
 
 #endif // TESTS_UNIT_TESTMAIN_H

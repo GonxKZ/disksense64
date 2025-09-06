@@ -6,6 +6,9 @@
 #include "libs/chash/sha256.h"
 #include "libs/chash/blake3.h"
 #include "libs/utils/utils.h"
+#ifdef _WIN32
+#include "win_mft.h"
+#endif
 #include <sys/stat.h>
 
 Scanner::Scanner()
@@ -25,8 +28,19 @@ void Scanner::scanVolume(const std::string& volumePath,
 
     m_cancelled = false;
 
-    // Scan the directory
+    // Windows fast path: MFT enumerator when requested
+#ifdef _WIN32
+    if (options.useMftReader) {
+        if (!winfs::enumerate_mft(volumePath, callback)) {
+            // fallback to recursive
+            scanDirectory(volumePath, options, callback);
+        }
+    } else {
+        scanDirectory(volumePath, options, callback);
+    }
+#else
     scanDirectory(volumePath, options, callback);
+#endif
 
     m_scanning = false;
 }

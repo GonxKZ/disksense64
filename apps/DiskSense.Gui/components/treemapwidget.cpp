@@ -5,6 +5,8 @@
 #include <QMouseEvent>
 #include <QToolTip>
 #include <QApplication>
+#include <QDesktopServices>
+#include <QUrl>
 #include <cmath>
 #include "libs/utils/utils.h"
 
@@ -95,7 +97,7 @@ void TreemapWidget::drawNode(QPainter& painter, const TreemapNode* node) {
             painter.setPen(QPen(Qt::white));
             QString name = QString::fromStdString(node->name);
             if (name.isEmpty()) {
-                name = QString::fromStdString(FileUtils::get_filename(node->fileEntry.fullPath));
+                name = QFileInfo(QString::fromStdString(node->fileEntry.fullPath)).fileName();
             }
             painter.drawText(widgetRect.adjusted(5, 5, -5, -5),
                            Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, 
@@ -133,6 +135,19 @@ void TreemapWidget::mousePressEvent(QMouseEvent *event) {
     }
     
     QWidget::mousePressEvent(event);
+}
+
+void TreemapWidget::mouseDoubleClickEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton && m_root) {
+        QPoint pos = event->pos();
+        TreemapNode* node = hitTest(m_root.get(), pos);
+        if (node) {
+            // Open file or directory in system handler
+            QString path = QString::fromStdString(node->fileEntry.fullPath);
+            QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+        }
+    }
+    QWidget::mouseDoubleClickEvent(event);
 }
 
 void TreemapWidget::mouseMoveEvent(QMouseEvent *event) {

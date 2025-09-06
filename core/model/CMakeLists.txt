@@ -1,8 +1,5 @@
-add_library(core_model)
+add_library(core_model INTERFACE)
 
-target_sources(core_model PRIVATE
-)
-
-target_include_directories(core_model PUBLIC
+target_include_directories(core_model INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )

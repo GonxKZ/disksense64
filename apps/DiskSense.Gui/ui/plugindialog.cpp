@@ -16,7 +16,7 @@
 #include <QColor>
 #include <QPainter>
 #include <QStyle>
-#include <QDesktopWidget>
+
 #include <QScreen>
 #include <QWindow>
 #include <QMimeData>

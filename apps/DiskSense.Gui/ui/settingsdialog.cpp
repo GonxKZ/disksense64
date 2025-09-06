@@ -1,9 +1,11 @@
 #include "settingsdialog.h"
 #include <QApplication>
+#include "platform/i18n.h"
 #include <QScreen>
 #include <QMessageBox>
 #include <QDir>
 #include <QStandardPaths>
+#include <QThread>
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : QDialog(parent)
@@ -368,7 +370,20 @@ void SettingsDialog::loadSettings() {
 void SettingsDialog::saveSettings() {
     // User preferences
     m_settings->setValue("theme", theme());
-    m_settings->setValue("language", language());
+    // Language mapping to codes for i18n manager
+    QString langName = language();
+    QString code = (langName.startsWith("English")) ? "en" : (langName.startsWith("Spanish") ? "es" : (langName.startsWith("French")?"fr":"de"));
+    m_settings->setValue("language", langName);
+    m_settings->setValue("language_code", code);
+    
+    // Apply language immediately if possible
+    // Note: Requires I18nManager lifetime in main; otherwise, prompt restart
+    try {
+        I18nManager mgr; // local manager installs translator via QCoreApplication
+        mgr.setCurrentLanguage(code);
+    } catch (...) {
+        QMessageBox::information(this, tr("Language"), tr("Language will apply after restart."));
+    }
     m_settings->setValue("defaultPath", defaultPath());
     
     // Performance settings

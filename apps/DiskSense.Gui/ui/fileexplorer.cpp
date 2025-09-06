@@ -1,6 +1,6 @@
 #include "fileexplorer.h"
 #include <QApplication>
-#include <QDesktopWidget>
+
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
@@ -12,6 +12,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QFileDialog>
+#include <QFormLayout>
 
 FileExplorer::FileExplorer(QWidget *parent)
     : QWidget(parent)

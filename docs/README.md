@@ -4,11 +4,13 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux-lightgrey)](https://github.com/yourusername/disksense64)
 
-A comprehensive, cross-platform disk analysis suite that provides four core capabilities:
+A comprehensive, cross-platform disk analysis suite (Safe by Default) that provides four core capabilities:
 1. **Exact File Deduplication** with hardlinks
 2. **Disk Space Visualization** with treemap charts
 3. **Residue Detection and Cleanup** of orphaned files
 4. **Perceptual Duplicate Detection** for images and audio
+
+> NOTE: See the top-level README.md for the up-to-date product overview, build instructions and Safety Mode. This document complements it with additional technical details.
 
 ## 🌟 Features
 
@@ -31,7 +33,10 @@ A comprehensive, cross-platform disk analysis suite that provides four core capa
 - **Color coding** by file type, size, or owner
 - **Tooltips** with detailed file information
 
-### 🧹 **Residue Detection and Cleanup**
+### 🧹 **Residue Detection and Cleanup** (Safe by Default)
+Non-destructive by default: actions are simulated or moved to Trash/Quarantine. For development-only destructive operations set `DISKSENSE_ALLOW_DELETE=1`. (Safe by Default)
+Non-destructive by default: actions are simulated or moved to Trash/Quarantine. For development-only destructive operations set `DISKSENSE_ALLOW_DELETE=1`. (Safe by Default)
+Non-destructive by default: actions are simulated or moved to Trash/Quarantine. For development-only destructive operations set `DISKSENSE_ALLOW_DELETE=1`.
 - **Orphaned files** detection in program directories
 - **Temporary files** cleanup (cache, logs, etc.)
 - **Empty directories** removal
@@ -43,6 +48,18 @@ A comprehensive, cross-platform disk analysis suite that provides four core capa
 - **Audio fingerprinting** - Chromatic energy with min-hash
 - **LSH indexing** - Fast approximate nearest neighbor search
 - **Adjustable thresholds** - Control similarity sensitivity
+
+### 🔐 Safety Mode
+- Non-destructive by default: dangerous actions are simulated or moved to Trash/Quarantine.
+- Windows and Linux Trash/Recycle support with restore.
+
+### 🔐 Safety Mode
+- Non-destructive by default: dangerous actions are simulated or moved to Trash/Quarantine.
+- Windows and Linux Trash/Recycle support with restore.
+
+### 🔐 Safety Mode
+- Non-destructive by default: dangerous actions are simulated or moved to Trash/Quarantine.
+- Windows and Linux Trash/Recycle support with restore.
 
 ## 🖥️ **Cross-Platform Support**
 

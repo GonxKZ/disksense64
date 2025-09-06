@@ -13,6 +13,7 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QDateTimeEdit>
+#include <QListWidget>
 #include <QRegularExpression>
 #include <QFileInfo>
 

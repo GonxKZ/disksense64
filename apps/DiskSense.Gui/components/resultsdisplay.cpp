@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QDateTime>
 #include <QScrollArea>
+#include <QScrollBar>
 
 ResultsDisplay::ResultsDisplay(QWidget *parent) 
     : QWidget(parent)

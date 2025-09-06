@@ -4,6 +4,8 @@
 #include <unordered_map>
 #include "libs/chash/blake3.h"
 #include "libs/utils/utils.h"
+#include "core/safety/safety.h"
+#include "platform/util/trash.h"
 
 Deduplicator::Deduplicator(LSMIndex& index) : m_index(index) {
 }
@@ -83,7 +85,9 @@ DedupeStats Deduplicator::deduplicate(const std::vector<DuplicateGroup>& groups,
             continue;
         }
         
-        if (options.simulateOnly) {
+        // Enforce Safety Mode: if deletions are not allowed, only simulate or use non-destructive ops
+        const bool safety_blocks_delete = !safety::deletion_allowed();
+        if (options.simulateOnly || safety_blocks_delete) {
             // Just update stats
             m_stats.actualSavings += group.potentialSavings;
             continue;
@@ -102,9 +106,11 @@ DedupeStats Deduplicator::deduplicate(const std::vector<DuplicateGroup>& groups,
                 m_stats.actualSavings += group.potentialSavings;
             }
         } else {
-            // Delete duplicates
-            if (deleteFiles({group.files.begin() + 1, group.files.end()})) {
-                m_stats.actualSavings += group.potentialSavings;
+            // Delete duplicates (only if allowed by Safety Mode)
+            if (!safety_blocks_delete) {
+                if (deleteFiles({group.files.begin() + 1, group.files.end()})) {
+                    m_stats.actualSavings += group.potentialSavings;
+                }
             }
         }
     }
@@ -212,9 +218,14 @@ bool Deduplicator::createHardlinks(const std::vector<FileEntry>& group) {
 }
 
 bool Deduplicator::moveToRecycleBin(const std::vector<FileEntry>& files) {
-    // In a real implementation, we would move files to the recycle bin
-    // For now, we'll just simulate the operation
-    return true;
+    bool allOk = true;
+    for (const auto& fe : files) {
+        std::string trashed;
+        if (!platform::move_to_trash(fe.fullPath, &trashed)) {
+            allOk = false;
+        }
+    }
+    return allOk;
 }
 
 bool Deduplicator::deleteFiles(const std::vector<FileEntry>& files) {

@@ -252,8 +252,8 @@ void AdvancedFilterWidget::setFilterCriteria(const FilterCriteria& criteria) {
 bool AdvancedFilterWidget::matches(const QFileInfo& fileInfo) const {
     // Name pattern filter
     if (!m_criteria.namePattern.isEmpty()) {
-        QRegExp pattern(m_criteria.namePattern, Qt::CaseInsensitive, QRegExp::Wildcard);
-        if (!pattern.exactMatch(fileInfo.fileName())) {
+        QRegularExpression pattern = QRegularExpression::fromWildcard(m_criteria.namePattern, Qt::CaseInsensitive);
+        if (!pattern.match(fileInfo.fileName()).hasMatch()) {
             return false;
         }
     }

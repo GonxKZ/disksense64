@@ -9,6 +9,7 @@
 #include <QPainter>
 #include <QSvgGenerator>
 #include <QPdfWriter>
+#include <QPageSize>
 #include <QDesktopServices>
 #include <QUrl>
 #include <QTimer>
@@ -358,7 +359,7 @@ void ExportDialog::exportData() {
                 
                 case PDF: {
                     QPdfWriter writer(fullPath);
-                    writer.setPageSize(QPagedPaintDevice::A4);
+                    writer.setPageSize(QPageSize(QPageSize::A4));
                     writer.setPageMargins(QMargins(20, 20, 20, 20));
                     
                     QPainter painter;

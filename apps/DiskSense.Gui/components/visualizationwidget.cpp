@@ -324,9 +324,9 @@ std::unique_ptr<TreemapNode> VisualizationWidget::createTreemap(const QList<QFil
     for (const QFileInfo& fileInfo : files) {
         if (fileInfo.isFile()) {
             FileEntry entry;
-            entry.path = fileInfo.absoluteFilePath().toStdString();
-            entry.size = fileInfo.size();
-            entry.modified = fileInfo.lastModified().toSecsSinceEpoch();
+            entry.fullPath = fileInfo.absoluteFilePath().toStdString();
+            entry.sizeLogical = fileInfo.size();
+            entry.timestamps.lastWriteTime = fileInfo.lastModified().toSecsSinceEpoch();
             fileEntries.push_back(entry);
         }
     }
@@ -379,7 +379,7 @@ void TreemapWidget2D::zoomOut() {
 }
 
 void TreemapWidget2D::resetView() {
-    resetMatrix();
+    resetTransform();
     m_zoomLevel = 1.0;
     m_panOffset = QPointF(0, 0);
 }
@@ -398,7 +398,7 @@ void TreemapWidget2D::resizeEvent(QResizeEvent *event) {
     QGraphicsView::resizeEvent(event);
     // Fit the scene to the view
     if (m_root) {
-        QRectF sceneRect(0, 0, m_root->rect.width, m_root->rect.height);
+        QRectF sceneRect(0, 0, m_root->bounds.width, m_root->bounds.height);
         m_scene->setSceneRect(sceneRect);
         fitInView(sceneRect, Qt::KeepAspectRatio);
     }
@@ -409,7 +409,7 @@ void TreemapWidget2D::mousePressEvent(QMouseEvent *event) {
         QPointF scenePos = mapToScene(event->pos());
         TreemapNode* node = hitTest(m_root.get(), scenePos);
         if (node) {
-            emit nodeSelected(QString::fromStdString(node->path));
+            emit nodeSelected(QString::fromStdString(node->name));
         }
     }
     QGraphicsView::mousePressEvent(event);
@@ -420,7 +420,7 @@ void TreemapWidget2D::mouseDoubleClickEvent(QMouseEvent *event) {
         QPointF scenePos = mapToScene(event->pos());
         TreemapNode* node = hitTest(m_root.get(), scenePos);
         if (node) {
-            emit nodeDoubleClicked(QString::fromStdString(node->path));
+            emit nodeDoubleClicked(QString::fromStdString(node->name));
         }
     }
     QGraphicsView::mouseDoubleClickEvent(event);
@@ -440,7 +440,7 @@ void TreemapWidget2D::drawTreemap(QPainter* painter, const TreemapNode* node, co
     }
     
     // Draw this node
-    QColor color = QColor::fromHsv((node->size % 360), 200, 220);
+    QColor color = QColor::fromHsv((node->totalSize % 360), 200, 220);
     painter->setBrush(color);
     painter->setPen(QPen(Qt::black, 1));
     painter->drawRect(bounds);
@@ -449,7 +449,7 @@ void TreemapWidget2D::drawTreemap(QPainter* painter, const TreemapNode* node, co
     if (bounds.width() > 20 && bounds.height() > 20) {
         QString label = QString::fromStdString(node->name);
         if (bounds.width() > 50 && bounds.height() > 20) {
-            label += QString("\n%1").arg(node->size);
+            label += QString("\n%1").arg(node->totalSize);
         }
         
         painter->setPen(Qt::black);
@@ -461,10 +461,10 @@ void TreemapWidget2D::drawTreemap(QPainter* painter, const TreemapNode* node, co
         if (child) {
             // Calculate child bounds
             QRectF childBounds(
-                bounds.x() + (child->rect.x - node->rect.x) * bounds.width() / node->rect.width,
-                bounds.y() + (child->rect.y - node->rect.y) * bounds.height() / node->rect.height,
-                child->rect.width * bounds.width() / node->rect.width,
-                child->rect.height * bounds.height() / node->rect.height
+                bounds.x() + (child->bounds.x - node->bounds.x) * bounds.width() / node->bounds.width,
+                bounds.y() + (child->bounds.y - node->bounds.y) * bounds.height() / node->bounds.height,
+                child->bounds.width * bounds.width() / node->bounds.width,
+                child->bounds.height * bounds.height() / node->bounds.height
             );
             
             drawTreemap(painter, child.get(), childBounds);
@@ -481,7 +481,7 @@ TreemapNode* TreemapWidget2D::hitTest(const TreemapNode* node, const QPointF& po
         return nullptr;
     }
     
-    QRectF nodeRect(node->rect.x, node->rect.y, node->rect.width, node->rect.height);
+    QRectF nodeRect(node->bounds.x, node->bounds.y, node->bounds.width, node->bounds.height);
     if (!nodeRect.contains(pos)) {
         return nullptr;
     }
@@ -738,31 +738,70 @@ void ChartWidget::leaveEvent(QEvent *event) {
 }
 
 void ChartWidget::renderChart(QPainter* painter) {
-    // Set up chart bounds
+    // Set up chart bounds and background
     QRectF bounds = rect().adjusted(10, 10, -10, -10);
     m_chart->setBounds(bounds);
-    
-    // In a real implementation, this would use the chart's render method
-    // For now, we'll just draw a placeholder based on the chart type
-    
+    m_chart->render();
+
     painter->fillRect(bounds, Qt::white);
-    painter->setPen(Qt::black);
+    painter->setPen(QPen(Qt::black, 1));
     painter->drawRect(bounds);
-    
-    QString chartName;
-    switch (m_chartType) {
-        case ChartFactory::Pie:
-            chartName = "Pie Chart";
-            break;
-        case ChartFactory::Bar:
-            chartName = "Bar Chart";
-            break;
-        case ChartFactory::Line:
-            chartName = "Line Chart";
-            break;
+
+    const ChartData& data = m_chart->data();
+    if (data.count() == 0) {
+        painter->drawText(bounds, Qt::AlignCenter, "No data");
+        return;
     }
-    
-    painter->drawText(bounds, Qt::AlignCenter, chartName + "\n(Chart rendering would appear here)");
+
+    if (m_chartType == ChartFactory::Pie) {
+        // Draw simple pie chart
+        double total = data.totalValue();
+        QRectF pieRect = bounds.adjusted(10, 10, -10, -10);
+        double startAngle = 0.0;
+        for (int i = 0; i < data.count(); ++i) {
+            const auto& dp = data.dataPoints().at(i);
+            double span = (dp.value / total) * 360.0;
+            QColor color = dp.color.isValid() ? dp.color : QColor::fromHsv((i * 360) / data.count(), 200, 220);
+            painter->setBrush(color);
+            painter->drawPie(pieRect, int(startAngle * 16), int(span * 16));
+            startAngle += span;
+        }
+    } else if (m_chartType == ChartFactory::Bar) {
+        // Draw vertical bar chart
+        double maxVal = 0.0;
+        for (const auto& dp : data.dataPoints()) maxVal = qMax(maxVal, dp.value);
+        if (maxVal <= 0) maxVal = 1.0;
+        const double spacing = 6.0;
+        double barWidth = (bounds.width() - spacing * (data.count() + 1)) / data.count();
+        double x = bounds.left() + spacing;
+        for (int i = 0; i < data.count(); ++i) {
+            const auto& dp = data.dataPoints().at(i);
+            double h = (dp.value / maxVal) * (bounds.height() - 30);
+            QRectF bar(x, bounds.bottom() - h, barWidth, h);
+            QColor color = dp.color.isValid() ? dp.color : QColor::fromHsv((i * 360) / data.count(), 200, 220);
+            painter->fillRect(bar, color);
+            painter->drawRect(bar);
+            x += barWidth + spacing;
+        }
+    } else { // Line
+        // Draw simple line chart using index as X
+        double maxVal = 0.0, minVal = 0.0;
+        for (int i = 0; i < data.count(); ++i) {
+            double v = data.dataPoints().at(i).value;
+            if (i == 0) { minVal = maxVal = v; } else { maxVal = qMax(maxVal, v); minVal = qMin(minVal, v); }
+        }
+        if (qFuzzyCompare(maxVal, minVal)) { maxVal += 1.0; minVal -= 1.0; }
+        QPainterPath path;
+        for (int i = 0; i < data.count(); ++i) {
+            double t = data.count() == 1 ? 0.0 : double(i) / double(data.count() - 1);
+            double x = bounds.left() + t * bounds.width();
+            double y = bounds.bottom() - ((data.dataPoints().at(i).value - minVal) / (maxVal - minVal)) * bounds.height();
+            if (i == 0) path.moveTo(x, y); else path.lineTo(x, y);
+        }
+        painter->setRenderHint(QPainter::Antialiasing, true);
+        painter->setPen(QPen(QColor(60, 150, 255), 2));
+        painter->drawPath(path);
+    }
 }
 
 void ChartWidget::updateChart() {

@@ -6,6 +6,8 @@ option(ENABLE_GUI "Enable GUI components" ON)
 option(USE_QT_GUI "Use Qt for the GUI" ON)
 option(ENABLE_TESTING "Enable testing" ON)
 option(CROSS_PLATFORM_BUILD "Enable cross-platform build support" ON)
+option(ENABLE_SANITIZERS "Enable Address/UB sanitizers (non-MSVC)" OFF)
+option(ENABLE_WERROR "Treat warnings as errors" OFF)
 
 # Platform detection
 if(WIN32)
@@ -40,14 +42,22 @@ endif()
 
 # Project definition
 project(DiskSense64 LANGUAGES C CXX)
+add_compile_definitions(_GNU_SOURCE)
+add_compile_definitions(_DEFAULT_SOURCE)
+
+# Add feature test flags for glibc compatibility
+
 
 # Qt configuration
 if(ENABLE_GUI AND USE_QT_GUI)
     set(CMAKE_AUTOMOC ON)
     set(CMAKE_AUTORCC ON)
     set(CMAKE_AUTOUIC ON)
-    find_package(Qt6 COMPONENTS Widgets REQUIRED)
+    find_package(Qt6 COMPONENTS Widgets Test Sql Network OpenGL OpenGLWidgets Svg Concurrent REQUIRED)
 endif()
+
+# Find libarchive for compression/decompression
+find_package(LibArchive REQUIRED)
 
 # Include warnings and security flags
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/warnings.cmake)
@@ -114,8 +124,28 @@ endif()
 # C++ standard settings
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Global developer options
+if(ENABLE_WERROR)
+  if(MSVC)
+    add_compile_options(/W4 /WX)
+  else()
+    add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+  endif()
+else()
+  if(MSVC)
+    add_compile_options(/W4)
+  else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+  endif()
+endif()
+
+if(ENABLE_SANITIZERS AND NOT MSVC)
+  add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer)
+  add_link_options(-fsanitize=address,undefined)
+endif()
 
 # Output directories
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -172,6 +202,14 @@ add_subdirectory(core/usn)
 add_subdirectory(core/index)
 add_subdirectory(core/model)
 add_subdirectory(core/ops)
+if(ENABLE_GUI AND USE_QT_GUI)
+    add_subdirectory(core/analysis)
+    add_subdirectory(core/automation)
+    add_subdirectory(core/cache)
+    add_subdirectory(core/database)
+    add_subdirectory(core/ext)
+    add_subdirectory(core/ux)
+endif()
 
 if(ENABLE_GUI AND NOT BUILD_CLI_ONLY)
     add_subdirectory(core/gfx)
@@ -184,6 +222,21 @@ endif()
 add_subdirectory(libs/chash)
 add_subdirectory(libs/phash)
 add_subdirectory(libs/utils)
+add_subdirectory(libs/fuzzyhash)
+add_subdirectory(libs/metadata)
+add_subdirectory(libs/carving)
+add_subdirectory(libs/hidden)
+add_subdirectory(libs/slack)
+add_subdirectory(libs/mount)
+add_subdirectory(libs/logs)
+add_subdirectory(libs/yara)
+add_subdirectory(libs/clustering)
+add_subdirectory(libs/compression)
+add_subdirectory(libs/encryption)
+add_subdirectory(libs/network)
+add_subdirectory(libs/ml)
+add_subdirectory(libs/memory)
+add_subdirectory(libs/security)
 
 if(ENABLE_GUI AND NOT BUILD_CLI_ONLY)
     add_subdirectory(libs/audfp)

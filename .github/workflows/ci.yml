@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-test:
+    name: Build & Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies (Linux)
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build cmake g++ libgl1-mesa-dev libxkbcommon-x11-0 libx11-dev libx11-xcb-dev libxext-dev libxfixes-dev libxi-dev libxrender1 libxrandr-dev libfontconfig1-dev
+      - name: Install aqtinstall
+        run: python -m pip install --upgrade pip aqtinstall
+      - name: Cache Qt
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.os == 'Linux' && format('{0}/Qt/6.6.2/gcc_64', env.HOME) || format('{0}\Qt\6.6.2\msvc2019_64', env.USERPROFILE) }}
+          key: ${{ runner.os }}-qt-6.6.2
+      - name: Install Qt (Linux)
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          python -m aqt install-qt --outputdir $HOME/Qt linux desktop 6.6.2 gcc_64 -m qtbase qtsvg qttools qtdeclarative qtshadertools qtimageformats
+          echo "QT_DIR=$HOME/Qt/6.6.2/gcc_64" >> $GITHUB_ENV
+      - name: Install Qt (Windows)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          python -m aqt install-qt -O $env:USERPROFILE\Qt windows desktop 6.6.2 win64_msvc2019_64 -m qtbase qtsvg qttools qtdeclarative qtshadertools qtimageformats
+          echo "QT_DIR=$env:USERPROFILE\Qt\6.6.2\msvc2019_64" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Generate translations (Linux)
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          export PATH="$QT_DIR/bin:$PATH"
+          bash scripts/generate_translations.sh
+      - name: Generate translations (Windows)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          $env:Path = "$env:QT_DIR\bin;$env:Path"
+          & lupdate -no-obsolete -locations none -ts translations/disksense_en.ts apps/DiskSense.Gui/*.cpp apps/DiskSense.Gui/ui/*.cpp apps/DiskSense.Gui/components/*.cpp core/*/*.cpp platform/*.cpp
+          & lupdate -no-obsolete -locations none -ts translations/disksense_es.ts apps/DiskSense.Gui/*.cpp apps/DiskSense.Gui/ui/*.cpp apps/DiskSense.Gui/components/*.cpp core/*/*.cpp platform/*.cpp
+          & lrelease translations/disksense_en.ts -qm translations/disksense_en.qm
+          & lrelease translations/disksense_es.ts -qm translations/disksense_es.qm
+      - name: Configure (GUI)
+        env:
+          CMAKE_PREFIX_PATH: ${{ env.QT_DIR }}
+        run: |
+          cmake -S . -B build -G Ninja -DENABLE_GUI=ON -DUSE_QT_GUI=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+      - name: Build (GUI)
+        run: cmake --build build --parallel
+      - name: Test (ctest)
+        run: ctest --test-dir build --output-on-failure
+
+  asan-linux:
+    name: Sanitizers (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build cmake g++
+      - run: cmake -S . -B build-asan -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
+      - run: cmake --build build-asan --parallel
+      - run: ctest --test-dir build-asan --output-on-failure
+
+  format-check:
+    name: Format Check (clang-format)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+      - name: Run format check
+        run: bash .github/scripts/format_check.sh
+
+  clang-tidy:
+    name: Clang-Tidy (Linux CLI subset)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang-tidy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-tidy ninja-build cmake g++
+      - name: Run clang-tidy
+        run: bash .github/scripts/clang_tidy.sh
+
+  format-check:
+    name: Format Check (clang-format)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+      - name: Run format check
+        run: bash .github/scripts/format_check.sh
+
+  format-check:
+    name: Format Check (clang-format)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+      - name: Run format check
+        run: bash .github/scripts/format_check.sh

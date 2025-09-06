@@ -6,6 +6,12 @@ add_library(gui_ui
     ui/dashboardtab.cpp
     ui/settingsdialog.h
     ui/settingsdialog.cpp
+    ui/onboardingdialog.h
+    ui/onboardingdialog.cpp
+    ui/tourwizard.h
+    ui/tourwizard.cpp
+    ui/trashrestoredialog.h
+    ui/trashrestoredialog.cpp
     ui/fileexplorer.h
     ui/fileexplorer.cpp
     ui/advancedfilterwidget.h
@@ -19,11 +25,13 @@ add_library(gui_ui
 target_include_directories(gui_ui PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/ui
+    ${CMAKE_SOURCE_DIR}/include
 )
 
 target_link_libraries(gui_ui PRIVATE
     Qt6::Widgets
     Qt6::Sql
+    Qt6::Svg
     core_model
     core_scan
     core_index
@@ -31,6 +39,9 @@ target_link_libraries(gui_ui PRIVATE
     core_cache
     core_database
     core_analysis
+    core_ops
+    platform_util
+    lib_yara
     lib_utils
 )
 
@@ -42,6 +53,8 @@ add_library(gui_components
     components/resultsdisplay.cpp
     components/visualizationwidget.h
     components/visualizationwidget.cpp
+    components/sunburstwidget.h
+    components/sunburstwidget.cpp
 )
 
 target_include_directories(gui_components PUBLIC 
@@ -52,6 +65,7 @@ target_include_directories(gui_components PUBLIC
 target_link_libraries(gui_components PRIVATE
     Qt6::Widgets
     Qt6::OpenGL
+    Qt6::OpenGLWidgets
     core_model
     core_gfx
     core_analysis

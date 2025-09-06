@@ -1,4 +1,5 @@
 #include "testmain.h"
+#include "libs/compression/compression.h"
 #include <QTemporaryDir>
 #include <QFile>
 #include <QTextStream>
@@ -12,20 +13,12 @@
 #include <QSignalSpy>
 #include <QThread>
 #include <memory>
+#include "core/gfx/charts.h"
+#include "core/ext/pluginmanager.h"
+#include "core/ops/cleanup.h"
 
 // TestMain implementation
-void TestMain::initTestCase()
-{
-    // Set up test environment
-    setupTestEnvironment();
-    
-    // Create temporary directory for tests
-    m_testDir = std::make_unique<QTemporaryDir>();
-    QVERIFY(m_testDir->isValid());
-    
-    // Populate with test data
-    populateTestDirectory(m_testDir->path());
-}
+
 
 void TestMain::cleanupTestCase()
 {
@@ -154,6 +147,109 @@ void TestMain::testTaskScheduler()
 void TestMain::testTaskScheduler_data()
 {
     // Test data for task scheduler
+}
+
+
+
+
+void TestMain::initTestCase()
+{
+    // Set up test environment
+    setupTestEnvironment();
+    
+    // Create temporary directory for tests
+    m_testDir = std::make_unique<QTemporaryDir>();
+    QVERIFY(m_testDir->isValid());
+    
+    // Populate with test data
+    populateTestDirectory(m_testDir->path());
+
+    // Create compression test files
+    QString test_txt_path = m_testDir->path() + "/test.txt";
+    QFile test_txt(test_txt_path);
+    QVERIFY(test_txt.open(QIODevice::WriteOnly));
+    test_txt.write("This is a test file for compression tests.");
+    test_txt.close();
+
+    QString zip_path = m_testDir->path() + "/test.zip";
+    QString tar_path = m_testDir->path() + "/test.tar";
+
+    QProcess zip_process;
+    zip_process.setWorkingDirectory(m_testDir->path());
+    zip_process.start("zip", QStringList() << "test.zip" << "test.txt");
+    zip_process.waitForFinished();
+    QVERIFY(QFile::exists(zip_path));
+
+    QProcess tar_process;
+    tar_process.setWorkingDirectory(m_testDir->path());
+    tar_process.start("tar", QStringList() << "-cf" << "test.tar" << "test.txt");
+    tar_process.waitForFinished();
+    QVERIFY(QFile::exists(tar_path));
+}
+
+void TestMain::testCompressionAnalysis()
+{
+    QFETCH(QString, testFile);
+    QFETCH(int, expectedEntryCount);
+    QFETCH(QString, expectedFormat);
+
+    compressed_archive_t archive;
+    int ret = compression_analyze_file(testFile.toStdString().c_str(), NULL, &archive);
+
+    QCOMPARE(ret, 0);
+    QCOMPARE(archive.entry_count, expectedEntryCount);
+    QCOMPARE(QString(archive.format_name), expectedFormat);
+
+    if (archive.entry_count > 0) {
+        QCOMPARE(QString(archive.entries[0].filename), QString("test.txt"));
+    }
+
+    compressed_archive_free(&archive);
+}
+
+void TestMain::testCompressionAnalysis_data()
+{
+    QTest::addColumn<QString>("testFile");
+    QTest::addColumn<int>("expectedEntryCount");
+    QTest::addColumn<QString>("expectedFormat");
+
+    QString zip_path = m_testDir->path() + "/test.zip";
+    QString tar_path = m_testDir->path() + "/test.tar";
+
+    QTest::newRow("zip") << zip_path << 1 << "zip";
+    QTest::newRow("tar") << tar_path << 1 << "tar";
+}
+
+
+
+void TestMain::testCompressionExtraction()
+{
+    QFETCH(QString, testFile);
+
+    // Create temporary output directory
+    QTemporaryDir outDir;
+    QVERIFY(outDir.isValid());
+    QString outPath = outDir.path() + "/extracted_test.txt";
+
+    int ret = compression_extract_file(testFile.toStdString().c_str(),
+                                       "test.txt",
+                                       outPath.toStdString().c_str(),
+                                       nullptr);
+    QCOMPARE(ret, 0);
+    QFile extracted(outPath);
+    QVERIFY(extracted.exists());
+    QVERIFY(extracted.size() > 0);
+}
+
+void TestMain::testCompressionExtraction_data()
+{
+    QTest::addColumn<QString>("testFile");
+
+    QString zip_path = m_testDir->path() + "/test.zip";
+    QString tar_path = m_testDir->path() + "/test.tar";
+
+    QTest::newRow("zip") << zip_path;
+    QTest::newRow("tar") << tar_path;
 }
 
 void TestMain::testTreemapWidget()
@@ -323,6 +419,73 @@ void TestMain::testPerformanceVisualization()
 {
     // Test visualization performance
     QVERIFY(true); // Placeholder
+}
+
+void TestMain::testChartData()
+{
+    ChartData data;
+    QCOMPARE(data.count(), 0);
+    data.addDataPoint("A", 10.0);
+    data.addDataPoint("B", 15.5);
+    QCOMPARE(data.count(), 2);
+    QVERIFY(data.totalValue() >= 25.5 - 1e-9);
+}
+
+void TestMain::testPluginValidatorSettings()
+{
+    PluginValidator validator;
+    // Defaults and toggles
+    bool initialStrict = validator.isStrictValidationEnabled();
+    bool initialSig = validator.isSignatureVerificationEnabled();
+    validator.setStrictValidation(!initialStrict);
+    validator.setSignatureVerificationEnabled(!initialSig);
+    QVERIFY(validator.isStrictValidationEnabled() != initialStrict);
+    QVERIFY(validator.isSignatureVerificationEnabled() != initialSig);
+    // restore
+    validator.setStrictValidation(initialStrict);
+    validator.setSignatureVerificationEnabled(initialSig);
+}
+
+void TestMain::testResidueAnalyze()
+{
+    // Create files: test.tmp (old), keep.txt, empty dir
+    QString dir = m_testDir->path();
+    QString tmpFile = dir + "/old.tmp";
+    QFile f(tmpFile);
+    QVERIFY(f.open(QIODevice::WriteOnly));
+    f.write("temp");
+    f.close();
+
+    QDir().mkdir(dir + "/emptydir");
+
+    CleanupOptions opts;
+    opts.simulateOnly = true;
+    opts.olderThanDays = 0;
+    opts.extensions = {".tmp"};
+    opts.removeEmptyDirs = true;
+
+    auto rep = cleanup_analyze(dir.toStdString(), opts);
+    QVERIFY(rep.candidates.size() >= 2); // tmp file + emptydir
+}
+
+void TestMain::testResidueApply()
+{
+    QString dir = m_testDir->path();
+    QString tmpFile = dir + "/will_delete.log";
+    QFile f(tmpFile);
+    QVERIFY(f.open(QIODevice::WriteOnly));
+    f.write("log");
+    f.close();
+
+    CleanupOptions opts;
+    opts.simulateOnly = false;
+    opts.extensions = {".log"};
+    opts.removeEmptyDirs = false;
+
+    auto rep = cleanup_analyze(dir.toStdString(), opts);
+    size_t removed = cleanup_apply(rep, opts);
+    QVERIFY(removed >= 1);
+    QVERIFY(!QFile::exists(tmpFile));
 }
 
 void TestMain::testPerformanceVisualization_data()
@@ -514,7 +677,7 @@ int TestRunner::run(int argc, char *argv[])
     return result;
 }
 
-void TestRunner::setupTestEnvironment()
+void setupTestEnvironment()
 {
     // Set up environment variables for testing
     qputenv("QT_QPA_PLATFORM", "offscreen");
@@ -526,7 +689,7 @@ void TestRunner::setupTestEnvironment()
     qputenv("DISKSENSE_TEST_DIR", testDir.toUtf8());
 }
 
-void TestRunner::teardownTestEnvironment()
+void teardownTestEnvironment()
 {
     // Clean up test environment
     QString testDir = QString::fromLocal8Bit(qgetenv("DISKSENSE_TEST_DIR"));
