@@ -39,6 +39,11 @@ if(MINIMAL_UNIT_TESTS)
         ../../libs/utils
         ../../libs/chash)
     add_test(NAME test_dedupe_hash COMMAND test_dedupe_hash)
+    if(UNIX AND NOT APPLE)
+    add_executable(test_inotify scan/test_inotify.cpp)
+    target_link_libraries(test_inotify PRIVATE core_scan lib_utils)
+    add_test(NAME test_inotify COMMAND test_inotify)
+    endif()
 
     # Trash move/list/restore (cross-platform)
     add_executable(test_trash platform/test_trash.cpp)

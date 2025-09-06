@@ -92,6 +92,10 @@ private:
     QRadioButton* m_dedupeDeleteRadio;
     QLineEdit* m_dedupeDirEdit;
     QCheckBox* m_useMftCheck;
+    QCheckBox* m_liveMonitorCheck;
+
+    // Monitor runtime
+    class FsMonitor* m_fsMonitor;
 
     // Safety banner/widgets
     class QLabel* m_safetyBanner;

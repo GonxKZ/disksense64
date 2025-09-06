@@ -42,6 +42,7 @@
 #include "components/sunburstwidget.h"
 #include "core/gfx/charts.h"
 #include "core/scan/scanner.h"
+#include "core/scan/monitor.h"
 #include "core/index/lsm_index.h"
 #include "libs/utils/utils.h"
 #include "core/ops/cleanup.h"
@@ -64,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m_scanner(std::make_unique<Scanner>()) 
     , m_index(std::make_unique<LSMIndex>("disksense_index"))
     , m_isScanning(false)
+    , m_fsMonitor(nullptr)
 {
     setupUI();
     
@@ -601,6 +603,10 @@ void MainWindow::setupDeduplicationTab() {
         m_dedupeDeleteRadio->setToolTip("Disabled by Safety Mode");
         m_dedupeDeleteRadio->hide();
     }
+
+    // Live monitor toggle
+    m_liveMonitorCheck = new QCheckBox("Live monitor changes (incremental)");
+    actionLayout->addWidget(m_liveMonitorCheck);
     
     // Buttons
     QHBoxLayout* buttonLayout = new QHBoxLayout();
@@ -1012,6 +1018,28 @@ void MainWindow::onScanDirectory() {
         QMetaObject::invokeMethod(this, [this]() {
             m_isScanning = false;
             statusBar()->showMessage("Ready");
+            // If live monitor is enabled, start monitoring root
+            if (m_liveMonitorCheck && m_liveMonitorCheck->isChecked()) {
+                if (m_fsMonitor) { m_fsMonitor->stop(); delete m_fsMonitor; m_fsMonitor=nullptr; }
+                m_fsMonitor = new FsMonitor();
+                QString root = m_dedupeDirEdit ? m_dedupeDirEdit->text() : QString();
+                if (!root.isEmpty()) {
+                    auto cb = [this](const ScanEvent& ev){
+                        if (ev.type == ScanEventType::FileAdded) {
+                            m_index->put(ev.fileEntry);
+                            QMetaObject::invokeMethod(this, [this, ev](){
+                                if (m_dedupResults) m_dedupResults->addMessage(QString("[monitor] added: %1").arg(QString::fromStdString(ev.fileEntry.fullPath)));
+                            }, Qt::QueuedConnection);
+                        } else if (ev.type == ScanEventType::FileRemoved) {
+                            m_index->remove(ev.fileEntry.volumeId, ev.fileEntry.fileId);
+                            QMetaObject::invokeMethod(this, [this, ev](){
+                                if (m_dedupResults) m_dedupResults->addMessage(QString("[monitor] removed: %1").arg(QString::fromStdString(ev.fileEntry.fullPath)));
+                            }, Qt::QueuedConnection);
+                        }
+                    };
+                    m_fsMonitor->start(FileUtils::to_platform_path(root.toStdString()), cb);
+                }
+            }
         }, Qt::QueuedConnection);
     });
     
