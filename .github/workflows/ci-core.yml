@@ -19,6 +19,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
 
+    env:
+      VCPKG_ROOT: ${{ runner.temp }}\vcpkg   # usaremos vcpkg clásico en Windows
+
     steps:
       - uses: actions/checkout@v4
 
@@ -26,45 +29,56 @@ jobs:
         with:
           python-version: '3.11'
 
-      # ---- Linux deps (incluye libarchive-dev) ------------------------------
+      # ---------- Linux ----------
       - name: Install deps (Linux)
         if: startsWith(runner.os, 'Linux')
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build cmake g++ libarchive-dev
 
-      # ---- Windows: instalar libarchive vía vcpkg --------------------------
-      - name: Setup vcpkg (Windows)
-        if: startsWith(runner.os, 'Windows')
-        uses: lukka/run-vcpkg@v11
-        with:
-          # usa el vcpkg precompilado con cache automática
-          setupOnly: true
-
-      - name: Install libarchive (Windows via vcpkg)
-        if: startsWith(runner.os, 'Windows')
-        shell: bash
-        run: |
-          "$VCPKG_ROOT"/vcpkg install libarchive:x64-windows
-
-      # ---- Configure --------------------------------------------------------
       - name: Configure (Linux)
         if: startsWith(runner.os, 'Linux')
-        run: cmake -S . -B build-cli -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+        run: |
+          cmake -S . -B build-cli -G Ninja \
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON \
+            -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+
+      # ---------- Windows ----------
+      - name: MSVC environment (x64)
+        if: startsWith(runner.os, 'Windows')
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Bootstrap vcpkg (classic)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          git clone https://github.com/microsoft/vcpkg $env:VCPKG_ROOT
+          $env:VCPKG_ROOT\bootstrap-vcpkg.bat -disableMetrics
+        # ref: https://learn.microsoft.com/en-us/vcpkg/get_started/get-started
+
+      - name: Install libarchive (vcpkg)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          $env:VCPKG_ROOT\vcpkg.exe install libarchive:x64-windows
+        # ref: https://vcpkg.io/en/package/libarchive.html
 
       - name: Configure (Windows + vcpkg toolchain)
         if: startsWith(runner.os, 'Windows')
-        shell: bash
+        shell: pwsh
         run: |
-          cmake -S . -B build-cli -G Ninja \
-            -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" \
-            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+          cmake -S . -B build-cli -G Ninja `
+            -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake" `
+            -DVCPKG_TARGET_TRIPLET=x64-windows `
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON `
+            -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
 
-      # ---- Build ------------------------------------------------------------
+      # ---------- Build & Test (ambos) ----------
       - name: Build
         run: cmake --build build-cli --parallel
 
-      # ---- Test -------------------------------------------------------------
       - name: Test
         run: ctest --test-dir build-cli --output-on-failure
 
@@ -73,12 +87,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install deps (Linux)
+      - name: Install deps
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build cmake g++ libarchive-dev
       - name: Configure (ASAN)
-        run: cmake -S . -B build-asan -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
+        run: |
+          cmake -S . -B build-asan -G Ninja \
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON \
+            -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON \
+            -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
       - name: Build (ASAN)
         run: cmake --build build-asan --parallel
       - name: Test (ASAN)
