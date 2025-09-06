@@ -19,9 +19,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
 
-    env:
-      VCPKG_ROOT: ${{ runner.temp }}\vcpkg   # usaremos vcpkg clásico en Windows
-
     steps:
       - uses: actions/checkout@v4
 
@@ -50,20 +47,25 @@ jobs:
         with:
           arch: x64
 
+      # Usa RUNNER_TEMP para derivar VCPKG_ROOT y propágalo vía $GITHUB_ENV
+      - name: Set VCPKG_ROOT (Windows)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          echo "VCPKG_ROOT=$env:RUNNER_TEMP\vcpkg" >> $env:GITHUB_ENV
+
       - name: Bootstrap vcpkg (classic)
         if: startsWith(runner.os, 'Windows')
         shell: pwsh
         run: |
           git clone https://github.com/microsoft/vcpkg $env:VCPKG_ROOT
           $env:VCPKG_ROOT\bootstrap-vcpkg.bat -disableMetrics
-        # ref: https://learn.microsoft.com/en-us/vcpkg/get_started/get-started
 
       - name: Install libarchive (vcpkg)
         if: startsWith(runner.os, 'Windows')
         shell: pwsh
         run: |
           $env:VCPKG_ROOT\vcpkg.exe install libarchive:x64-windows
-        # ref: https://vcpkg.io/en/package/libarchive.html
 
       - name: Configure (Windows + vcpkg toolchain)
         if: startsWith(runner.os, 'Windows')
