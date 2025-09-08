@@ -8,6 +8,7 @@
 #include <QStyle>
 #include <QLocale>
 #include <QTranslator>
+#include <QDateTime>
 #include <memory>
 
 class QFileSystemWatcher;
@@ -43,7 +44,7 @@ public:
         quint64 availableMemory;
         QStringList drives;
         QString defaultLanguage;
-        QStringList availableLanguages;
+        int availableLanguages;
     };
     
     struct ThemeInfo {

@@ -245,6 +245,7 @@ if(ENABLE_GUI AND NOT BUILD_CLI_ONLY)
 endif()
 
 # Platform wrappers
+add_subdirectory(platform)
 add_subdirectory(platform/fswin)
 add_subdirectory(platform/util)
 

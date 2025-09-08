@@ -51,8 +51,9 @@
 #include "integrations/yara_bridge.h"
 #include <QProcess>
 #include "ui/tourwizard.h"
+#include "ui/trashrestoredialog.h"
 
-MainWindow::MainWindow(QWidget *parent) 
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , m_tabWidget(nullptr)
     , m_dashboardTab(nullptr)
@@ -164,7 +165,7 @@ void MainWindow::setupUI() {
                 QProcess p; p.start("smartctl", {"--scan"}); p.waitForFinished(3000);
                 QString out = p.readAllStandardOutput();
                 for (const QString& line : out.split('\n')) {
-                    if (line.contains("/dev/")) devices << line.section(' ', 0, 0);
+                    if (line.contains("/dev/ ")) devices << line.section(' ', 0, 0);
                 }
                 if (devices.isEmpty()) {
                     // fallback: /dev/sd[a-z]
@@ -270,8 +271,6 @@ void MainWindow::setupUI() {
     m_tabWidget->addTab(m_securityTab, "Security");
     m_tabWidget->addTab(m_topNTab, "Top N");
     m_tabWidget->addTab(m_automationTab, "Automation");
-    m_tabWidget->addTab(m_remoteTab, "Remote");
-    m_tabWidget->addTab(m_searchTab, "Search");
     m_tabWidget->addTab(m_trendsTab, "Trends");
 
     // Top N
@@ -292,7 +291,7 @@ void MainWindow::setupUI() {
         connect(browse,&QPushButton::clicked,[this](){ auto d=QFileDialog::getExistingDirectory(this,"Select Directory"); if(!d.isEmpty()) m_topNDirEdit->setText(d);});
         connect(run,&QPushButton::clicked,[this](){
             QString d=m_topNDirEdit->text(); if(d.isEmpty()) return; 
-            std::vector<std::pair<qulonglong, QString>> files; files.reserve(10000);
+            std::vector<std::pair<qulonglong, QString>> files; files.reserve(10000); 
             QDirIterator it(d, QDir::Files, QDirIterator::Subdirectories);
             while(it.hasNext()){ it.next(); QFileInfo fi=it.fileInfo(); files.emplace_back(fi.size(), fi.absoluteFilePath()); }
             std::sort(files.begin(), files.end(), [](auto&a,auto&b){return a.first>b.first;});
@@ -338,8 +337,21 @@ void MainWindow::setupUI() {
                     QString out=outDir+"/export_"+QString::number(now.toSecsSinceEpoch())+".json";
                     // Reuse CLI-like export within GUI
                     auto files = m_index->getByVolume(1);
-                    QFile f(out); if(f.open(QIODevice::WriteOnly|QIODevice::Truncate)){
-                        f.write("[\n"); for (int i=0;i<(int)files.size();++i){ const auto& fe=files[(size_t)i]; QByteArray line = QByteArray("  {\"path\":\"")+QFile::encodeName(QString::fromStdString(fe.fullPath))+QByteArray("\",\"size\":")+QByteArray::number((qlonglong)fe.sizeLogical)+"}"; if(i+1<(int)files.size()) line+=","; line+="\n"; f.write(line);} f.write("]\n"); f.close(); }
+                    QFile f(out);
+                    if (f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+                        f.write("[\n");
+                        for (int i = 0; i < (int)files.size(); ++i) {
+                            const auto& fe = files[(size_t)i];
+                            QByteArray line = QByteArray("  {\"path\":\"") + QFile::encodeName(QString::fromStdString(fe.fullPath)) + QByteArray("\",\"size\":") + QByteArray::number((qlonglong)fe.sizeLogical) + "}";
+                            if (i + 1 < (int)files.size()) {
+                                line += ",";
+                            }
+                            line += "\n";
+                            f.write(line);
+                        }
+                        f.write("]\n");
+                        f.close();
+                    }
                     // schedule next
                     m_tasksTable->item(r,2)->setText(now.addSecs(mins*60).toString());
                 }
@@ -361,7 +373,7 @@ void MainWindow::setupUI() {
             QString host=m_remoteHostEdit->text(); QString path=m_remotePathEdit->text(); if(host.isEmpty()||path.isEmpty()) return; 
             m_remoteResults->clear(); m_remoteResults->addMessage("Running remote scan via ssh find ...");
             QThread* th=QThread::create([this,host,path](){
-                QProcess p; QString pathEsc=path; pathEsc.replace("'","'\\''"); QString cmd=QString("find '%1' -type f -printf '%s %p\\n'").arg(pathEsc);
+                QProcess p; QString pathEsc=path; pathEsc.replace("'","'\''"); QString cmd=QString("find '%1' -type f -printf '%s %p\n'").arg(pathEsc);
                 p.start("ssh", {host, cmd}); p.waitForFinished(600000);
                 QString out=p.readAllStandardOutput();
                 QMetaObject::invokeMethod(this,[this,out](){
@@ -408,8 +420,8 @@ void MainWindow::setupUI() {
     exitAction->setShortcut(QKeySequence("Ctrl+Q"));
     connect(exitAction, &QAction::triggered, this, &QApplication::quit);
 
-    QMenu* toolsMenu = menuBar->addMenu("&Tools");
-    QAction* secureDeleteAction = toolsMenu->addAction("Secure Delete File...");
+    m_toolsMenu = menuBar->addMenu("&Tools");
+    QAction* secureDeleteAction = m_toolsMenu->addAction("Secure Delete File...");
     connect(secureDeleteAction, &QAction::triggered, [this]() {
         if (!safety::deletion_allowed()) {
             QMessageBox::warning(this, tr("Secure Delete"), tr("Blocked by Safety Mode. Enable DISKSENSE_ALLOW_DELETE=1 for development."));
@@ -429,8 +441,6 @@ void MainWindow::setupUI() {
     });
     
     QMenu* helpMenu = menuBar->addMenu("&Help");
-    QAction* tourAct = helpMenu->addAction("Guided Tour...");
-    connect(tourAct, &QAction::triggered, [this]() { TourWizard wiz(this); wiz.exec(); });
     QAction* tourAct = helpMenu->addAction("Guided Tour...");
     connect(tourAct, &QAction::triggered, [this]() { TourWizard wiz(this); wiz.exec(); });
     QAction* aboutAction = helpMenu->addAction("&About");
@@ -990,7 +1000,7 @@ void MainWindow::onScanDirectory() {
                     }, Qt::QueuedConnection);
                 }
                 // Append snapshot for trends
-                uint64_t total=0; for (const auto& fe: allFiles) total += fe.sizeLogical;
+                uint64_t total=0; for (const auto& fe: allFiles) total += fe.sizeLogical; 
                 QMetaObject::invokeMethod(this, [total]() {
                     QDir().mkpath(QDir::homePath()+"/.disksense");
                     QFile f(QDir::homePath()+"/.disksense/snapshots.json");
@@ -998,7 +1008,8 @@ void MainWindow::onScanDirectory() {
                     if (f.open(QIODevice::ReadOnly)) { auto doc=QJsonDocument::fromJson(f.readAll()); if (doc.isArray()) arr=doc.array(); f.close(); }
                     if (f.open(QIODevice::WriteOnly|QIODevice::Truncate)) {
                         QJsonObject o; o["ts"]=QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm"); o["total"]=double(total);
-                        arr.append(o); f.write(QJsonDocument(arr).toJson()); f.close();
+                        arr.append(o);
+                        f.write(QJsonDocument(arr).toJson()); f.close();
                     }
                 }, Qt::QueuedConnection);
             }
@@ -1123,8 +1134,7 @@ void MainWindow::onResidueApply() {
     bool ok = true;
     if (safety::deletion_allowed()) {
         QString text = QInputDialog::getText(this, "Confirm Cleanup",
-            "Type DELETE to confirm applying cleanup (files may be moved or deleted):",
-            QLineEdit::Normal, "", &ok);
+            "Type DELETE to confirm applying cleanup (files may be moved or deleted):");
         if (!ok || text.trimmed() != "DELETE") {
             QMessageBox::information(this, "Cleanup", "Cleanup cancelled.");
             return;
@@ -1157,7 +1167,7 @@ void MainWindow::onExportResults() {
         f.write("[\n");
         for (int i = 0; i < (int)files.size(); ++i) {
             const auto& fe = files[(size_t)i];
-            QByteArray line = QByteArray::fromStdString("  {\"path\":\"") + QFile::encodeName(QString::fromStdString(fe.fullPath)) + QByteArray::fromStdString("\",\"size\":") + QByteArray::number((qlonglong)fe.sizeLogical) + "}";
+            QByteArray line = QByteArray("  {\"path\":\"") + QFile::encodeName(QString::fromStdString(fe.fullPath)) + QByteArray("\",\"size\":") + QByteArray::number((qlonglong)fe.sizeLogical) + "}";
             if (i + 1 < (int)files.size()) line += ",";
             line += "\n";
             f.write(line);
@@ -1202,7 +1212,7 @@ void MainWindow::onGenerateVisualization() {
             it.next();
             QFileInfo fi = it.fileInfo();
             if (!filter.isEmpty() && !fi.fileName().contains(filter, Qt::CaseInsensitive)) continue;
-            int monthsAgo = fi.lastModified().date().monthsTo(today);
+            int monthsAgo = (today.year() - fi.lastModified().date().year()) * 12 + today.month() - fi.lastModified().date().month();
             if (monthsAgo < 0) monthsAgo = 0;
             if (monthsAgo > 11) monthsAgo = 11;
             byMonth[11 - monthsAgo] += fi.size();
@@ -1283,9 +1293,9 @@ void MainWindow::onApplyDedupe() {
         m_dedupResults->addMessage("Safety Mode active: simulated savings only; no files were modified.");
     }
     m_dedupResults->addMessage(QString("Applied action. Actual savings (est.): %1 bytes, hardlinks: %2")
-    QAction* restoreTrashAction = toolsMenu->addAction("Restore from Trash...");
+                               .arg(finalStats.actualSavings).arg(finalStats.hardlinksCreated));
+    QAction* restoreTrashAction = m_toolsMenu->addAction("Restore from Trash...");
     connect(restoreTrashAction, &QAction::triggered, [this]() {
         TrashRestoreDialog dlg(this); dlg.exec();
     });
-                               .arg(finalStats.actualSavings).arg(finalStats.hardlinksCreated));
 }

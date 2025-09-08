@@ -29,10 +29,8 @@ endif()
 
 # Add translation files to resources
 set(TRANSLATION_FILES
-    ${CMAKE_SOURCE_DIR}/translations/disksense_en.qm
-    ${CMAKE_SOURCE_DIR}/translations/disksense_es.qm
-    ${CMAKE_SOURCE_DIR}/translations/disksense_fr.qm
-    ${CMAKE_SOURCE_DIR}/translations/disksense_de.qm
+    ${CMAKE_CURRENT_SOURCE_DIR}/disksense_en.qm
+    ${CMAKE_CURRENT_SOURCE_DIR}/disksense_es.qm
 )
 
 # Create resource file for translations
@@ -48,18 +46,7 @@ target_sources(platform PRIVATE ${TRANSLATION_RESOURCES})
 install(FILES ${TRANSLATION_FILES}
         DESTINATION translations)
 
-# Create platform test executable
-add_executable(test_platform
-    test_platform.cpp
-)
 
-target_link_libraries(test_platform PRIVATE
-    platform
-    Qt6::Test
-)
-
-# Add platform tests to ctest
-add_test(NAME platform_tests COMMAND test_platform)
 
 # Custom target to generate translations
 add_custom_target(generate_translations

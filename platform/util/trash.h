@@ -16,7 +16,7 @@ struct TrashEntry { std::string trashed_path; std::string original_path; std::st
 std::vector<TrashEntry> list_trash();
 
 // Restore a trashed item (Linux XDG Trash). On Windows returns false.
-bool restore_from_trash(const TrashEntry& entry);
+bool restore_from_trash(const TrashEntry& entry, std::string* restored_path = nullptr);
 
 }
 

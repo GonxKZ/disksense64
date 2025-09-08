@@ -258,70 +258,70 @@ void LanguageDataLoader::initializeLanguageData() {
     }
     
     // Define supported languages
-    LanguageInfo english;
+    I18nManager::LanguageInfo english;
     english.code = "en";
     english.name = "English";
     english.nativeName = "English";
     english.isRTL = false;
     s_languageData["en"] = english;
     
-    LanguageInfo spanish;
+    I18nManager::LanguageInfo spanish;
     spanish.code = "es";
     spanish.name = "Spanish";
     spanish.nativeName = "Español";
     spanish.isRTL = false;
     s_languageData["es"] = spanish;
     
-    LanguageInfo french;
+    I18nManager::LanguageInfo french;
     french.code = "fr";
     french.name = "French";
     french.nativeName = "Français";
     french.isRTL = false;
     s_languageData["fr"] = french;
     
-    LanguageInfo german;
+    I18nManager::LanguageInfo german;
     german.code = "de";
     german.name = "German";
     german.nativeName = "Deutsch";
     german.isRTL = false;
     s_languageData["de"] = german;
     
-    LanguageInfo italian;
+    I18nManager::LanguageInfo italian;
     italian.code = "it";
     italian.name = "Italian";
     italian.nativeName = "Italiano";
     italian.isRTL = false;
     s_languageData["it"] = italian;
     
-    LanguageInfo portuguese;
+    I18nManager::LanguageInfo portuguese;
     portuguese.code = "pt";
     portuguese.name = "Portuguese";
     portuguese.nativeName = "Português";
     portuguese.isRTL = false;
     s_languageData["pt"] = portuguese;
     
-    LanguageInfo russian;
+    I18nManager::LanguageInfo russian;
     russian.code = "ru";
     russian.name = "Russian";
     russian.nativeName = "Русский";
     russian.isRTL = false;
     s_languageData["ru"] = russian;
     
-    LanguageInfo chinese;
+    I18nManager::LanguageInfo chinese;
     chinese.code = "zh";
     chinese.name = "Chinese";
     chinese.nativeName = "中文";
     chinese.isRTL = false;
     s_languageData["zh"] = chinese;
     
-    LanguageInfo japanese;
+    I18nManager::LanguageInfo japanese;
     japanese.code = "ja";
     japanese.name = "Japanese";
     japanese.nativeName = "日本語";
     japanese.isRTL = false;
     s_languageData["ja"] = japanese;
     
-    LanguageInfo arabic;
+    I18nManager::LanguageInfo arabic;
     arabic.code = "ar";
     arabic.name = "Arabic";
     arabic.nativeName = "العربية";

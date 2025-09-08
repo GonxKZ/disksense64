@@ -92,4 +92,5 @@ target_link_libraries(DiskSense.Gui PRIVATE
     core_database
     core_analysis
     lib_utils
+    platform
 )

@@ -24,7 +24,12 @@
 #include <QScreen>
 #include <QFont>
 #include <QPalette>
-#include <QDesktopWidget>
+#include <QScreen>
+#include <sys/stat.h>
+#include <signal.h>
+#include <unistd.h>
+#include <QThread>
+#include <QApplication>
 #include <QMainWindow>
 #include <algorithm>
 #include <memory>
@@ -163,9 +168,10 @@ PlatformManager::SystemInfo PlatformManager::getSystemInfo() {
     
     // Get language info
     info.defaultLanguage = QLocale::system().name();
-    info.availableLanguages = QLocale::matchingLocales(
+    QList<QLocale> locales = QLocale::matchingLocales(
         QLocale::AnyLanguage, QLocale::AnyScript, QLocale::AnyCountry
-    ).size();
+    );
+    info.availableLanguages = locales.size();
     
     return info;
 }
@@ -616,7 +622,25 @@ QString FileSystemUtils::getFileGroup(const QString& path) {
 
 QString FileSystemUtils::getFilePermissions(const QString& path) {
     QFileInfo fileInfo(path);
-    return fileInfo.permissions().toString();
+    QFileDevice::Permissions perms = fileInfo.permissions();
+    QString result;
+    
+    // Owner permissions
+    result += (perms & QFileDevice::ReadOwner) ? "r" : "-";
+    result += (perms & QFileDevice::WriteOwner) ? "w" : "-";
+    result += (perms & QFileDevice::ExeOwner) ? "x" : "-";
+    
+    // Group permissions
+    result += (perms & QFileDevice::ReadGroup) ? "r" : "-";
+    result += (perms & QFileDevice::WriteGroup) ? "w" : "-";
+    result += (perms & QFileDevice::ExeGroup) ? "x" : "-";
+    
+    // Others permissions
+    result += (perms & QFileDevice::ReadOther) ? "r" : "-";
+    result += (perms & QFileDevice::WriteOther) ? "w" : "-";
+    result += (perms & QFileDevice::ExeOther) ? "x" : "-";
+    
+    return result;
 }
 
 bool FileSystemUtils::createSymbolicLink(const QString& target, const QString& linkPath) {

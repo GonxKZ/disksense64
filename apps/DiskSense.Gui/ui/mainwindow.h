@@ -30,6 +30,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+public slots:
+    void onDashboardScanRequested(const QString& path);
+
 private slots:
     void onScanDirectory();
     void onCancelScan();
@@ -41,7 +44,6 @@ private slots:
     void onFindDuplicates();
     void onApplyDedupe();
     void onResidueApply();
-    void onDashboardScanRequested(const QString& path);
     void onDashboardSettingsRequested();
     void onDashboardExportRequested();
     void onSettingsRequested();
@@ -149,6 +151,9 @@ private:
     
     // Status tracking
     bool m_isScanning;
+
+    // Menu
+    class QMenu* m_toolsMenu;
 
     // Cached data
     CleanupReport m_lastCleanupReport;

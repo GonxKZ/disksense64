@@ -175,7 +175,7 @@ std::vector<TrashEntry> list_trash() {
 #endif
 }
 
-bool restore_from_trash(const TrashEntry& entry) {
+bool restore_from_trash(const TrashEntry& entry, std::string* restored_path) {
 #ifdef _WIN32
     bool ok = false;
     HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
@@ -213,6 +213,7 @@ bool restore_from_trash(const TrashEntry& entry) {
     std::filesystem::create_directories(dst.parent_path(), ec); ec.clear();
     std::filesystem::rename(src, dst, ec);
     if (ec) return false;
+    if (restored_path) *restored_path = dst.string();
     // Remove .trashinfo
     std::filesystem::path info = std::filesystem::path(getenv("HOME")) / ".local/share/Trash/info" / (std::filesystem::path(entry.trashed_path).filename().string() + ".trashinfo");
     std::filesystem::remove(info, ec);
