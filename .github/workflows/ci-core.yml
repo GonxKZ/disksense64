@@ -18,20 +18,69 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      # ---------- Linux ----------
       - name: Install deps (Linux)
         if: startsWith(runner.os, 'Linux')
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build cmake g++
-      - name: Configure
-        run: cmake -S . -B build-cli -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+          sudo apt-get install -y ninja-build cmake g++ libarchive-dev
+
+      - name: Configure (Linux)
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          cmake -S . -B build-cli -G Ninja \
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON \
+            -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+
+      # ---------- Windows ----------
+      - name: MSVC environment (x64)
+        if: startsWith(runner.os, 'Windows')
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      # Usa RUNNER_TEMP para derivar VCPKG_ROOT y propágalo vía $GITHUB_ENV
+      - name: Set VCPKG_ROOT (Windows)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          echo "VCPKG_ROOT=$env:RUNNER_TEMP\vcpkg" >> $env:GITHUB_ENV
+
+      - name: Bootstrap vcpkg (classic)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          git clone https://github.com/microsoft/vcpkg $env:VCPKG_ROOT
+          $env:VCPKG_ROOT\bootstrap-vcpkg.bat -disableMetrics
+
+      - name: Install libarchive (vcpkg)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          $env:VCPKG_ROOT\vcpkg.exe install libarchive:x64-windows
+
+      - name: Configure (Windows + vcpkg toolchain)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          cmake -S . -B build-cli -G Ninja `
+            -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake" `
+            -DVCPKG_TARGET_TRIPLET=x64-windows `
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON `
+            -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_WERROR=ON
+
+      # ---------- Build & Test (ambos) ----------
       - name: Build
         run: cmake --build build-cli --parallel
+
       - name: Test
         run: ctest --test-dir build-cli --output-on-failure
 
@@ -40,8 +89,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y ninja-build cmake g++
-      - run: cmake -S . -B build-asan -G Ninja -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
-      - run: cmake --build build-asan --parallel
-      - run: ctest --test-dir build-asan --output-on-failure
-
+      - name: Install deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build cmake g++ libarchive-dev
+      - name: Configure (ASAN)
+        run: |
+          cmake -S . -B build-asan -G Ninja \
+            -DENABLE_GUI=OFF -DBUILD_CLI_ONLY=ON \
+            -DENABLE_TESTING=ON -DMINIMAL_UNIT_TESTS=ON \
+            -DENABLE_SANITIZERS=ON -DENABLE_WERROR=ON
+      - name: Build (ASAN)
+        run: cmake --build build-asan --parallel
+      - name: Test (ASAN)
+        run: ctest --test-dir build-asan --output-on-failure
